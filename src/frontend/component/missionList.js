@@ -4,10 +4,15 @@ import { Table, Button, Popconfirm, Input, Icon, Divider, Pagination } from 'ant
 import Highlighter from 'react-highlight-words';
 import $ from 'jquery';
 
+const outputDir = "http://192.168.12.127/output/bin/"
+const logDir = "http://192.168.12.127/output/log/"
+
 export class MissionList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { dataSource: [] , searchText: ''};
+        this.state = {
+            dataSource: [] , searchText: '',
+            loading : true};
     }
 
 getColumnSearchProps = dataIndex => ({
@@ -115,7 +120,7 @@ getColumnSearchProps = dataIndex => ({
                     key: '输出目录',
                     render: (text, record) => (
                         <span>
-                            <a href={"http://192.168.12.127/output/bin/" + record.输出目录}>点击打开</a>
+                            <a href={outputDir + record.输出目录} target="_blank">点击打开</a>
                         </span>
                     ),
                 },
@@ -124,7 +129,7 @@ getColumnSearchProps = dataIndex => ({
                     key: '日志目录',
                     render: (text, record) => (
                         <span>
-                            <a href={}>点击打开</a>
+                            <a href={logDir + record.输出目录} target="_blank">点击打开</a>
                         </span>
                     ),
                 },
@@ -156,7 +161,7 @@ getColumnSearchProps = dataIndex => ({
             contentType: "application/json",
             success: (data, status) => {
                 if (status == "success") {
-                    console.log(data);
+                    this.setState({loading : false});
                     if (data.result == 0) {
                         this.setState({ dataSource : data.data });
                         console.log("ajax ok");
@@ -170,9 +175,10 @@ getColumnSearchProps = dataIndex => ({
 
     DeleteData(key) {
         var json = { "id": key };
+        this.setState({loading : true});
         $.ajax({
             type: "post",
-            url:  "adminPortal/user/del",
+            url:  "mission/del",
             contentType: "application/json",
             data: JSON.stringify(json),
             success: (data, status) => {
@@ -183,14 +189,24 @@ getColumnSearchProps = dataIndex => ({
         });
     };
 
+    onTimer() {
+        this.RefreshData();
+    }
+
     componentDidMount() {
         this.RefreshData();
+        setInterval(this.onTimer.bind(this), 10000);
     }
 
     render() {
         return (
             <div>
-                <Table size="middle" columns = {this.getColumns()} dataSource = {this.state.dataSource} pagination = {{size:"default", position :"both", defaultPageSize : 20, showQuickJumper : true}}/>
+                <Table 
+                    size="middle"
+                    columns = {this.getColumns()}
+                    dataSource = {this.state.dataSource}
+                    pagination = {{size:"default", position :"both", defaultPageSize : 20, showQuickJumper : true}}
+                    loading = {this.state.loading}/>
             </div>
         );
     }

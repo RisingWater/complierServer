@@ -31,7 +31,7 @@ exports.list = function(req, res) {
 
 function deleteFolder(path) {
     var files = [];
-    console.log("删除目录：" + data.输出目录);
+    console.log("删除目录：" + path);
     if (fs.existsSync(path)) {
         files = fs.readdirSync(path);
         files.forEach(function(file, index){
@@ -58,9 +58,9 @@ exports.del = function(req, res) {
     sql = "SELECT * FROM 任务 WHERE 任务编号 = " + req.body.id;
     connection.query(sql)
     .then(data => {
-        deleteFolder(tmp_path + data.输出目录);
-        deleteFolder(bin_path + data.输出目录);
-        deleteFolder(log_path + data.输出目录);
+        deleteFolder(tmp_path + data[0].输出目录);
+        deleteFolder(bin_path + data[0].输出目录);
+        deleteFolder(log_path + data[0].输出目录);
 
         var sql = "DELETE FROM 任务 WHERE 任务编号 = " + req.body.id;
         connection.execute(sql)

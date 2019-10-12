@@ -4,13 +4,17 @@ import { Layout } from 'antd';
 import { HeaderBar } from './component/headerbar.js'
 import { SideMenu  } from './component/sideMenu.js'
 import { MissionList } from './component/missionList.js'
+import { PublishPage } from './component/publish.js'
+import { SepForm } from './component/sepform.js'
+import $ from 'jquery';
+
 
 class RootContext extends React.Component {
     constructor(props,context) {
         super(props,context)
         this.state = {
-            menuSelectedkey : "1"
-        };
+            menuSelectedkey : "publish"
+        }
     }
 
     onMenuSelectChange(key){
@@ -20,26 +24,30 @@ class RootContext extends React.Component {
     }
 
     getTable() {
-        if (this.state.menuSelectedkey == 1) {
-            return (<div/>);
-        } else if (this.state.menuSelectedkey == 2) {
+        if (this.state.menuSelectedkey == "publish") {
+            return (<PublishPage/>)
+        } else if (this.state.menuSelectedkey == "mission_list") {
             return (<MissionList/>);
-        } else if (this.state.menuSelectedkey == 3) {
-            return (<div/>);    
-        } else {
-            return (<div>{this.state.menuSelectedkey}</div>);
+        } else if (this.state.menuSelectedkey == "new_sep") {
+            return (<SepForm/>);
+        } else if (this.state.menuSelectedkey == "new_weixun") {
+            return (<div></div>);
+        } else if (this.state.menuSelectedkey == "new_solution") {  
+            return (<div></div>);
+        } else {  
+            return (<div></div>);
         }
     }
 
     render() {
-        const Menus = [ { name : "发布版本", key : "1", disable: true}, { name : "任务列表", key : "2", disable: false}, { name : "新建任务", key : "3", disable: true} ];
+        var height = $(window).height() - 64;
         return (
             <Layout>
                 <HeaderBar title="编译服务平台"/>
                 <Layout>
-                    <SideMenu menuSelectedChange={this.onMenuSelectChange.bind(this)} menus={Menus} selectKey={['1']}/>
+                    <SideMenu menuSelectedChange={this.onMenuSelectChange.bind(this)}/>
                     <Layout>
-                        <Layout.Content style={{background: '#fff', padding: 24, margin: 0, minHeight: 1024,}}>
+                        <Layout.Content style={{background: '#fff', padding: 24, margin: 0, minHeight: height,}}>
                             {this.getTable()}
                         </Layout.Content>
                     </Layout>

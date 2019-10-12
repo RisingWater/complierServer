@@ -12,3 +12,13 @@
     margin: 0px 28px 0px 0;
     float: left;
 }
+
+.centerblock {
+    margin: 0px auto;
+    text-align: center;
+}
+
+.mission_from {
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
