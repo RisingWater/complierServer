@@ -11,7 +11,6 @@
             {
                 "name" : "Linux",
                 "description" : "Linux平台",
-                "script" : "F:\\output\\tmp\\automake_linux.bat",
                 "children" : [
                     {
                         "name" : "x86",
@@ -24,6 +23,7 @@
                                 "username" : "centerm",
                                 "password" : "centerm123!@#",
                                 "codepath" : "/home/centerm/project/autobuild/sep4/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : ""
                             }
                         ]
@@ -39,6 +39,7 @@
                                 "username" : "centerm",
                                 "password" : "centerm",
                                 "codepath" : "/home/centerm/weilc/SEP4/sep4/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-C91"
                             }
                         ]

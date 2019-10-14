@@ -19,6 +19,20 @@
 }
 
 .mission_from {
-    margin-left: 50px;
+    margin-left: 0px;
     margin-bottom: 20px;
+}
+
+.mission_step_layout {
+    width: 85%;
+    margin: 0px auto;
+}
+
+.mission_layout {
+    width: 70%;
+    margin: 0px auto;
+}
+
+.mission-action {
+    margin-top: 30px;
 }

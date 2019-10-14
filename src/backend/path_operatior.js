@@ -4,7 +4,6 @@ var path = require('path');
 exports.list = function(req, res) {
     var config = null;
     var file = path.join(__dirname, "../../db/codepath.js");
-    console.log(file);
     var configlist = new Array();
     configlist = JSON.parse(fs.readFileSync(file, 'utf-8'));
     configlist.some((value) => {
