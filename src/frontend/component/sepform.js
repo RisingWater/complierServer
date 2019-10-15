@@ -1,7 +1,8 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Steps, Layout, Button } from 'antd';
-import { PlatformSelect, VersionInput, ComplierFlowCheck, ProtocolCheck, ModuleCheck, LicenseRadio, ReadmeInput } from './complier_component.js'
+import { Steps, Layout, Button, Form } from 'antd';
+import { ComplierOptionFormTemplate } from './complierOption.js'
+import { SEPComplierModuleFormTemplate } from './sepComplierModule.js'
 
 export class SepForm extends React.Component {
     constructor(props) {
@@ -21,138 +22,196 @@ export class SepForm extends React.Component {
                     title: '添加编译任务',
                 },
             ],
-            mission_platform : [],
-            mission_codepath : "",
-            mission_svn : 0,
-            mission_version : "",
-            mission_complier_option : [],
-            mission_protocol_option : [],
-            mission_module_option : [],
-            mission_license_option : 0,
-            mission_readme : "",
+
+            mission_complier_option : {
+                platform_values : [],
+                platform_node : null,
+                codepath : "",
+                svn_version : 0,
+                version : "",
+                complier_option : [],
+            },
+
+            mission_complier_module : {
+                protocols : [],
+                protocols_enable : [],
+                modules : [],
+                modules_enable : [],
+                license_option : 0,
+                readme : ""
+            }
         };
     }
-
-    saveFlowCheckRef(ref) {
-        this.flowCheck = ref;
-    }; 
     
-    onPlatformSelectChange(node, value) {
-        var isWindows = (node.name == "Windows");
-
-        this.setState({windows : isWindows});
-        this.flowCheck.changePlatform(isWindows);
-        
-        console.log("codepath：" + node.codepath);
-        console.log("platform_select_values: " + value);
-        this.setState({
-            complierServer : node, 
-            mission_platform: value,
-            mission_codepath: node.codepath,
-            mission_protocol_option : [],
-            mission_module_option : [],
-        });
-    }
-
-    onVersionChange(svn, version) {
-        console.log("svn" + svn);
-        console.log("version: " + version);
-        this.setState({
-            mission_version : version,
-            mission_svn : svn,
-        });
-    }
-
-    onComplierOptionChange(value) {
-        console.log("complier option: " + value);
-        this.setState({
-            mission_complier_option : value
-        });
-    }
-
-    onProtocolOptionChange(value) {
-        console.log("protocol option: " + value);
-        this.setState({
-            mission_protocol_option : value
-        });
-    }
-
-    onModuleOptionChange(value) {
-        console.log("module option: " + value);
-        this.setState({
-            mission_module_option : value
-        });
-    }
-
-    onLicenseOptionChange(value) {
-        console.log("license option: " + value);
-        this.setState({
-            mission_license_option : value
-        });
-    }
-
-    onReadmeChange(value) {
-        console.log("readme:" + value);
-        this.setState({
-            mission_readme : value
-        })
-    }
-
-    next() {
-        const current = this.state.currentStep + 1;
-        this.setState({ currentStep : current });
-    }
-    
-    prev() {
+    OnBackClick() {
         const current = this.state.currentStep - 1;
         this.setState({ currentStep : current});
     }
 
+    onComplierOptionSubmit(values, node) {
+        console.log('Received values of complier option form: ', values);
+        console.log('Received node of complier option form: ', node);
+
+        var protocols = this.state.mission_complier_module.protocols;
+        var protocols_enable = [];
+        var modules = this.state.mission_complier_module.modules;
+        var modules_enable = [];
+
+        if (node.protocol_change) {
+            protocols = node.default_protocol;
+            protocols_enable = node.enable_protocol;
+        }
+
+        if (node.module_change) {
+            modules = node.default_module;
+            modules_enable = node.enable_module;
+        }
+
+        var test = {
+            protocols : protocols,
+            protocols_enable : protocols_enable,
+            modules : modules,
+            modules_enable : modules_enable,
+            license_option : this.state.mission_complier_module.license_option,
+            readme :  this.state.mission_complier_module.readme,
+        }
+
+        console.log("new module: " + test);
+
+        this.setState( { 
+            mission_complier_option : {
+                platform_values : values.platform_values,
+                platform_node : node,
+                codepath : values.codepath,
+                svn_version : values.svn_version,
+                version : values.version,
+                complier_option : values.complier_option,
+            },
+
+            mission_complier_module : {
+                protocols : protocols,
+                protocols_enable : protocols_enable,
+                modules : modules,
+                modules_enable : modules_enable,
+                license_option : this.state.mission_complier_module.license_option,
+                readme :  this.state.mission_complier_module.readme,
+            }
+        })
+
+        const current = this.state.currentStep + 1;
+        this.setState({ currentStep : current });
+    }
+
+    onComplierModuleSubmit(values) {
+        console.log('Received values of complier module form: ', values);
+
+        this.setState( { 
+            mission_complier_module : {
+                protocols : values.protocols,
+                protocols_enable : this.state.mission_complier_module.protocols_enable,
+                modules : values.modules,
+                modules_enable : this.state.mission_complier_module.modules_enable,
+                license_option : values.license_option,
+                readme : values.readme,
+            }
+        })
+
+        const current = this.state.currentStep + 1;
+        this.setState({ currentStep : current });
+    }
+
+    saveComplierOptionFormRef(formRef) {
+        this.complierOptionFormRef = formRef;
+    };
+
+    saveComplierModuleFormRef(formRef) {
+        this.complierModuleFormRef = formRef;
+    };
+
+    ComplierOptionFormChange(allFields) {
+
+    };
+
+    ComplierModuleFormChange(allFields) {
+
+    };
+
     first_step_content() {
+        const ComplierOptionForm = Form.create({
+            name: 'ComplierOption',
+            onFieldsChange : (props, changedFields, allFields) => {
+               props.onChange(allFields);
+            },
+
+            mapPropsToFields: (props) => {
+                return {
+                    platform_values: Form.createFormField({
+                        value: props.mission_complier_option.platform_values,
+                    }),
+                    codepath: Form.createFormField({
+                        value: props.mission_complier_option.codepath,
+                    }),
+                    svn_version: Form.createFormField({
+                        value: props.mission_complier_option.svn_version,
+                    }),
+                    version: Form.createFormField({
+                        value: props.mission_complier_option.version,
+                    }),
+                    complier_option: Form.createFormField({
+                        value: props.mission_complier_option.complier_option,
+                    }),
+                };
+           }
+           })(ComplierOptionFormTemplate);
+
         return (
             <div className="mission_layout">
-                <PlatformSelect 
-                    value={this.state.mission_platform}
-                    codepath={this.state.mission_codepath}
+                <ComplierOptionForm 
                     software="sep"
-                    onSelectChange={this.onPlatformSelectChange.bind(this)}/>
-                <VersionInput 
-                    svn_version={this.state.mission_svn}
-                    version={this.state.mission_version}
-                    onVersionChange={this.onVersionChange.bind(this)}
-                    />
-                <ComplierFlowCheck 
-                    onRef={this.saveFlowCheckRef.bind(this)}
-                    windows={this.state.windows}
-                    complier_option={this.state.mission_complier_option}
-                    onComplierOptionChange={this.onComplierOptionChange.bind(this)}/>
+                    mission_complier_option={this.state.mission_complier_option}
+                    onChange={this.ComplierOptionFormChange.bind(this)}
+                    wrappedComponentRef={this.saveComplierOptionFormRef.bind(this)}
+                    onSubmit={this.onComplierOptionSubmit.bind(this)}/>
             </div>
-        )
+        );
     }
 
     second_step_content() {
+        const ComplierModuleForm = Form.create({
+            name: 'ComplierModule',
+            onFieldsChange : (props, changedFields, allFields) => {
+               props.onChange(allFields);
+            },
+
+            mapPropsToFields: (props) => {
+                return {
+                    protocols: Form.createFormField({
+                        value: props.mission_complier_module.protocols,
+                    }),
+                    modules: Form.createFormField({
+                        value: props.mission_complier_module.modules,
+                    }),
+                    license_option: Form.createFormField({
+                        value: props.mission_complier_module.license_option,
+                    }),
+                    readme: Form.createFormField({
+                        value: props.mission_complier_module.readme,
+                    }),
+                };
+           }
+           })(SEPComplierModuleFormTemplate);
+
         return (
             <div className="mission_layout">
-                <ProtocolCheck 
-                    windows={this.state.windows}
-                    protocol_option={this.state.mission_protocol_option}
-                    onProtocolOptionChange={this.onProtocolOptionChange.bind(this)}
-                    />
-                <ModuleCheck 
-                    windows={this.state.windows}
-                    module_option={this.state.mission_module_option}
-                    onModuleOptionChange={this.onModuleOptionChange.bind(this)}
-                    />
-                <LicenseRadio
-                    license_option={this.state.mission_license_option}
-                    onLicenseOptionChange={this.onLicenseOptionChange.bind(this)}
-                    />
-                <ReadmeInput
-                    readme={this.state.mission_readme}
-                    onReadmeChange={this.onReadmeChange.bind(this)}
-                    />
+                <ComplierModuleForm 
+                    software="sep"
+                    mission_complier_module={this.state.mission_complier_module}
+                    onChange={this.ComplierModuleFormChange.bind(this)}
+                    wrappedComponentRef={this.saveComplierModuleFormRef.bind(this)}
+                    onSubmit={this.onComplierModuleSubmit.bind(this)}
+                    OnBackClick={this.OnBackClick.bind(this)}/>
             </div>
-        )
+        );
     }
 
     get_content() {
@@ -160,33 +219,6 @@ export class SepForm extends React.Component {
             return this.first_step_content();
         } else if (this.state.currentStep == 1) {
             return this.second_step_content();
-        }
-    }
-
-    next_button () {
-        if (this.state.currentStep < this.state.steps.length - 1) {
-            return (<Button type="primary" onClick={() => this.next()}>下一步</Button>);
-        }
-        else {
-            return ("");
-        }
-    }
-
-    done_button () {
-        if (this.state.currentStep === this.state.steps.length - 1) {
-            return (<Button type="primary" onClick={() => {}}>完成任务</Button>);
-        }
-        else {
-            return ("");
-        }
-    }
-
-    prev_button () {
-        if (this.state.currentStep > 0) {
-            return (<Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>上一步</Button>);
-        }
-        else {
-            return ("");
         }
     }
 
@@ -204,12 +236,6 @@ export class SepForm extends React.Component {
                         {this.get_content()}
                     </Layout.Content>
                 </Layout>
-
-                <div className="mission_layout mission-action">
-                    {this.next_button()}
-                    {this.done_button()}
-                    {this.prev_button()}
-                </div>
             </div>
         )
     }

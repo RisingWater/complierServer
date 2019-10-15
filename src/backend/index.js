@@ -16,6 +16,7 @@ app.post('/mission/add', mission_operator.add);
 app.post('/mission/del', mission_operator.del);
 
 app.get('/path/:name/list', path_operator.list);
+app.get('/path/sep/getconfig', path_operator.getsepconfig)
 
 app.get('/svn', function (req, res) {
     nodeCmd.get(

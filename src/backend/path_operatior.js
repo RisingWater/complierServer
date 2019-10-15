@@ -18,3 +18,10 @@ exports.list = function(req, res) {
         res.send(config);
     }
 }
+
+exports.getsepconfig = function(req, res) {
+    var config = null;
+    var file = path.join(__dirname, "../../db/sepComplierConfig.js");
+    config = JSON.parse(fs.readFileSync(file, 'utf-8'));
+    res.send(config);
+}

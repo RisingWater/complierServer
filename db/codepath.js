@@ -6,7 +6,13 @@
                 "name" : "Windows",
                 "description" : "Windows平台",
                 "codepath" : "D:\\code\\SEP4\\",
-                "script" : "F:\\output\\tmp\\automake.bat"
+                "script" : "F:\\output\\tmp\\automake.bat",
+                "protocol_change" : true,
+                "enable_protocol" : ["0", "1", "2", "3", "4"],
+                "default_protocol" : ["0", "1", "2", "3"],
+                "module_change" : true,
+                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                "default_module" : ["0", "1", "2", "4", "6", "7", "8", "9"]
             },
             {
                 "name" : "Linux",
@@ -24,7 +30,29 @@
                                 "password" : "centerm123!@#",
                                 "codepath" : "/home/centerm/project/autobuild/sep4/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
-                                "param" : ""
+                                "param" : "",
+                                "protocol_change" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_change" : true,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7"],
+                                "default_module" : ["0", "1", "2", "4", "6", "7", "9"]
+                            },
+                            {
+                                "name" : "C72",
+                                "description" : "C72机型",
+                                "server_address" : "192.168.12.124",
+                                "username" : "centerm",
+                                "password" : "centerm123!@#",
+                                "codepath" : "/home/centerm/project/autobuild/sep4/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "",
+                                "protocol_change" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_change" : true,
+                                "enable_module" : ["0", "6"],
+                                "default_module" : ["0", "6", "9"]
                             }
                         ]
                     },
@@ -40,7 +68,29 @@
                                 "password" : "centerm",
                                 "codepath" : "/home/centerm/weilc/SEP4/sep4/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
-                                "param" : "-C91"
+                                "param" : "-C91",
+                                "protocol_change" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_change" : true,
+                                "enable_module" : ["0", "6"],
+                                "default_module" : ["0", "1", "6", "9"]
+                            },
+                            {
+                                "name" : "C15",
+                                "description" : "C15代机型",
+                                "server_address" : "192.168.12.182",
+                                "username" : "centerm",
+                                "password" : "centerm",
+                                "codepath" : "/home/centerm/weilc/SEP4/sep4/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-C15",
+                                "protocol_change" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_change" : true,
+                                "enable_module" : ["0", "6"],
+                                "default_module" : ["0", "1", "6", "7", "9"]
                             }
                         ]
                     }
