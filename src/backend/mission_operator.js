@@ -94,9 +94,10 @@ function getMissionSeq(version, date) {
 }
 
 exports.add = function(req, res) {
+    var result = { result : 0 };
     var date = new Date();
-    var mission_req =  + getMissionSeq(req.body.version, date);
-    var sql = "INSERT INTO 任务(分支, 版本号, svn版本号, 编译时间, 任务状态, 输出目录, 备注, 编译选项, mailto, 目标生成, 代码路径) VALUES ('" +
+    var mission_req = getMissionSeq(req.body.version, date);
+    var sql = "INSERT INTO 任务(分支, 版本号, svn版本号, 编译时间, 任务状态, 输出目录, 备注, 编译选项, mailto, 目标生成, 代码路径, 任务数据版本, 远程服务器地址, 用户名, 密码, 编译脚本路径) VALUES ('" +
         req.body.path + "', '" +
         req.body.version + "', '" +
         req.body.svn_version + "', '" +
@@ -107,7 +108,12 @@ exports.add = function(req, res) {
         req.body.buildMap + "','" +
         req.body.mailto + "','" +
         0 + "','" +
-        req.body.codepath + "')";
+        req.body.codepath + "','" +
+        1 + "','" +
+        req.body.server_addr + "','" +
+        req.body.username + "','" +
+        req.body.password + "','" +
+        req.body.script + "')";
 
     createFolder(tmp_path + mission_req);
     createFolder(bin_path + mission_req);

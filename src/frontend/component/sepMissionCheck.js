@@ -16,6 +16,9 @@ export class SEPMissionCheckContent extends React.Component {
             complier_option : 0,
             protocols : 0,
             modules : 0,
+            mission_includes : "",
+            mission_defines : "",
+            mission_script : ""
         };
     }
     
@@ -236,6 +239,10 @@ export class SEPMissionCheckContent extends React.Component {
 
     GetServerdefineString()
     {
+        if (!this.state.isWindows) {
+            return "";
+        }
+
         return ("#define SVN_VERSION\t\t\t" + this.props.complier_option.svn_version + "\r\n"
                + "; 服务器\r\n"
                + "#if SEPSERVER\r\n"
@@ -291,6 +298,10 @@ export class SEPMissionCheckContent extends React.Component {
 
     GetIncludeDefineString()
     {
+        if (!this.state.isWindows) {
+            return "";
+        }
+
         var licenseOptionStr = "";
         if (this.props.complier_module.license_option == 1) {
             licenseOptionStr = "#define CLIENT_LICENSE\r\n";
@@ -311,6 +322,10 @@ export class SEPMissionCheckContent extends React.Component {
 
     GetLinuxBuildString()
     {
+        if (this.state.isWindows) {
+            return "";
+        }
+
         var Option = "";
         Option += " -n SEPClient";
         Option += " -v " + this.props.complier_option.version;
@@ -393,6 +408,62 @@ export class SEPMissionCheckContent extends React.Component {
         }
     }
 
+    add_mission() {
+        var path = "SEP4@";
+        var server_addr = "";
+        var username = "";
+        var password = "";
+
+        const {complier_option, complier_module} = this.props;
+
+        console.log("add_mission");
+
+        if (this.state.isWindows) {
+            path += complier_option.platform_values[0];
+        } else {
+            path += (complier_option.platform_values[0] 
+                + "_" + complier_option.platform_values[1]
+                + "_" + complier_option.platform_values[2]);
+            
+            server_addr = complier_option.platform_node.server_address;
+            username = complier_option.platform_node.username;
+            password = complier_option.platform_node.password;
+        } 
+
+        console.log(path);
+       
+        var json = JSON.stringify({
+            path : path,
+            version : complier_option.version,
+            svn_version : complier_option.svn_version,
+            desc: complier_module.readme,
+            buildMap: this.state.complier_option,
+            mailto: "",
+            codepath : complier_option.codepath,
+            server_addr : server_addr,
+            username : username,
+            password : password,
+            script : complier_option.platform_node.script,
+            filedata_readme : "",
+            filedata_define : this.GetServerdefineString(),
+            filedata_include : this.GetIncludeDefineString(),
+            filedata_linuxbuild : this.GetLinuxBuildString(),
+        })
+
+        console.log(json);
+        $.ajax({
+            type: "post",
+            url:  "/mission/add",
+            contentType: "application/json",
+            data: json,
+            success: (data, status) => {
+                if (status == "success") {
+                    this.props.onSubmit() 
+                }
+            }
+        });
+    }
+
     render() {
         const {complier_option, complier_module} = this.props;
 
@@ -419,8 +490,7 @@ export class SEPMissionCheckContent extends React.Component {
                 <div>
                     <Button style={{ marginRight: 8 }} onClick={() => { this.props.OnBackClick() }}>上一步</Button>
                     <Button type="primary" onClick={() => { 
-                        
-                        this.props.onSubmit() 
+                        this.add_mission();
                     }}>添加任务</Button>
                 </div>
             </div>

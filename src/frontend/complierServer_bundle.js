@@ -64,13 +64,21 @@ class RootContext extends React.Component {
         this.setState(state);
     }
 
+    onSaveRef(ref) {
+        this.sideMenu = ref;
+    }
+
+    jumpToMissionList() {
+        this.sideMenu.jumpToKey("mission_list");
+    }
+
     getTable() {
         if (this.state.menuSelectedkey == "publish") {
             return (<PublishPage/>)
         } else if (this.state.menuSelectedkey == "mission_list") {
             return (<MissionList/>);
         } else if (this.state.menuSelectedkey == "new_sep") {
-            return (<SepForm/>);
+            return (<SepForm jumpToMissionList={this.jumpToMissionList.bind(this)}/>);
         } else if (this.state.menuSelectedkey == "new_weixun") {
             return (<div></div>);
         } else if (this.state.menuSelectedkey == "new_solution") {  
@@ -96,7 +104,8 @@ class RootContext extends React.Component {
                 <Layout>
                     <SideMenu dataSource={this.state.dataSource}
                         menuSelectedChange={this.onMenuSelectChange.bind(this)}
-                        defaultSelectedKeys={this.state.menuSelectedkey}/>
+                        defaultSelectedKeys={this.state.menuSelectedkey}
+                        onSaveRef={this.onSaveRef.bind(this)}/>
                     <Layout>
                         <Layout.Content style={{background: '#fff', paddingLeft: 24, paddingRight: 24, margin: 0, minHeight: height,}}>
                             {this.getTitle()}

@@ -3,11 +3,23 @@ import 'antd/dist/antd.css';
 import { Layout, Menu, Icon } from 'antd';
 
 export class SideMenu extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectKey : this.props.defaultSelectedKeys
+        };
+    }
+
     onSelectChange(selectEvent) {
+        this.jumpToKey(selectEvent.key);
+    }
+
+    jumpToKey(key) {
+        this.setState({selectKey : key });
         var path = new Array();
-        path = this.getKey(this.props.dataSource, selectEvent.key, path);
+        path = this.getKey(this.props.dataSource, key, path);
         console.log(path);
-        this.props.menuSelectedChange(selectEvent.key, path, path[path.length - 1]);
+        this.props.menuSelectedChange(key, path, path[path.length - 1]);
     }
 
     getKey(array, key, path) {
@@ -59,13 +71,17 @@ export class SideMenu extends React.Component {
         )
     }
 
+    componentDidMount() {
+        this.props.onSaveRef(this);
+    }
+
     render() {
         return (
             <Layout.Sider style={{ background: '#fff' }}>
                 <Menu 
                     theme="dark"
                     mode="inline"
-                    defaultSelectedKeys={this.props.selectKey}
+                    activeKey={ this.state.selectKey }
                     style={{ height: '100%', borderRight: 0 }}
                     onSelect={this.onSelectChange.bind(this)}>
                         {

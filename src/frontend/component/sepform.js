@@ -122,6 +122,7 @@ export class SepForm extends React.Component {
 
     onComplierCheckSubmit() {
         console.log("on submit");
+        this.props.jumpToMissionList();
     }
 
     saveComplierOptionFormRef(formRef) {
@@ -225,7 +226,7 @@ export class SepForm extends React.Component {
                     software="sep"
                     complier_option={this.state.mission_complier_option}
                     complier_module={this.state.mission_complier_module}
-                    onSubmit={this.onComplierModuleSubmit.bind(this)}
+                    onSubmit={this.onComplierCheckSubmit.bind(this)}
                     OnBackClick={this.OnBackClick.bind(this)}
                 />
             </div>
