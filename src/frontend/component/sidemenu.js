@@ -4,28 +4,73 @@ import { Layout, Menu, Icon } from 'antd';
 
 export class SideMenu extends React.Component {
     onSelectChange(selectEvent) {
-        this.props.menuSelectedChange(selectEvent.key);
+        var path = new Array();
+        path = this.getKey(this.props.dataSource, selectEvent.key, path);
+        console.log(path);
+        this.props.menuSelectedChange(selectEvent.key, path, path[path.length - 1]);
+    }
+
+    getKey(array, key, path) {
+        var foundkey = path;
+        array.some((element) => {
+            if (element.key == key) {
+                foundkey.unshift(element.name);
+                console.log(foundkey);
+                return true;
+            } else if (element.children.length > 0) {
+                foundkey = this.getKey(element.children, key, foundkey);
+                if (foundkey.length != 0) {
+                    foundkey.unshift(element.name);
+                    return true;
+                }
+            }
+        })
+
+        return foundkey;
+    }
+
+    getMenus (dataSource) {
+        return (
+            dataSource.map ((element) => {
+                if (element.children.length == 0) {
+                    return (
+                        <Menu.Item key={element.key}>
+                            {element.icon != "" ? <Icon type={element.icon} /> : <div/>}
+                            {element.name}
+                        </Menu.Item>
+                    );
+                } else {
+                    return (
+                        <Menu.SubMenu key={element.key}
+                            title={
+                                <span>
+                                    {element.icon != "" ? <Icon type={element.icon} /> : <div/>}
+                                    <span>
+                                        {element.name}
+                                    </span>
+                                </span>
+                            }
+                        >
+                            {this.getMenus(element.children)}
+                        </Menu.SubMenu>
+                    )
+                }
+            })
+        )
     }
 
     render() {
         return (
             <Layout.Sider style={{ background: '#fff' }}>
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={this.props.selectKey} style={{ height: '100%', borderRight: 0 }} onSelect={this.onSelectChange.bind(this)}>
-                    <Menu.Item key="publish">
-                        <Icon type="global" />
-                        <span>发布版本</span>
-                    </Menu.Item>
-                    <Menu.Item key="mission_list">
-                        <Icon type="unordered-list" />
-                        <span>编译任务列表</span>
-                    </Menu.Item>
-                    <Menu.SubMenu
-                        key="sub_newmission"
-                        title={<span><Icon type="plus-circle" /><span>新建编译任务</span></span>}>
-                        <Menu.Item key="new_sep">新建SEP</Menu.Item>
-                        <Menu.Item key="new_weixun">新建WeixunClient</Menu.Item>
-                        <Menu.Item key="new_solution">新建整合包</Menu.Item>
-                    </Menu.SubMenu>
+                <Menu 
+                    theme="dark"
+                    mode="inline"
+                    defaultSelectedKeys={this.props.selectKey}
+                    style={{ height: '100%', borderRight: 0 }}
+                    onSelect={this.onSelectChange.bind(this)}>
+                        {
+                            this.getMenus(this.props.dataSource)
+                        }
                 </Menu>
             </Layout.Sider>
         )

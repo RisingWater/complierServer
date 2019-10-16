@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Layout } from 'antd';
+import { Layout, PageHeader } from 'antd';
 import { HeaderBar } from './component/headerbar.js'
 import { SideMenu  } from './component/sideMenu.js'
 import { MissionList } from './component/missionList.js'
@@ -13,12 +13,53 @@ class RootContext extends React.Component {
     constructor(props,context) {
         super(props,context)
         this.state = {
-            menuSelectedkey : "publish"
+            menuSelectedkey : "publish",
+            path : [ "publish" ],
+            title : "发布版本",
+            dataSource : [
+                {
+                    name: "发布版本",
+                    icon: "global",
+                    key: "publish",
+                    children: [],
+                },
+                {
+                    name: "编译任务列表",
+                    icon: "unordered-list",
+                    key: "mission_list",
+                    children: [],
+                },
+                {
+                    name: "新建编译任务",
+                    icon: "plus-circle",
+                    key: "sub_newmission",
+                    children: [
+                        {
+                            name: "新建SEP任务",
+                            icon: "",
+                            key: "new_sep",
+                            children: [],
+                        },
+                        {
+                            name: "新建WeixunClient任务",
+                            icon: "",
+                            key: "new_weixun",
+                            children: [],
+                        },
+                        {
+                            name: "新建整合包任务",
+                            icon: "",
+                            key: "new_solution",
+                            children: [],
+                        }
+                    ]
+                }
+            ]
         }
     }
 
-    onMenuSelectChange(key){
-        var state = {"menuSelectedkey" : key};
+    onMenuSelectChange(key, path, title){
+        var state = {menuSelectedkey : key, path : path, title : title};
         console.log(state);
         this.setState(state);
     }
@@ -39,15 +80,26 @@ class RootContext extends React.Component {
         }
     }
 
+    getTitle() {
+        return (
+            <div>
+                <PageHeader title={this.state.title} />
+            </div>
+        );
+    }
+
     render() {
         var height = $(window).height() - 64;
         return (
             <Layout>
                 <HeaderBar title="编译服务平台"/>
                 <Layout>
-                    <SideMenu menuSelectedChange={this.onMenuSelectChange.bind(this)}/>
+                    <SideMenu dataSource={this.state.dataSource}
+                        menuSelectedChange={this.onMenuSelectChange.bind(this)}
+                        defaultSelectedKeys={this.state.menuSelectedkey}/>
                     <Layout>
-                        <Layout.Content style={{background: '#fff', padding: 24, margin: 0, minHeight: height,}}>
+                        <Layout.Content style={{background: '#fff', paddingLeft: 24, paddingRight: 24, margin: 0, minHeight: height,}}>
+                            {this.getTitle()}
                             {this.getTable()}
                         </Layout.Content>
                     </Layout>

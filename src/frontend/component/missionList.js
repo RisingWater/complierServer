@@ -1,7 +1,8 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Table, Button, Popconfirm, Input, Icon, Divider, Pagination } from 'antd';
+import { Table, Button, Popconfirm, Input, Icon, Badge, Pagination, Tag } from 'antd';
 import Highlighter from 'react-highlight-words';
+import { ComplierOptionTag } from './complierOptionTag.js'
 import $ from 'jquery';
 
 const outputDir = "http://192.168.12.127/output/bin/"
@@ -85,10 +86,6 @@ getColumnSearchProps = dataIndex => ({
         return (
             [
                 {
-                    title: '任务编号',
-                    dataIndex: '任务编号',
-                },
-                {
                     title: '分支',
                     dataIndex: '分支',
                     ...this.getColumnSearchProps('分支'),
@@ -110,10 +107,19 @@ getColumnSearchProps = dataIndex => ({
                 {
                     title: '编译选项',
                     dataIndex: '编译选项',
+                    render: (text, record) => (
+                        <ComplierOptionTag option={record.编译选项} />
+                    )
                 },
                 {
                     title: '任务状态',
                     dataIndex: '任务状态',
+                    render: (text, record) => (
+                        <span>
+                            { record.任务状态 == "已完成" ? <Badge status="success" /> : (record.任务状态 == "正在编译" ? <Badge status="processing" /> : <Badge status="error"/>) }
+                            { record.任务状态 }
+                        </span>
+                    ),
                 },
                 {
                     title: '输出目录',

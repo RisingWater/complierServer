@@ -91,6 +91,9 @@ export class ComplierOptionFormTemplate extends React.Component {
         this.RefreshDataSource();
         this.RefreshSvn(false);
         this.setState({ platform_node : this.props.mission_complier_option.platform_node });
+        if (this.props.mission_complier_option.platform_values.length > 0) {
+            this.setState({ isWindows : this.props.mission_complier_option.platform_values[0] == 'Windows' });
+        }
     }
 
     onSubmit(e) {
