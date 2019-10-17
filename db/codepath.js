@@ -114,7 +114,6 @@
             {
                 "name" : "Linux",
                 "description" : "Linux平台",
-                "script" : "F:\\output\\tmp\\automake_linux.bat",
                 "children" : [
                     {
                         "name" : "x86",
@@ -127,6 +126,7 @@
                                 "username" : "centerm",
                                 "password" : "centerm123!@#",
                                 "codepath" : "/home/centerm/project/lichangke/Pikachu/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "",
                                 "protocol_config" : false,
                                 "module_config" : true,
@@ -140,6 +140,7 @@
                                 "username" : "centerm",
                                 "password" : "centerm123!@#",
                                 "codepath" : "/home/centerm/project/lichangke/Pikachu/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-PKUNITY",
                                 "protocol_config" : false,
                                 "module_config" : true,
@@ -159,6 +160,7 @@
                                 "username" : "centerm",
                                 "password" : "centerm",
                                 "codepath" : "/home/centerm/lichangke/Pikachu/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-C91",
                                 "protocol_config" : false,
                                 "module_config" : true,
@@ -172,6 +174,7 @@
                                 "username" : "centerm",
                                 "password" : "centerm",
                                 "codepath" : "/home/centerm/lichangke/Pikachu/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-C10V3",
                                 "protocol_config" : false,
                                 "module_config" : true,
@@ -185,6 +188,7 @@
                                 "username" : "centerm",
                                 "password" : "centerm123!@#",
                                 "codepath" : "/home/centerm/lichangke/Pikachu/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-ANDROID_ARM",
                                 "protocol_config" : false,
                                 "module_config" : true,

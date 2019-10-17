@@ -1,8 +1,8 @@
 const adodb = require('node-adodb');
 var fs=require('fs');
 
-//const connection = adodb.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\web\\App_Data\\compliermission.mdb');
-const connection = adodb.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\code\\complierServer\\db\\compliermission.mdb');
+const connection = adodb.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\web\\App_Data\\compliermission.mdb');
+//const connection = adodb.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\code\\complierServer\\db\\compliermission.mdb');
 
 const tmp_path = "F:\\output\\tmp\\";
 const log_path = "F:\\output\\log\\";
@@ -124,15 +124,15 @@ function addmission(req, res, solution) {
     createFolder(bin_path + mission_req);
     createFolder(log_path + mission_req);
 
-    fs.writeFileSync(tmp_path + readme_filename, req.body.filedata_readme);
+    fs.writeFileSync(tmp_path + mission_req + "\\" + readme_filename, req.body.filedata_readme);
 
     if (solution) {
-        fs.writeFileSync(tmp_path + define_sep_filename, req.body.filedata_define_sep);
-        fs.writeFileSync(tmp_path + define_ivy_filename, req.body.filedata_define_ivy);
+        fs.writeFileSync(tmp_path + mission_req + "\\" + define_sep_filename, req.body.filedata_define_sep);
+        fs.writeFileSync(tmp_path + mission_req + "\\" + define_ivy_filename, req.body.filedata_define_ivy);
     } else {
-        fs.writeFileSync(tmp_path + define_filename, req.body.filedata_define);
+        fs.writeFileSync(tmp_path + mission_req + "\\" + define_filename, req.body.filedata_define);
     }
-    fs.writeFileSync(tmp_path + include_filename, req.body.filedata_include);
+    fs.writeFileSync(tmp_path + mission_req + "\\" + include_filename, req.body.filedata_include);
     fs.writeFileSync(tmp_path + linuxbuild_filename, req.body.filedata_linuxbuild);
     
     console.log(sql);

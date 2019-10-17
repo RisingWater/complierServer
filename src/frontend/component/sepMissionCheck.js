@@ -347,15 +347,21 @@ export class SEPMissionCheckContent extends React.Component {
         
         Option += (" " + this.props.complier_option.platform_node.param);
 
-        if ((this.state.complier_option & 0x1) != 0)
+        if ((this.state.complier_option & 0x1) == 0)
         {
             Option += " -norebuild";
         }
 
         Option += " -module " + this.state.modules;
 
+        var env_set = "";
+        if (this.props.complier_option.platform_node.server_address == "192.168.12.124") {
+            env_set = ". ~/.bash_profile\r\n";
+        }
+
         return ("#! /bin/bash\r\n"
                +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
+               + env_set
                +"cd  " + this.props.complier_option.codepath + "\r\n"
                + "./onebuild.sh"
                + Option

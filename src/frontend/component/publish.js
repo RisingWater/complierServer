@@ -2,8 +2,8 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { List, Avatar, Tag, Button, Typography, Divider, Icon } from 'antd';
 
-const publicDir = "http://192.168.12.127/public/"
-const outputDir = "http://192.168.12.127/output/"
+const publicDir = "http://192.168.12.127:8080/output/public/"
+const outputDir = "http://192.168.12.127:8080/output/"
 
 class PublishListFooter extends React.Component {
     render () {
