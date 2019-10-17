@@ -6,6 +6,8 @@ import { SideMenu  } from './component/sideMenu.js'
 import { MissionList } from './component/missionList.js'
 import { PublishPage } from './component/publish.js'
 import { SepForm } from './component/sepform.js'
+import { WeixunClientForm } from './component/weixunform.js'
+import { SolutionForm} from "./component/solutionform.js"
 import $ from 'jquery';
 
 
@@ -80,9 +82,9 @@ class RootContext extends React.Component {
         } else if (this.state.menuSelectedkey == "new_sep") {
             return (<SepForm jumpToMissionList={this.jumpToMissionList.bind(this)}/>);
         } else if (this.state.menuSelectedkey == "new_weixun") {
-            return (<div></div>);
+            return (<WeixunClientForm jumpToMissionList={this.jumpToMissionList.bind(this)}/>);
         } else if (this.state.menuSelectedkey == "new_solution") {  
-            return (<div></div>);
+            return (<SolutionForm jumpToMissionList={this.jumpToMissionList.bind(this)}/>);
         } else {  
             return (<div></div>);
         }

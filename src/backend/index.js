@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/mission/list', mission_operator.list);
 app.post('/mission/add', mission_operator.add);
+app.post('/mission/addsolution', mission_operator.addsolution);
 app.post('/mission/del', mission_operator.del);
 
 app.get('/path/:name/list', path_operator.list);

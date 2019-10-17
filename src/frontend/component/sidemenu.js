@@ -81,7 +81,7 @@ export class SideMenu extends React.Component {
                 <Menu 
                     theme="dark"
                     mode="inline"
-                    activeKey={ this.state.selectKey }
+                    selectedKeys={ this.state.selectKey }
                     style={{ height: '100%', borderRight: 0 }}
                     onSelect={this.onSelectChange.bind(this)}>
                         {

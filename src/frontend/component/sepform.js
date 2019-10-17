@@ -57,12 +57,12 @@ export class SepForm extends React.Component {
         var modules = this.state.mission_complier_module.modules;
         var modules_enable = [];
 
-        if (node.protocol_change) {
+        if (node.protocol_config) {
             protocols = node.default_protocol;
             protocols_enable = node.enable_protocol;
         }
 
-        if (node.module_change) {
+        if (node.module_config) {
             modules = node.default_module;
             modules_enable = node.enable_module;
         }

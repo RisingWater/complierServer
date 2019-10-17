@@ -125,7 +125,7 @@ export class ComplierOptionFormTemplate extends React.Component {
                     {getFieldDecorator(
                         'codepath',
                         {rules: [{ required: true, message: '请输入代码分支' }]})
-                        (<Input addonBefore="代码路径" style={{width: 800}} disabled/>)
+                        (<Input addonBefore="代码路径" style={{width: 800}} readonly="true"/>)
                     }
                 </Form.Item>
                 <Divider orientation="left"><Typography.Title level={4}>版本选项</Typography.Title></Divider>

@@ -12,6 +12,8 @@ const readme_filename = "Readme.txt";
 const define_filename = "serverdefine.iss";
 const include_filename = "ComplierDefine.h";
 const linuxbuild_filename = "linux_build.sh";
+const define_sep_filename = "serverdefine_SEP.iss"
+const define_ivy_filename = "serverdefine_IVY.iss"
 
 exports.list = function(req, res) {
     var sql = "SELECT * FROM 任务 ORDER BY 任务编号 DESC";
@@ -93,9 +95,12 @@ function getMissionSeq(version, date) {
         + date.getSeconds();
 }
 
-exports.add = function(req, res) {
+function addmission(req, res, solution) {
     var result = { result : 0 };
-    var date = new Date();
+    var timezone = -8;
+    var diff = new Date().getTimezoneOffset();
+    var time = new Date().getTime() + diff * 60 * 1000 - (timezone * 60 * 60 * 1000);
+    var date = new Date(time);
     var mission_req = getMissionSeq(req.body.version, date);
     var sql = "INSERT INTO 任务(分支, 版本号, svn版本号, 编译时间, 任务状态, 输出目录, 备注, 编译选项, mailto, 目标生成, 代码路径, 任务数据版本, 远程服务器地址, 用户名, 密码, 编译脚本路径) VALUES ('" +
         req.body.path + "', '" +
@@ -120,7 +125,13 @@ exports.add = function(req, res) {
     createFolder(log_path + mission_req);
 
     fs.writeFileSync(tmp_path + readme_filename, req.body.filedata_readme);
-    fs.writeFileSync(tmp_path + define_filename, req.body.filedata_define);
+
+    if (solution) {
+        fs.writeFileSync(tmp_path + define_sep_filename, req.body.filedata_define_sep);
+        fs.writeFileSync(tmp_path + define_ivy_filename, req.body.filedata_define_ivy);
+    } else {
+        fs.writeFileSync(tmp_path + define_filename, req.body.filedata_define);
+    }
     fs.writeFileSync(tmp_path + include_filename, req.body.filedata_include);
     fs.writeFileSync(tmp_path + linuxbuild_filename, req.body.filedata_linuxbuild);
     
@@ -135,5 +146,14 @@ exports.add = function(req, res) {
         console.log(error);
         result.result = -1;
         res.send(result);  
-    })
+    })    
+}
+
+exports.add = function(req, res) {
+    addmission(req, res, false);
+}
+
+
+exports.addsolution = function(req, res) {
+    addmission(req, res, true);
 }
