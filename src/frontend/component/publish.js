@@ -69,7 +69,7 @@ export class PublishPage extends React.Component {
             { name : "国产化软件版本", url : outputDir + "public/other/nationalization/", beta : true, image_url : "./image/weixunclient.png" },
         ];
         return (
-            <div>
+            <div className="mission_step_layout">
                 <PublishList name="WeixunClient发布版本" dataSource={weixunPublish} span_url={publicDir + "stable/"}/>
                 <PublishList name="SEP发布版本" dataSource={sepPublish} span_url={outputDir + "public/SEP/Older Releases/"}/>
                 <PublishList name="其他版本" dataSource={otherPublish} span_url=""/>
