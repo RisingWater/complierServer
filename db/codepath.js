@@ -7,10 +7,10 @@
                 "description" : "Windows平台",
                 "codepath" : "D:\\code\\SEP4\\",
                 "script" : "F:\\output\\tmp\\automake.bat",
-                "protocol_change" : true,
+                "protocol_config" : true,
                 "enable_protocol" : ["0", "1", "2", "3", "4"],
                 "default_protocol" : ["0", "1", "2", "3"],
-                "module_change" : true,
+                "module_config" : true,
                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
                 "default_module" : ["0", "1", "2", "4", "6", "7", "8", "9"]
             },
@@ -31,10 +31,10 @@
                                 "codepath" : "/home/centerm/project/autobuild/sep4/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "",
-                                "protocol_change" : true,
+                                "protocol_config" : true,
                                 "enable_protocol" : [],
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
-                                "module_change" : true,
+                                "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7"],
                                 "default_module" : ["0", "1", "2", "4", "6", "7", "9"]
                             },
@@ -47,10 +47,10 @@
                                 "codepath" : "/home/centerm/project/autobuild/sep4/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "",
-                                "protocol_change" : true,
+                                "protocol_config" : true,
                                 "enable_protocol" : [],
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
-                                "module_change" : true,
+                                "module_config" : true,
                                 "enable_module" : ["0", "6"],
                                 "default_module" : ["0", "6", "9"]
                             }
@@ -69,10 +69,10 @@
                                 "codepath" : "/home/centerm/weilc/SEP4/sep4/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-C91",
-                                "protocol_change" : true,
+                                "protocol_config" : true,
                                 "enable_protocol" : [],
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
-                                "module_change" : true,
+                                "module_config" : true,
                                 "enable_module" : ["0", "6"],
                                 "default_module" : ["0", "1", "6", "9"]
                             },
@@ -85,10 +85,10 @@
                                 "codepath" : "/home/centerm/weilc/SEP4/sep4/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-C15",
-                                "protocol_change" : true,
+                                "protocol_config" : true,
                                 "enable_protocol" : [],
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
-                                "module_change" : true,
+                                "module_config" : true,
                                 "enable_module" : ["0", "6"],
                                 "default_module" : ["0", "1", "6", "7", "9"]
                             }
@@ -105,17 +105,21 @@
                 "name" : "Windows",
                 "description" : "Windows平台",
                 "codepath" : "D:\\code\\Pikachu\\",
-                "script" : "F:\\output\\tmp\\automake_Ivy.bat"
+                "script" : "F:\\output\\tmp\\automake_Ivy.bat",
+                "protocol_config" : false,
+                "module_config" : true,
+                "enable_module" : [],
+                "default_module" : ["0", "1"]
             },
             {
                 "name" : "Linux",
                 "description" : "Linux平台",
                 "script" : "F:\\output\\tmp\\automake_linux.bat",
-                "archs" : [
+                "children" : [
                     {
                         "name" : "x86",
                         "description" : "x86 32位指令集",
-                        "os" : [
+                        "children" : [
                             {
                                 "name" : "cos",
                                 "description" : "COS操作系统",
@@ -123,7 +127,11 @@
                                 "username" : "centerm",
                                 "password" : "centerm123!@#",
                                 "codepath" : "/home/centerm/project/lichangke/Pikachu/Pikachu",
-                                "param" : ""
+                                "param" : "",
+                                "protocol_config" : false,
+                                "module_config" : true,
+                                "enable_module" : [],
+                                "default_module" : ["1"]
                             },
                             {
                                 "name" : "C72",
@@ -132,14 +140,18 @@
                                 "username" : "centerm",
                                 "password" : "centerm123!@#",
                                 "codepath" : "/home/centerm/project/lichangke/Pikachu/Pikachu",
-                                "param" : "-PKUNITY"
+                                "param" : "-PKUNITY",
+                                "protocol_config" : false,
+                                "module_config" : true,
+                                "enable_module" : [],
+                                "default_module" : ["1"]
                             }
                         ]
                     },
                     {
                         "name" : "arm",
                         "description" : "Arm 32位指令集",
-                        "os" : [
+                        "children" : [
                             {
                                 "name" : "C91",
                                 "description" : "C91 2代机型 COS操作系统",
@@ -147,7 +159,11 @@
                                 "username" : "centerm",
                                 "password" : "centerm",
                                 "codepath" : "/home/centerm/lichangke/Pikachu/Pikachu",
-                                "param" : "-C91"
+                                "param" : "-C91",
+                                "protocol_config" : false,
+                                "module_config" : true,
+                                "enable_module" : [],
+                                "default_module" : ["1"]
                             },
                             {
                                 "name" : "C15",
@@ -156,7 +172,11 @@
                                 "username" : "centerm",
                                 "password" : "centerm",
                                 "codepath" : "/home/centerm/lichangke/Pikachu/Pikachu",
-                                "param" : "-C10V3"
+                                "param" : "-C10V3",
+                                "protocol_config" : false,
+                                "module_config" : true,
+                                "enable_module" : [],
+                                "default_module" : ["1"]
                             },
                             {
                                 "name" : "Android",
@@ -165,7 +185,11 @@
                                 "username" : "centerm",
                                 "password" : "centerm123!@#",
                                 "codepath" : "/home/centerm/lichangke/Pikachu/Pikachu",
-                                "param" : "-ANDROID_ARM"
+                                "param" : "-ANDROID_ARM",
+                                "protocol_config" : false,
+                                "module_config" : true,
+                                "enable_module" : [],
+                                "default_module" : ["1"]
                             }
                         ]
                     }
@@ -179,7 +203,14 @@
             {
                 "name" : "Windows",
                 "description" : "Windows平台",
-                "script" : "F:\\output\\tmp\\automake_IVY_SEP.bat"
+                "codepath" : "",
+                "script" : "F:\\output\\tmp\\automake_IVY_SEP.bat",
+                "protocol_config" : true,
+                "enable_protocol" : [],
+                "default_protocol" : ["2", "3"],
+                "module_config" : true,
+                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                "default_module" : ["0", "1", "2", "4", "6", "7", "8", "9"]
             }
         ]
     }
