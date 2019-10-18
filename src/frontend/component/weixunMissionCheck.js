@@ -64,6 +64,7 @@ export class WeixunClientMissionCheckContent  extends React.Component {
                     return true;
                 }
             });
+            
             this.setState({
                 isWindows : false
             });
