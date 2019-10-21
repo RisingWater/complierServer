@@ -2,6 +2,16 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Layout, Button } from 'antd';
 
+function clearCookie() {            
+    var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+    if (keys) {
+        for (var i = keys.length; i--;) {
+            document.cookie = keys[i] + '=0;path=/;expires=' + new Date(0).toUTCString();
+            document.cookie = keys[i] + '=0;path=/;domain=' + document.domain + ';expires=' + new Date(0).toUTCString();
+        }
+    }
+}
+
 class HeaderBarRightComponent extends React.Component {
     render() {
         if (!this.props.userlogin) {
@@ -10,8 +20,11 @@ class HeaderBarRightComponent extends React.Component {
             )
         } else {
             return (
-                <div>
-                    <Button type="link">注销</Button>
+                <div style={{ height: 64}}>
+                    <Button style={{ float: "right", marginTop:16 }} shape="round" icon="logout" onClick={()=> {
+                        clearCookie();
+                        window.location.href = "./Signin.html";
+                    }}>注销</Button>
                 </div>
             )
         }

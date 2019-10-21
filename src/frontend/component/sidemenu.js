@@ -44,16 +44,26 @@ export class SideMenu extends React.Component {
     getMenus (dataSource) {
         return (
             dataSource.map ((element) => {
+                var dis = false;
+                if (element.needAdmin) {
+                    if (!this.props.isAdmin) {
+                        dis = true;
+                    }
+                }
+                console.log("element.needAdmin " + element.needAdmin + " " + typeof(element.needAdmin));
+                console.log("this.props.isAdmin " + this.props.isAdmin + " " + typeof(this.props.isAdmin));
+                console.log("element.name " + element.name);
+                console.log(dis);
                 if (element.children.length == 0) {
                     return (
-                        <Menu.Item key={element.key}>
+                        <Menu.Item key={element.key} disabled={dis}>
                             {element.icon != "" ? <Icon type={element.icon} /> : <div/>}
                             {element.name}
                         </Menu.Item>
                     );
                 } else {
                     return (
-                        <Menu.SubMenu key={element.key}
+                        <Menu.SubMenu key={element.key} disabled={dis}
                             title={
                                 <span>
                                     {element.icon != "" ? <Icon type={element.icon} /> : <div/>}

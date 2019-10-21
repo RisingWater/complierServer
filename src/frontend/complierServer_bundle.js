@@ -37,35 +37,41 @@ class RootContext extends React.Component {
                     name: "发布版本",
                     icon: "global",
                     key: "publish",
+                    needAdmin: false,
                     children: [],
                 },
                 {
                     name: "编译任务列表",
                     icon: "unordered-list",
                     key: "mission_list",
+                    needAdmin: true,
                     children: [],
                 },
                 {
                     name: "新建编译任务",
                     icon: "plus-circle",
                     key: "sub_newmission",
+                    needAdmin: true,
                     children: [
                         {
                             name: "新建SEP任务",
                             icon: "",
                             key: "new_sep",
+                            needAdmin: true,
                             children: [],
                         },
                         {
                             name: "新建WeixunClient任务",
                             icon: "",
                             key: "new_weixun",
+                            needAdmin: true,
                             children: [],
                         },
                         {
                             name: "新建整合包任务",
                             icon: "",
                             key: "new_solution",
+                            needAdmin: true,
                             children: [],
                         }
                     ]
@@ -121,10 +127,17 @@ class RootContext extends React.Component {
 
         var user = null;
 
+        var json = JSON.stringify({
+            userid : userid,
+        })
+
+        console.log(json);
+
         $.ajax({
-            type: "get",
+            type: "post",
             url:  "user/check",
             contentType: "application/json",
+            data: json,
             async: false,
             success: (data, status) => {
                 if (status == "success") {
@@ -139,7 +152,7 @@ class RootContext extends React.Component {
         });
 
         if (user != null) {
-            this.setState({ user : data });
+            this.setState({ user : user });
         } else {
             window.location.href = "./Signin.html"
         }
@@ -154,7 +167,8 @@ class RootContext extends React.Component {
                     <SideMenu dataSource={this.state.dataSource}
                         menuSelectedChange={this.onMenuSelectChange.bind(this)}
                         defaultSelectedKeys={this.state.menuSelectedkey}
-                        onSaveRef={this.onSaveRef.bind(this)}/>
+                        onSaveRef={this.onSaveRef.bind(this)}
+                        isAdmin={this.state.user.isAdmin}/>
                     <Layout>
                         <Layout.Content style={{background: '#fff', paddingLeft: 24, paddingRight: 24, margin: 0, minHeight: height,}}>
                             {this.getTitle()}
