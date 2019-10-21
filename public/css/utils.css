@@ -18,6 +18,10 @@
     text-align: center;
 }
 
+.centerblock2 {
+    margin: 0px auto;
+}
+
 .mission_from {
     margin-left: 0px;
     margin-bottom: 20px;
@@ -35,4 +39,21 @@
 
 .mission-action {
     margin-top: 30px;
+}
+
+.login_div {
+    width: 300px;
+    margin: 0px auto;
+    margin-top: 50px;
+}
+
+.login-form {
+    max-width: 300px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+.login-form-button {
+    width: 100%;
 }

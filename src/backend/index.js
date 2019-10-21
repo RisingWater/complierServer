@@ -6,6 +6,7 @@ var xmlreader = require("xmlreader");
 
 var mission_operator = require('./mission_operator.js');
 var path_operator = require('./path_operatior.js');
+var user_operator = require('./user_operator.js');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -15,6 +16,8 @@ app.get('/mission/list', mission_operator.list);
 app.post('/mission/add', mission_operator.add);
 app.post('/mission/addsolution', mission_operator.addsolution);
 app.post('/mission/del', mission_operator.del);
+
+app.get('/user/check', user_operator.check);
 
 app.get('/path/:name/list', path_operator.list);
 app.get('/path/sep/getconfig', path_operator.getsepconfig)

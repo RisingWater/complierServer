@@ -6,6 +6,7 @@ module.exports = {
     mode: 'production',
     entry: {
         complierServer_bundle: './src/frontend/complierServer_bundle.js',
+        login_bundle: './src/frontend/login_bundle.js'
     },
     output: {
         filename: '[name].js',

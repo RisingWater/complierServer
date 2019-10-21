@@ -10,6 +10,12 @@ import { WeixunClientForm } from './component/weixunform.js'
 import { SolutionForm} from "./component/solutionform.js"
 import $ from 'jquery';
 
+function getCookie(name)
+{
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    return (arr = document.cookie.match(reg)) ? unescape(arr[2]) : null;
+}
+
 
 class RootContext extends React.Component {
     constructor(props,context) {
@@ -18,6 +24,14 @@ class RootContext extends React.Component {
             menuSelectedkey : "publish",
             path : [ "publish" ],
             title : "发布版本",
+            isLogin : false,
+            user : {
+                result : -1,
+                userid : "",
+                username : "",
+                isAdmin : false,
+                subscribe: "",
+            },
             dataSource : [
                 {
                     name: "发布版本",
@@ -93,16 +107,49 @@ class RootContext extends React.Component {
     getTitle() {
         return (
             <div>
-                <PageHeader title={this.state.title} />
+                <PageHeader title={this.state.title}/>
             </div>
         );
+    }
+
+    componentWillMount() {
+        var userid = getCookie("userid");
+        if (userid == null) {
+            this.setState({isLogin : false});
+            window.location.href = "./Signin.html"
+        }
+
+        var user = null;
+
+        $.ajax({
+            type: "get",
+            url:  "user/check",
+            contentType: "application/json",
+            async: false,
+            success: (data, status) => {
+                if (status == "success") {
+                    if (data.result == 0) {
+                        user = data;
+                        console.log("ajax ok");
+                    } else {
+                        console.log("ajax failed");
+                    }
+                }
+            }
+        });
+
+        if (user != null) {
+            this.setState({ user : data });
+        } else {
+            window.location.href = "./Signin.html"
+        }
     }
 
     render() {
         var height = $(window).height() - 64;
         return (
             <Layout>
-                <HeaderBar title="编译服务平台"/>
+                <HeaderBar title="编译服务平台" userlogin={true}/>
                 <Layout>
                     <SideMenu dataSource={this.state.dataSource}
                         menuSelectedChange={this.onMenuSelectChange.bind(this)}
