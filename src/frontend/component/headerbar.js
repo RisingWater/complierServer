@@ -14,7 +14,7 @@ function clearCookie() {
 
 class HeaderBarRightComponent extends React.Component {
     render() {
-        if (!this.props.userlogin) {
+        if (this.props.user.userid == "")  {
             return (
                 <div/>
             )
@@ -24,17 +24,18 @@ class HeaderBarRightComponent extends React.Component {
                     <Tooltip placement="bottom" title="注销用户">
                         <Button style={{ float: "right", marginTop:16, marginLeft:20 }} ghost={true} icon="logout" onClick={()=> {
                             clearCookie();
-                            window.location.href = "./Signin.html";
+                            window.location.href = "./user_operation.html?op=login";
                         }}/>
                     </Tooltip>
 
-                    {this.props.guest ? "<div/>" :
+                    {this.props.user.userid == "guest" ? "<div/>" :
                         <Tooltip placement="bottom" title="修改密码">
                             <Button style={{ float: "right", marginTop:16, marginLeft:20 }} ghost={true} icon="lock" onClick={()=> {
-                                window.location.href = "./Signin.html";
+                                window.location.href = "./user_operation.html?op=changepassword";
                             }}/>
                         </Tooltip>
                     }
+                    <div className="logo_title" style={{ float: "right" }}>{this.props.user.username}</div>
                 </div>
             )
         }
@@ -47,7 +48,7 @@ export class HeaderBar extends React.Component {
             <Layout.Header className="header">
                 <div className="logo" />
                 <span className="logo_title">{this.props.title}</span>
-                <HeaderBarRightComponent userlogin={ this.props.userlogin } guest={ this.props.guest }/>
+                <HeaderBarRightComponent user={this.props.user}/>
             </Layout.Header>
         )
     }

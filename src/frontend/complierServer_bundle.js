@@ -16,7 +16,6 @@ function getCookie(name)
     return (arr = document.cookie.match(reg)) ? unescape(arr[2]) : null;
 }
 
-
 class RootContext extends React.Component {
     constructor(props,context) {
         super(props,context)
@@ -123,7 +122,7 @@ class RootContext extends React.Component {
         var userid = getCookie("userid");
         if (userid == null) {
             this.setState({isLogin : false});
-            window.location.href = "./Signin.html"
+            window.location.href = "./user_operation.html?op=login"
         }
 
         var user = null;
@@ -160,7 +159,7 @@ class RootContext extends React.Component {
                 this.setState({ guest : false});
             }
         } else {
-            window.location.href = "./Signin.html"
+            window.location.href = "./user_operation.html?op=login"
         }
     }
 
@@ -168,7 +167,7 @@ class RootContext extends React.Component {
         var height = $(window).height() - 64;
         return (
             <Layout>
-                <HeaderBar title="编译服务平台" userlogin={true} guest={this.state.guest}/>
+                <HeaderBar title="编译服务平台" user={this.state.user}/>
                 <Layout>
                     <SideMenu dataSource={this.state.dataSource}
                         menuSelectedChange={this.onMenuSelectChange.bind(this)}

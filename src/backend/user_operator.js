@@ -1,4 +1,5 @@
 var db_controller = require('./db/userdb_controller.js')
+var uuid = require('uuid');
 
 exports.check = function(req, res) {
     var user = null;
@@ -7,7 +8,8 @@ exports.check = function(req, res) {
         userid : req.body.userid,
         username : "",
         isAdmin : false,
-        subscribe: "",
+        subscribe_sep : false,
+        subscribe_weixun : false,
     }    
 
     user = db_controller.finduser_byuserid(req.body.userid);
@@ -16,7 +18,8 @@ exports.check = function(req, res) {
         result.result = 0;
         result.username = user.username;
         result.isAdmin = user.isAdmin;
-        result.subscribe = user.subscribe;
+        result.subscribe = user.subscribe.sep;
+        result.subscribe = user.subscribe.weixun;
     }
     
     res.send(result);
@@ -28,12 +31,49 @@ exports.login = function (req, res) {
         userid : "",
     }
 
-    var user = db_controller.finduser_byusername(req.body.username, req.body.password);
+    var user = db_controller.finduser_byusernameandpassword(req.body.username, req.body.password);
 
     if (user != null) {
         result.result = 0;
         result.userid = user.userid;
     } 
     
+    res.send(result);   
+}
+
+exports.register = function (req, res) {
+    var result = {
+        result : -1,
+        userid : "",
+        username : "",
+        isAdmin : false,
+        subscribe_sep : false,
+        subscribe_weixun : false,
+    }
+
+    var user = db_controller.finduser_byusername(req.body.username);
+
+    if (user == null) {
+        var new_user = {
+            "userid" : uuid.v1(),
+            "username" : req.body.username,
+            "password" : req.body.password,
+            "isAdmin" : false,
+            "subscribe" : [
+                "sep", false,
+                "weixun", false
+            ]
+        }
+    
+        db_controller.add_user(new_user);
+
+        result.result = 0;
+        result.userid = new_user.userid;
+        result.username = new_user.username;
+        result.isAdmin = new_user.isAdmin;
+        result.subscribe = new_user.subscribe.sep;
+        result.subscribe = new_user.subscribe.weixun;
+    }
+
     res.send(result);   
 }
