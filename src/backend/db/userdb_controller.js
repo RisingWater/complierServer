@@ -18,7 +18,7 @@ exports.update_user = function (user) {
             element.password = user.password;
             element.isAdmin = user.isAdmin;
             element.subscribe.sep = user.subscribe.sep;
-            element.subscribe.weixun = user.subscribe.weixun;
+            element.subscribe.weixunclient = user.subscribe.weixunclient;
             return true;
         }
     });

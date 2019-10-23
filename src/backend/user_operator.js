@@ -8,8 +8,10 @@ exports.check = function(req, res) {
         userid : req.body.userid,
         username : "",
         isAdmin : false,
-        subscribe_sep : false,
-        subscribe_weixun : false,
+        subscribe : {
+            sep : false,
+            weixunclient : false
+        },
     }    
 
     user = db_controller.finduser_byuserid(req.body.userid);
@@ -18,8 +20,8 @@ exports.check = function(req, res) {
         result.result = 0;
         result.username = user.username;
         result.isAdmin = user.isAdmin;
-        result.subscribe = user.subscribe.sep;
-        result.subscribe = user.subscribe.weixun;
+        result.subscribe.sep = user.subscribe.sep;
+        result.subscribe.weixunclient = user.subscribe.weixunclient;
     }
     
     res.send(result);
@@ -66,8 +68,10 @@ exports.register = function (req, res) {
         userid : "",
         username : "",
         isAdmin : false,
-        subscribe_sep : false,
-        subscribe_weixun : false,
+        subscribe : {
+            sep : false,
+            weixunclient : false
+        },
     }
 
     var user = db_controller.finduser_byusername(req.body.username);
@@ -78,10 +82,10 @@ exports.register = function (req, res) {
             "username" : req.body.username,
             "password" : req.body.password,
             "isAdmin" : false,
-            "subscribe" : [
-                "sep", false,
-                "weixun", false
-            ]
+            "subscribe" : {
+                "sep" : false,
+                "weixunclient" : false
+            }
         }
     
         db_controller.add_user(new_user);
@@ -90,8 +94,8 @@ exports.register = function (req, res) {
         result.userid = new_user.userid;
         result.username = new_user.username;
         result.isAdmin = new_user.isAdmin;
-        result.subscribe = new_user.subscribe.sep;
-        result.subscribe = new_user.subscribe.weixun;
+        result.subscribe.sep = new_user.subscribe.sep;
+        result.subscribe.weixunclient = new_user.subscribe.weixunclient;
     }
 
     res.send(result);   

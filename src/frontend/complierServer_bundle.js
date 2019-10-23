@@ -152,6 +152,7 @@ class RootContext extends React.Component {
         });
 
         if (user != null) {
+            console.log(user);
             this.setState({ user : user });
             if (user.username == "guest") {
                 this.setState({ guest : true});

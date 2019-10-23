@@ -14,12 +14,32 @@ function save_db(filename, data) {
     fs.writeFileSync(file, JSON.stringify(data));
 }
 
-exports.load_user_db = function load_user_db() {
+exports.load_user_db = function() {
     return load_db(db_dir + 'userdb.js');
 }
 
-exports.save_user_db = function save_user_db(data) {
+exports.save_user_db = function(data) {
     return save_db(db_dir + 'userdb.js', data);
+}
+
+exports.load_path_db = function() {
+    return load_db(db_dir + 'codepath.js');
+}
+
+exports.save_path_db = function(data) {
+    return save_db(db_dir + 'codepath.js', data);
+}
+
+exports.load_publish_db = function() {
+    return load_db(db_dir + 'publish_version.js');
+}
+
+exports.save_publish_db = function(data) {
+    return save_db(db_dir + 'publish_version.js', data);
+}
+
+exports.load_sepconfig_db = function() {
+    return load_db(db_dir + 'sepComplierConfig.js');
 }
 
     

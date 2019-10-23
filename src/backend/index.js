@@ -5,8 +5,9 @@ var nodeCmd = require('node-cmd');
 var xmlreader = require("xmlreader");
 
 var mission_operator = require('./mission_operator.js');
-var path_operator = require('./path_operatior.js');
+var path_operator = require('./path_operator.js');
 var user_operator = require('./user_operator.js');
+var publish_operator = require('./publish_operator.js');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -24,6 +25,8 @@ app.post('/user/changepassword', user_operator.changepassword)
 
 app.get('/path/:name/list', path_operator.list);
 app.get('/path/sep/getconfig', path_operator.getsepconfig)
+
+app.get('/publish/:name/list', publish_operator.list);
 
 app.get('/svn', function (req, res) {
     nodeCmd.get(
