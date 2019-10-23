@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Table, Button, Popconfirm, Input, Icon, Badge, Pagination, Tag } from 'antd';
+import { Table, Button, Popconfirm, Input, Icon, Badge, Pagination, Tag, Tooltip } from 'antd';
 import Highlighter from 'react-highlight-words';
 import { ComplierOptionTag } from './complierOptionTag.js'
 import $ from 'jquery';
@@ -23,7 +23,7 @@ getColumnSearchProps = dataIndex => ({
                 ref={node => {
                     this.searchInput = node;
                 }}
-                placeholder={`Search ${dataIndex}`}
+                placeholder={`在 ${dataIndex} 中搜索`}
                 value={selectedKeys[0]}
                 onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
                 onPressEnter={() => this.handleSearch(selectedKeys, confirm)}

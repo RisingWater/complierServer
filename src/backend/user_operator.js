@@ -1,25 +1,16 @@
-var fs = require('fs');
-var path = require('path');
+var db_controller = require('./db/userdb_controller.js')
 
 exports.check = function(req, res) {
     var user = null;
-    var file = path.join(__dirname, "../../db/userdb.js");
-    var userlist = new Array();
-
     var result = {
         result : -1,
         userid : req.body.userid,
         username : "",
         isAdmin : false,
         subscribe: "",
-    }
-    userlist = JSON.parse(fs.readFileSync(file, 'utf-8'));
-    userlist.some((value) => {
-        if (value.userid == req.body.userid) {
-            user = value;
-            return true;
-        }
-    })
+    }    
+
+    user = db_controller.finduser_byuserid(req.body.userid);
 
     if (user != null) {
         result.result = 0;
@@ -29,4 +20,20 @@ exports.check = function(req, res) {
     }
     
     res.send(result);
+}
+
+exports.login = function (req, res) {
+    var result = {
+        result : -1,
+        userid : "",
+    }
+
+    var user = db_controller.finduser_byusername(req.body.username, req.body.password);
+
+    if (user != null) {
+        result.result = 0;
+        result.userid = user.userid;
+    } 
+    
+    res.send(result);   
 }

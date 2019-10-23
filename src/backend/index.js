@@ -18,6 +18,7 @@ app.post('/mission/addsolution', mission_operator.addsolution);
 app.post('/mission/del', mission_operator.del);
 
 app.post('/user/check', user_operator.check);
+app.post('/user/login', user_operator.login);
 
 app.get('/path/:name/list', path_operator.list);
 app.get('/path/sep/getconfig', path_operator.getsepconfig)

@@ -25,6 +25,7 @@ class RootContext extends React.Component {
             path : [ "publish" ],
             title : "发布版本",
             isLogin : false,
+            guest : true,
             user : {
                 result : -1,
                 userid : "",
@@ -96,7 +97,7 @@ class RootContext extends React.Component {
 
     getTable() {
         if (this.state.menuSelectedkey == "publish") {
-            return (<PublishPage/>)
+            return (<PublishPage user={this.state.user}/>)
         } else if (this.state.menuSelectedkey == "mission_list") {
             return (<MissionList/>);
         } else if (this.state.menuSelectedkey == "new_sep") {
@@ -153,6 +154,11 @@ class RootContext extends React.Component {
 
         if (user != null) {
             this.setState({ user : user });
+            if (user.username == "guest") {
+                this.setState({ guest : true});
+            } else {
+                this.setState({ guest : false});
+            }
         } else {
             window.location.href = "./Signin.html"
         }
@@ -162,7 +168,7 @@ class RootContext extends React.Component {
         var height = $(window).height() - 64;
         return (
             <Layout>
-                <HeaderBar title="编译服务平台" userlogin={true}/>
+                <HeaderBar title="编译服务平台" userlogin={true} guest={this.state.guest}/>
                 <Layout>
                     <SideMenu dataSource={this.state.dataSource}
                         menuSelectedChange={this.onMenuSelectChange.bind(this)}

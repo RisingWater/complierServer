@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Layout, Button } from 'antd';
+import { Layout, Button, Tooltip } from 'antd';
 
 function clearCookie() {            
     var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
@@ -21,10 +21,20 @@ class HeaderBarRightComponent extends React.Component {
         } else {
             return (
                 <div style={{ height: 64}}>
-                    <Button style={{ float: "right", marginTop:16 }} shape="round" icon="logout" onClick={()=> {
-                        clearCookie();
-                        window.location.href = "./Signin.html";
-                    }}>注销</Button>
+                    <Tooltip placement="bottom" title="注销用户">
+                        <Button style={{ float: "right", marginTop:16, marginLeft:20 }} ghost={true} icon="logout" onClick={()=> {
+                            clearCookie();
+                            window.location.href = "./Signin.html";
+                        }}/>
+                    </Tooltip>
+
+                    {this.props.guest ? "<div/>" :
+                        <Tooltip placement="bottom" title="修改密码">
+                            <Button style={{ float: "right", marginTop:16, marginLeft:20 }} ghost={true} icon="lock" onClick={()=> {
+                                window.location.href = "./Signin.html";
+                            }}/>
+                        </Tooltip>
+                    }
                 </div>
             )
         }
@@ -37,7 +47,7 @@ export class HeaderBar extends React.Component {
             <Layout.Header className="header">
                 <div className="logo" />
                 <span className="logo_title">{this.props.title}</span>
-                <HeaderBarRightComponent userlogin={ this.props.userlogin }/>
+                <HeaderBarRightComponent userlogin={ this.props.userlogin } guest={ this.props.guest }/>
             </Layout.Header>
         )
     }
