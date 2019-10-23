@@ -41,6 +41,25 @@ exports.login = function (req, res) {
     res.send(result);   
 }
 
+exports.changepassword = function (req, res) {
+    var user = null;
+    var result = {
+        result : -1
+    }
+
+    user = db_controller.finduser_byuserid(req.body.userid);
+
+    if (user != null) {
+        if (user.password == req.body.password) {
+            user.password = req.body.password_new;
+            db_controller.update_user(user);
+            result.result = 0;
+        }
+    }
+
+    res.send(result);   
+}
+
 exports.register = function (req, res) {
     var result = {
         result : -1,

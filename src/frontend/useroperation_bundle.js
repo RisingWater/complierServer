@@ -4,6 +4,7 @@ import { Layout, Form, Alert, PageHeader } from 'antd';
 import { HeaderBar } from './component/headerbar.js'
 import { LoginFormTemplate } from './component/loginform.js'
 import { RegisterFormTemplate } from './component/registerform.js'
+import { ChangePasswordFormTemplate } from './component/changePassword.js'
 import $ from 'jquery';
 
 function getQueryVariable(variable)
@@ -28,6 +29,11 @@ const operationData = [
         operation: "register",
         title: "注册",
         alert_msg: "注册失败, 此邮箱已经被人注册",
+    },
+    {
+        operation: "changepassword",
+        title: "修改密码",
+        alert_msg: "修改失败, 此用户不存在",
     }
 ]
 
@@ -88,6 +94,11 @@ class RootContext extends React.Component {
             const RegisterForm = Form.create({ name: 'normal_register' })(RegisterFormTemplate);
             return (
                 <RegisterForm showError={this.showError.bind(this)}/>
+            )
+        } else if (this.state.operation == "changepassword") {
+            const ChangePasswordForm = Form.create({ name: 'normal_changepassword' })(ChangePasswordFormTemplate);
+            return (
+                <ChangePasswordForm showError={this.showError.bind(this)}/>
             )
         } else {
             return (

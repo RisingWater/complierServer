@@ -20,6 +20,7 @@ app.post('/mission/del', mission_operator.del);
 app.post('/user/check', user_operator.check);
 app.post('/user/login', user_operator.login);
 app.post('/user/register', user_operator.register);
+app.post('/user/changepassword', user_operator.changepassword)
 
 app.get('/path/:name/list', path_operator.list);
 app.get('/path/sep/getconfig', path_operator.getsepconfig)
