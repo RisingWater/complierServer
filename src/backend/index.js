@@ -22,6 +22,7 @@ app.post('/user/check', user_operator.check);
 app.post('/user/login', user_operator.login);
 app.post('/user/register', user_operator.register);
 app.post('/user/changepassword', user_operator.changepassword)
+app.post('/user/:userid/subscribe/:software', user_operator.subscribe_software)
 
 app.get('/path/:name/list', path_operator.list);
 app.get('/path/sep/getconfig', path_operator.getsepconfig)

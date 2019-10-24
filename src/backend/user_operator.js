@@ -62,6 +62,28 @@ exports.changepassword = function (req, res) {
     res.send(result);   
 }
 
+exports.subscribe_software = function (req, res) {
+    var user = null;
+    var result = {
+        result : -1
+    }
+
+    user = db_controller.finduser_byuserid(req.params.userid);
+
+    if (user != null) {
+        if (req.params.software == "sep") {
+            user.subscribe.sep = req.body.subscribe;
+        } else if (req.params.software == "weixunclient") {
+            user.subscribe.weixunclient = req.body.subscribe;
+        }
+
+        db_controller.update_user(user);
+        result.result = 0;
+    }
+
+    res.send(result);     
+}
+
 exports.register = function (req, res) {
     var result = {
         result : -1,

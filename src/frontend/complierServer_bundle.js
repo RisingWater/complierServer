@@ -23,7 +23,6 @@ class RootContext extends React.Component {
             menuSelectedkey : "publish",
             path : [ "publish" ],
             title : "发布版本",
-            isLogin : false,
             guest : true,
             user : {
                 result : -1,
@@ -96,15 +95,15 @@ class RootContext extends React.Component {
 
     getTable() {
         if (this.state.menuSelectedkey == "publish") {
-            return (<PublishPage user={this.state.user}/>)
+            return (<PublishPage user={this.state.user} reload_user={this.reload_user.bind(this)}/>)
         } else if (this.state.menuSelectedkey == "mission_list") {
             return (<MissionList/>);
         } else if (this.state.menuSelectedkey == "new_sep") {
-            return (<SepForm jumpToMissionList={this.jumpToMissionList.bind(this)}/>);
+            return (<SepForm jumpToMissionList={this.jumpToMissionList.bind(this)} user={this.state.user}/>);
         } else if (this.state.menuSelectedkey == "new_weixun") {
-            return (<WeixunClientForm jumpToMissionList={this.jumpToMissionList.bind(this)}/>);
+            return (<WeixunClientForm jumpToMissionList={this.jumpToMissionList.bind(this)} user={this.state.user}/>);
         } else if (this.state.menuSelectedkey == "new_solution") {  
-            return (<SolutionForm jumpToMissionList={this.jumpToMissionList.bind(this)}/>);
+            return (<SolutionForm jumpToMissionList={this.jumpToMissionList.bind(this)} user={this.state.user}/>);
         } else {  
             return (<div></div>);
         }
@@ -118,14 +117,13 @@ class RootContext extends React.Component {
         );
     }
 
-    componentWillMount() {
+    reload_user() {
         var userid = getCookie("userid");
-        if (userid == null) {
-            this.setState({isLogin : false});
-            window.location.href = "./user_operation.html?op=login"
-        }
-
         var user = null;
+
+        if (userid == null) {
+            return null;
+        }
 
         var json = JSON.stringify({
             userid : userid,
@@ -152,14 +150,21 @@ class RootContext extends React.Component {
         });
 
         if (user != null) {
-            console.log(user);
             this.setState({ user : user });
             if (user.username == "guest") {
                 this.setState({ guest : true});
             } else {
                 this.setState({ guest : false});
             }
-        } else {
+        }
+
+        return user;
+    }
+
+    componentWillMount() {
+        var user = this.reload_user();
+
+        if (user == null) {
             window.location.href = "./user_operation.html?op=login"
         }
     }

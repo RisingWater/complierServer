@@ -231,6 +231,7 @@ export class WeixunClientForm extends React.Component {
                     complier_module={this.state.mission_complier_module}
                     onSubmit={this.onComplierCheckSubmit.bind(this)}
                     OnBackClick={this.OnBackClick.bind(this)}
+                    user={this.props.user}
                 />
             </div>
         )

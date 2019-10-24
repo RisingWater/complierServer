@@ -1,12 +1,1 @@
-[
-    {
-        "userid":"guest",
-        "username":"访客",
-        "password":"",
-        "isAdmin":false,
-        "subscribe": {
-            "sep" : false,
-            "weixunclient" : false
-        }
-    }
-]
+[{"userid":"guest","username":"访客","password":"","isAdmin":false,"subscribe":{"sep":false,"weixunclient":false}},{"userid":"657f66d0-f5fd-11e9-8d85-e1ba68d42163","username":"wangxu.st@centerm.com","password":"centerm","isAdmin":true,"subscribe":{"sep":true,"weixunclient":true}}]
