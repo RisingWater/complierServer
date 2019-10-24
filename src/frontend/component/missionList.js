@@ -125,14 +125,14 @@ getColumnSearchProps = dataIndex => ({
                     title: '输出目录',
                     key: '输出目录',
                     render: (text, record) => (
-                        <Button type="primary" icon="download" href={outputDir + record.输出目录} target="_blank">点击打开</Button>
+                        <Button type="primary" icon="download" href={outputDir + record.输出目录} target="_blank" size="small">下载</Button>
                     ),
                 },
                 {
                     title: '日志目录',
                     key: '日志目录',
                     render: (text, record) => (
-                        <Button type="primary" icon="download" href={logDir + record.输出目录} target="_blank">点击打开</Button>
+                        <Button type="primary" icon="search" href={logDir + record.输出目录} target="_blank" size="small">查看</Button>
                     ),
                 },
                 {
@@ -146,7 +146,7 @@ getColumnSearchProps = dataIndex => ({
                     render: (text, record) => (
                         <span>
                             <Popconfirm title="确认删除" onConfirm={() => this.DeleteData(record.任务编号)}>
-                            <Button type='danger'>删除</Button>
+                            <Button type='danger' icon="delete" size="small">删除</Button>
                             </Popconfirm>
                         </span>
                     ),
