@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Descriptions, Collapse, Button, Input, Tag } from 'antd';
+import { Descriptions, Collapse, Button, Input, Tag, Avatar } from 'antd';
 import { ComplierOptionTag } from './complierOptionTag.js'
 import $ from 'jquery';
 
@@ -472,7 +472,7 @@ export class SolutionMissionCheckContent extends React.Component {
     }
 
     render() {
-        const {complier_option, complier_module} = this.props;
+        const {complier_option, complier_module, oem_option} = this.props;
 
         return (
             <div>
@@ -481,12 +481,23 @@ export class SolutionMissionCheckContent extends React.Component {
                         <Descriptions.Item label="平台">{this.state.platform}</Descriptions.Item>
                         <Descriptions.Item label="CPU架构">{this.state.arch}</Descriptions.Item>
                         <Descriptions.Item label="操作系统">{this.state.os}</Descriptions.Item>
+
                         <Descriptions.Item label="协议版本号">{complier_option.weixun_version}</Descriptions.Item>
                         <Descriptions.Item label="SEP版本号">{complier_option.sep_version}</Descriptions.Item>
                         <Descriptions.Item label="SVN版本号">{complier_option.svn_version}</Descriptions.Item>
-                        <Descriptions.Item label="编译选项">{<ComplierOptionTag option={this.state.complier_option}/>}</Descriptions.Item>
-                        <Descriptions.Item label="备注" span={2}>{complier_module.readme}</Descriptions.Item>
+
+                        <Descriptions.Item label="编译选项" span={3}>{<ComplierOptionTag option={this.state.complier_option}/>}</Descriptions.Item>
+                        
+                        <Descriptions.Item label="是否位OEM版本">{oem_option.oem_enable ? <Tag color="red">是</Tag> : <Tag color="blue">否</Tag>}</Descriptions.Item>
+                        <Descriptions.Item label="OEM图标" span={2}><Avatar shape="square" size={32} src={oem_option.oem_enable ? oem_option.icon : "./image/weixunclient.png"} /></Descriptions.Item>
+
+                        <Descriptions.Item label="OEM厂家名称">{oem_option.oem_enable ? oem_option.vendor_name : "Centerm"}</Descriptions.Item>
+                        <Descriptions.Item label="OEM产品名称">{oem_option.oem_enable ? oem_option.product_name : "WeixunClient"}</Descriptions.Item>
+                        <Descriptions.Item label="OEM版权信息">{oem_option.oem_enable ? oem_option.copyright : "Fujian Centerm Information Co., Ltd."}</Descriptions.Item>
+
                         <Descriptions.Item label="编译脚本" span={3}>{complier_option.platform_node.script}</Descriptions.Item>
+                        <Descriptions.Item label="备注" span={3}>{complier_module.readme}</Descriptions.Item>
+                        
                     </Descriptions>
                 </div>
                 <div className="mission_from">

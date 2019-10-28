@@ -4,6 +4,7 @@ import { Steps, Layout, Form } from 'antd';
 import { ComplierOptionFormTemplate } from './complierOption.js'
 import { WeixunClientComplierModuleFormTemplate } from './weixunComplierModule.js'
 import { WeixunClientMissionCheckContent } from './weixunMissionCheck.js'
+import { OEMOptionFormTemplate } from './oemOption.js'
 
 export class WeixunClientForm extends React.Component {
     constructor(props) {
@@ -17,6 +18,9 @@ export class WeixunClientForm extends React.Component {
                 },
                 {
                     title: '定制版本信息',
+                },
+                {
+                    title: '定制OEM参数',
                 },
                 {
                     title: '添加编译任务',
@@ -35,11 +39,16 @@ export class WeixunClientForm extends React.Component {
             mission_complier_module : {
                 modules : [],
                 modules_enable : [],
-                custom : false,
+                readme : ""
+            },
+
+            mission_oem_option : {
+                oem_enable : false,
+                oemid : "",
                 vendor_name : "",
                 product_name : "",
+                copyright : "",
                 icon : "",
-                readme : ""
             }
         };
     }
@@ -61,18 +70,6 @@ export class WeixunClientForm extends React.Component {
             modules_enable = node.enable_module;
         }
 
-        var test = {
-            modules : modules,
-            modules_enable : modules_enable,
-            custom : this.state.mission_complier_module.custom,
-            vendor_name : this.state.mission_complier_module.vendor_name,
-            product_name : this.state.mission_complier_module.product_name,
-            icon : this.state.mission_complier_module.icon,
-            readme :  this.state.mission_complier_module.readme,
-        }
-
-        console.log("new module: " + test);
-
         this.setState( { 
             mission_complier_option : {
                 platform_values : values.platform_values,
@@ -86,10 +83,6 @@ export class WeixunClientForm extends React.Component {
             mission_complier_module : {
                 modules : modules,
                 modules_enable : modules_enable,
-                custom : this.state.mission_complier_module.custom,
-                vendor_name : this.state.mission_complier_module.vendor_name,
-                product_name : this.state.mission_complier_module.product_name,
-                icon : this.state.mission_complier_module.icon,
                 readme :  this.state.mission_complier_module.readme,
             }
         })
@@ -105,10 +98,6 @@ export class WeixunClientForm extends React.Component {
             mission_complier_module : {
                 modules : values.modules,
                 modules_enable : this.state.mission_complier_module.modules_enable,
-                custom : values.custom,
-                vendor_name : values.vendor_name,
-                product_name : values.product_name,
-                icon : values.icon,
                 readme : values.readme,
             }
         })
@@ -116,6 +105,24 @@ export class WeixunClientForm extends React.Component {
         const current = this.state.currentStep + 1;
         this.setState({ currentStep : current });
     }
+
+    onOEMOptionSubmit(values, oemid, icon) {
+        console.log('Received values of oem option form: ', values);
+
+        this.setState( { 
+            mission_oem_option : {
+                oem_enable : values.oem_enable,
+                oemid : oemid,
+                vendor_name : values.vendor_name,
+                product_name : values.product_name,
+                copyright : values.copyright,
+                icon : icon,
+            }
+        })
+
+        const current = this.state.currentStep + 1;
+        this.setState({ currentStep : current });
+    }    
 
     onComplierCheckSubmit() {
         console.log("on submit");
@@ -130,6 +137,10 @@ export class WeixunClientForm extends React.Component {
         this.complierModuleFormRef = formRef;
     };
 
+    saveOEMOptionFormRef(formRef) {
+        this.oemOptionFormRef = formRef;
+    };
+
     ComplierOptionFormChange(allFields) {
 
     };
@@ -138,7 +149,11 @@ export class WeixunClientForm extends React.Component {
 
     };
 
-    first_step_content() {
+    OEMOptionFormChange(allFields) {
+
+    };
+
+    complierOptionContent() {
         const ComplierOptionForm = Form.create({
             name: 'ComplierOption',
             onFieldsChange : (props, changedFields, allFields) => {
@@ -178,7 +193,7 @@ export class WeixunClientForm extends React.Component {
         );
     }
 
-    second_step_content() {
+    complierModuleContent() {
         const ComplierModuleForm = Form.create({
             name: 'ComplierModule',
             onFieldsChange : (props, changedFields, allFields) => {
@@ -189,18 +204,6 @@ export class WeixunClientForm extends React.Component {
                 return {
                     modules: Form.createFormField({
                         value: props.mission_complier_module.modules,
-                    }),
-                    custom: Form.createFormField({
-                        value: props.mission_complier_module.custom,
-                    }),
-                    vendor_name: Form.createFormField({
-                        value: props.mission_complier_module.vendor_name,
-                    }),
-                    product_name: Form.createFormField({
-                        value: props.mission_complier_module.product_name,
-                    }),
-                    icon: Form.createFormField({
-                        value: props.mission_complier_module.icon,
                     }),
                     readme: Form.createFormField({
                         value: props.mission_complier_module.readme,
@@ -222,13 +225,51 @@ export class WeixunClientForm extends React.Component {
         );
     }
 
-    third_step_content() {
+    OEMOptionContent() {
+        const OEMOptionForm = Form.create({
+            name: 'OEMOption',
+            onFieldsChange : (props, changedFields, allFields) => {
+               props.onChange(allFields);
+            },
+
+            mapPropsToFields: (props) => {
+                return {
+                    oem_enable: Form.createFormField({
+                        value: props.mission_oem_option.oem_enable,
+                    }),
+                    vendor_name: Form.createFormField({
+                        value: props.mission_oem_option.vendor_name,
+                    }),
+                    product_name: Form.createFormField({
+                        value: props.mission_oem_option.product_name,
+                    }),
+                    copyright: Form.createFormField({
+                        value: props.mission_oem_option.copyright,
+                    }),
+                };
+           }
+        })(OEMOptionFormTemplate);
+
+        return (
+            <div className="mission_layout">
+                <OEMOptionForm 
+                    mission_oem_option={this.state.mission_oem_option}
+                    onChange={this.OEMOptionFormChange.bind(this)}
+                    wrappedComponentRef={this.saveOEMOptionFormRef.bind(this)}
+                    onSubmit={this.onOEMOptionSubmit.bind(this)}
+                    OnBackClick={this.OnBackClick.bind(this)}/>
+            </div>
+        );
+    }    
+
+    missionCheckContent() {
         return (
             <div className="mission_layout">
                 <WeixunClientMissionCheckContent 
                     software="weixunclient"
                     complier_option={this.state.mission_complier_option}
                     complier_module={this.state.mission_complier_module}
+                    oem_option={this.state.mission_oem_option}
                     onSubmit={this.onComplierCheckSubmit.bind(this)}
                     OnBackClick={this.OnBackClick.bind(this)}
                     user={this.props.user}
@@ -239,11 +280,13 @@ export class WeixunClientForm extends React.Component {
 
     get_content() {
         if (this.state.currentStep == 0) {
-            return this.first_step_content();
+            return this.complierOptionContent();
         } else if (this.state.currentStep == 1) {
-            return this.second_step_content();
+            return this.complierModuleContent();
         } else if (this.state.currentStep == 2) {
-            return this.third_step_content();
+            return this.OEMOptionContent();
+        } else if (this.state.currentStep == 3) {
+            return this.missionCheckContent();
         }
     }
 

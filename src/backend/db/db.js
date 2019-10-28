@@ -42,4 +42,12 @@ exports.load_sepconfig_db = function() {
     return load_db(db_dir + 'sepComplierConfig.js');
 }
 
+exports.load_oem_db = function() {
+    return load_db(db_dir + 'oemdb.js');
+}
+
+exports.save_oem_db = function(data) {
+    return save_db(db_dir + 'oemdb.js', data);
+}
+
     

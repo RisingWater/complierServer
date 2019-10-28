@@ -4,6 +4,7 @@ import { Steps, Layout, Form } from 'antd';
 import { ComplierOptionFormTemplate } from './complierOption.js'
 import { SEPComplierModuleFormTemplate } from './sepComplierModule.js'
 import { SEPMissionCheckContent } from './sepMissionCheck.js'
+import { OEMOptionFormTemplate } from './oemOption.js'
 
 export class SepForm extends React.Component {
     constructor(props) {
@@ -17,6 +18,9 @@ export class SepForm extends React.Component {
                 },
                 {
                     title: '定制功能参数',
+                },
+                {
+                    title: '定制OEM参数',
                 },
                 {
                     title: '添加编译任务',
@@ -39,6 +43,15 @@ export class SepForm extends React.Component {
                 modules_enable : [],
                 license_option : 0,
                 readme : ""
+            },
+
+            mission_oem_option : {
+                oem_enable : false,
+                oemid : "",
+                vendor_name : "",
+                product_name : "",
+                copyright : "",
+                icon : "",
             }
         };
     }
@@ -120,6 +133,24 @@ export class SepForm extends React.Component {
         this.setState({ currentStep : current });
     }
 
+    onOEMOptionSubmit(values, oemid, icon) {
+        console.log('Received values of oem option form: ', values);
+
+        this.setState( { 
+            mission_oem_option : {
+                oem_enable : values.oem_enable,
+                oemid : oemid,
+                vendor_name : values.vendor_name,
+                product_name : values.product_name,
+                copyright : values.copyright,
+                icon : icon,
+            }
+        })
+
+        const current = this.state.currentStep + 1;
+        this.setState({ currentStep : current });
+    }
+
     onComplierCheckSubmit() {
         console.log("on submit");
         this.props.jumpToMissionList();
@@ -133,6 +164,10 @@ export class SepForm extends React.Component {
         this.complierModuleFormRef = formRef;
     };
 
+    saveOEMOptionFormRef(formRef) {
+        this.oemOptionFormRef = formRef;
+    };
+
     ComplierOptionFormChange(allFields) {
 
     };
@@ -141,7 +176,11 @@ export class SepForm extends React.Component {
 
     };
 
-    first_step_content() {
+    OEMOptionFormChange(allFields) {
+
+    };
+
+    complierOptionContent() {
         const ComplierOptionForm = Form.create({
             name: 'ComplierOption',
             onFieldsChange : (props, changedFields, allFields) => {
@@ -181,7 +220,7 @@ export class SepForm extends React.Component {
         );
     }
 
-    second_step_content() {
+    complierModuleContent() {
         const ComplierModuleForm = Form.create({
             name: 'ComplierModule',
             onFieldsChange : (props, changedFields, allFields) => {
@@ -204,7 +243,7 @@ export class SepForm extends React.Component {
                     }),
                 };
            }
-           })(SEPComplierModuleFormTemplate);
+        })(SEPComplierModuleFormTemplate);
 
         return (
             <div className="mission_layout">
@@ -219,13 +258,51 @@ export class SepForm extends React.Component {
         );
     }
 
-    third_step_content() {
+    OEMOptionContent() {
+        const OEMOptionForm = Form.create({
+            name: 'OEMOption',
+            onFieldsChange : (props, changedFields, allFields) => {
+               props.onChange(allFields);
+            },
+
+            mapPropsToFields: (props) => {
+                return {
+                    oem_enable: Form.createFormField({
+                        value: props.mission_oem_option.oem_enable,
+                    }),
+                    vendor_name: Form.createFormField({
+                        value: props.mission_oem_option.vendor_name,
+                    }),
+                    product_name: Form.createFormField({
+                        value: props.mission_oem_option.product_name,
+                    }),
+                    copyright: Form.createFormField({
+                        value: props.mission_oem_option.copyright,
+                    }),
+                };
+           }
+        })(OEMOptionFormTemplate);
+
+        return (
+            <div className="mission_layout">
+                <OEMOptionForm 
+                    mission_oem_option={this.state.mission_oem_option}
+                    onChange={this.OEMOptionFormChange.bind(this)}
+                    wrappedComponentRef={this.saveOEMOptionFormRef.bind(this)}
+                    onSubmit={this.onOEMOptionSubmit.bind(this)}
+                    OnBackClick={this.OnBackClick.bind(this)}/>
+            </div>
+        );
+    }
+
+    missionCheckContent() {
         return (
             <div className="mission_layout">
                 <SEPMissionCheckContent 
                     software="sep"
                     complier_option={this.state.mission_complier_option}
                     complier_module={this.state.mission_complier_module}
+                    oem_option={this.state.mission_oem_option}
                     onSubmit={this.onComplierCheckSubmit.bind(this)}
                     OnBackClick={this.OnBackClick.bind(this)}
                     user={this.props.user}
@@ -236,11 +313,13 @@ export class SepForm extends React.Component {
 
     get_content() {
         if (this.state.currentStep == 0) {
-            return this.first_step_content();
+            return this.complierOptionContent();
         } else if (this.state.currentStep == 1) {
-            return this.second_step_content();
+            return this.complierModuleContent();
         } else if (this.state.currentStep == 2) {
-            return this.third_step_content();
+            return this.OEMOptionContent();
+        } else if (this.state.currentStep == 3) {
+            return this.missionCheckContent();
         }
     }
 

@@ -8,6 +8,10 @@ var mission_operator = require('./mission_operator.js');
 var path_operator = require('./path_operator.js');
 var user_operator = require('./user_operator.js');
 var publish_operator = require('./publish_operator.js');
+var oem_operator = require('./oem_operator.js');
+var upload = require('./upload.js');
+
+app.use('/upload', upload);
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -28,6 +32,11 @@ app.get('/path/:name/list', path_operator.list);
 app.get('/path/sep/getconfig', path_operator.getsepconfig)
 
 app.get('/publish/:name/list', publish_operator.list);
+
+app.get('/oem/list', oem_operator.list);
+app.post('/oem/add', oem_operator.add);
+app.post('/oem/update', oem_operator.update);
+app.post('/oem/del', oem_operator.del);
 
 app.get('/svn', function (req, res) {
     nodeCmd.get(

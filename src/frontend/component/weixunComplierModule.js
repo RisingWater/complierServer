@@ -29,11 +29,6 @@ export class WeixunClientComplierModuleFormTemplate extends React.Component {
         });
     };
 
-    onOEMSwitchChange(value) {
-        console.log(value);
-        this.setState({ oem_enable :value })
-    }
-
     getModuleDisabled(value) {
         var disabled = true;
         console.log(this.props.mission_complier_module);
@@ -46,19 +41,6 @@ export class WeixunClientComplierModuleFormTemplate extends React.Component {
 
         return disabled;
     }
-
-    normFile(e) {
-        console.log(e);
-        if (Array.isArray(e)) {
-            return e;
-        }
-
-        if (e.file.status == 'done') {
-            return e.file.response.url;
-        } else {
-            return "/appicon/default_icon.png";
-        }
-    };
 
     render () {
         const { getFieldDecorator } = this.props.form;
@@ -74,35 +56,6 @@ export class WeixunClientComplierModuleFormTemplate extends React.Component {
                                 })
                             }
                         </Checkbox.Group>
-                    )}
-                </Form.Item>
-                <Divider orientation="left"><Typography.Title level={4}>OEM定制</Typography.Title></Divider>
-                <Form.Item label="启用OEM定制">
-                    {getFieldDecorator('custom', [ {valuePropName: "checked"} ]) (
-                        <Switch defaultChecked={false} onChange={this.onOEMSwitchChange.bind(this)} disabled={true}></Switch>
-                    )}
-                </Form.Item>
-                <Form.Item>
-                    {getFieldDecorator('vendor_name') (
-                        <Input addonBefore="厂家名称" style={{width: 500}} placeholder="请输入厂家名称" disabled={!this.state.oem_enable} /> 
-                    )}
-                </Form.Item>
-                <Form.Item>
-                    {getFieldDecorator('product_name') (
-                        <Input addonBefore="产品名称" style={{width: 500}} placeholder="请输入产品名称" disabled={!this.state.oem_enable} /> 
-                    )}
-                </Form.Item>                
-                <Form.Item>
-                    {getFieldDecorator('icon', [ {getValueFromEvent: this.normFile.bind(this)} ]) (
-                        <Upload name="logo" 
-                            accept= ".png"
-                            action="/uploadicon"
-                            listType="picture"
-                            disabled={!this.state.oem_enable}>
-                            <Button>
-                                <Icon type="upload" />点击上传OEM图标
-                            </Button>
-                        </Upload> 
                     )}
                 </Form.Item>
                 <Divider orientation="left"><Typography.Title level={4}>备注</Typography.Title></Divider>

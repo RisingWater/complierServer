@@ -12,13 +12,18 @@
                 "url" : "http://192.168.12.127:8080/output/bin/6.5.0.47_20190929_1937230/",
                 "beta" : true
             },
+            {
+                "name" : "威讯云企业版 6.1 配套协议版本",
+                "url"  : "http://192.168.12.127:8080/output/public/stable/v6.5.0.33/",
+                "beta" : false
+             },
             { 
-                "name" : "6.5正式版",
+                "name" : "威讯云协议 6.5正式版",
                 "url" : "http://192.168.12.127:8080/output/public/stable/v6.5.0.13/",
                 "beta" : false
             },
             { 
-                "name" : "6.0正式版",
+                "name" : "威讯云协议 6.0正式版",
                 "url" : "http://192.168.12.127:8080/output/public/stable/v6.0.0.2/",
                 "beta" : false
             }
@@ -33,12 +38,12 @@
         "allow_subscribe" : true,
         "list" : [
             { 
-                "name" : "4.75稳定版",
+                "name" : "智能扩展协议 4.75稳定版",
                 "url" : "http://192.168.12.127:8080/output/public/SEP/Latest%20Release/SEPV4.75/",
                 "beta" : false
             },
             { 
-                "name" : "4.70稳定版",
+                "name" : "智能扩展协议 4.70稳定版",
                 "url" : "http://192.168.12.127:8080/output/public/SEP/Latest%20Release/SEPV4.70/",
                 "beta" : false
             }
