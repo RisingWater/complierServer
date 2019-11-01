@@ -11,7 +11,7 @@ function load_db(filename) {
 
 function save_db(filename, data) {
     var file = path.join(__dirname, filename);
-    fs.writeFileSync(file, JSON.stringify(data));
+    fs.writeFileSync(file, JSON.stringify(data, null, 4));
 }
 
 exports.load_user_db = function() {
