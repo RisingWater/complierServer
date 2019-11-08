@@ -159,9 +159,18 @@ export class WeixunClientMissionCheckContent  extends React.Component {
         if (this.state.isWindows) {
             return "";
         }
+		
+		var forserver = false;
+		if (this.props.complier_module.modules.indexOf("0") > -1) {
+			forserver = true;
+		}
 
         var Option = "";
-        Option += " -n WeixunClient";
+		if (forserver) {
+			Option += " -n WeixunServer";
+		} else {
+            Option += " -n WeixunClient";
+		}
         Option += " -v " + this.props.complier_option.version;
         Option += " -sv " + this.props.complier_option.svn_version;
         
@@ -172,7 +181,11 @@ export class WeixunClientMissionCheckContent  extends React.Component {
             Option += " -norebuild";
         }
 
-        Option += "  -noAd -defaultCT 1 -defaultPT 0 -titlebar";
+        if (forserver) {
+            Option += " -forserver";
+        } else {
+            Option += "  -noAd -defaultCT 1 -defaultPT 0 -titlebar";
+		}
         
         var env_set = "";
         if (this.props.complier_option.platform_node.server_address == "192.168.12.124") {
@@ -289,6 +302,11 @@ export class WeixunClientMissionCheckContent  extends React.Component {
 
     render() {
         const {complier_option, complier_module, oem_option} = this.props;
+		
+		var forserver = false;
+		if (complier_module.modules.indexOf("0") > -1) {
+			forserver = true;
+		}
 
         return (
             <div>
@@ -308,7 +326,7 @@ export class WeixunClientMissionCheckContent  extends React.Component {
                         <Descriptions.Item label="OEM图标" span={2}><Avatar shape="square" size={32} src={oem_option.oem_enable ? oem_option.icon : "./image/weixunclient.png"} /></Descriptions.Item>
 
                         <Descriptions.Item label="OEM厂家名称">{oem_option.oem_enable ? oem_option.vendor_name : "Centerm"}</Descriptions.Item>
-                        <Descriptions.Item label="OEM产品名称">{oem_option.oem_enable ? oem_option.product_name : "WeixunClient"}</Descriptions.Item>
+                        <Descriptions.Item label="OEM产品名称">{oem_option.oem_enable ? oem_option.product_name : forserver ? "WeixunServer" : "WeixunClient"}</Descriptions.Item>
                         <Descriptions.Item label="OEM版权信息">{oem_option.oem_enable ? oem_option.copyright : "Fujian Centerm Information Co., Ltd."}</Descriptions.Item>
 
                         <Descriptions.Item label="远程编译服务器">{ this.state.isWindows ? "无" : complier_option.platform_node.server_address}</Descriptions.Item>
