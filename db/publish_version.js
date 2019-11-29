@@ -8,8 +8,8 @@
         "allow_subscribe" : true,
         "list" : [
             { 
-                "name" : "最新测试版",
-                "url" : "http://192.168.12.127:8080/output/bin/6.5.0.47_20190929_1937230/",
+                "name" : "威讯云企业版 6.5 配套协议版本",
+                "url"  : "http://192.168.12.127:8080/output/public/stable/v6.5.0.53/",
                 "beta" : true
             },
             {
@@ -63,7 +63,7 @@
                 "beta" : true
             },
             { 
-                "name" : "国产化软件版本",
+                "name" : "其他国产化软件版本",
                 "url" : "http://192.168.12.127:8080/output/public/other/nationalization/",
                 "beta" : false
             }

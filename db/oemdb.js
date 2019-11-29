@@ -1,1 +1,1 @@
-[{"oemid":"557246c0-f960-11e9-91d0-45ff64d33f0b","vendor":"Centerm","product":"WeixunClient","copyright":"Fujian Centerm Information Co., Ltd.","icon":"./upload/c80de6a0-f968-11e9-a35d-c95662723ae4.png"}]
+[]
