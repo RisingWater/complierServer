@@ -94,7 +94,7 @@
                             }
                         ]
                     },
-					{
+                    {
                         "name" : "aarch64",
                         "description" : "Arm 64位指令集",
                         "children" : [
@@ -116,7 +116,7 @@
                             }
                         ]
                     },
-					{
+                    {
                         "name" : "mips64el",
                         "description" : "MIPS 64位指令集",
                         "children" : [
@@ -227,27 +227,27 @@
                             }
                         ]
                     },
-					{
+                    {
                         "name" : "x86_64",
                         "description" : "x86 64位指令集",
                         "children" : [
                             {
                                 "name" : "nd7.0",
                                 "description" : "NeoKylin Desktop 7.0",
-                                "server_address" : "192.168.45.45:23",
+                                "server_address" : "192.168.12.135",
                                 "username" : "centerm",
                                 "password" : "centerm",
-                                "codepath" : "/home/centerm/Pikachu",
+                                "codepath" : "/project/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch x86_64 -os nd7.0",
                                 "protocol_config" : false,
                                 "module_config" : true,
-                                "enable_module" : [],
-                                "default_module" : ["0"]
+                                "enable_module" : ["0", "1"],
+                                "default_module" : []
                             }
                         ]
                     },
-					{
+                    {
                         "name" : "aarch64",
                         "description" : "Arm 64位指令集",
                         "children" : [
@@ -265,7 +265,7 @@
                                 "enable_module" : [],
                                 "default_module" : ["1"]
                             },
-							{
+                            {
                                 "name" : "ns7.0",
                                 "description" : "NeoKylin Server 7.0",
                                 "server_address" : "192.168.127.234",
@@ -278,10 +278,24 @@
                                 "module_config" : true,
                                 "enable_module" : [],
                                 "default_module" : ["0"]
+                            },
+                            {
+                                "name" : "nd7.0",
+                                "description" : "NeoKylin Desktop 7.0",
+                                "server_address" : "192.168.127.234",
+                                "username" : "centerm",
+                                "password" : "centerm",
+                                "codepath" : "/home/centerm/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch aarch64 -os nd7.0",
+                                "protocol_config" : false,
+                                "module_config" : true,
+                                "enable_module" : [],
+                                "default_module" : ["0"]
                             }
                         ]
                     },
-					{
+                    {
                         "name" : "mips64el",
                         "description" : "MIPS 64位指令集",
                         "children" : [
@@ -303,29 +317,29 @@
                     }
                 ]
             },
-			{
+            {
                 "name" : "Android",
                 "description" : "Android平台",
                 "children" : [
                     {
                         "name" : "arm",
                         "description" : "Arm 32位指令集",
-						"children" : [
+                        "children" : [
                             {
-								"name" : "Android",
+                                "name" : "Android",
                                 "description" : "Android操作系统",
-								"server_address" : "192.168.12.124",
-								"username" : "centerm",
-								"password" : "centerm123!@#",
-								"codepath" : "/home/centerm/project/lichangke/Pikachu/Pikachu",
-								"script" : "F:\\output\\tmp\\automake_linux.bat",
-								"param" : "-Android_ARM",
-								"protocol_config" : false,
-								"module_config" : true,
-								"enable_module" : [],
-								"default_module" : ["1"]
-							}
-						]
+                                "server_address" : "192.168.12.124",
+                                "username" : "centerm",
+                                "password" : "centerm123!@#",
+                                "codepath" : "/home/centerm/project/lichangke/Pikachu/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-Android_ARM",
+                                "protocol_config" : false,
+                                "module_config" : true,
+                                "enable_module" : [],
+                                "default_module" : ["1"]
+                            }
+                        ]
                     }
                 ]
             }
