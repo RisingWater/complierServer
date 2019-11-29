@@ -159,18 +159,18 @@ export class WeixunClientMissionCheckContent  extends React.Component {
         if (this.state.isWindows) {
             return "";
         }
-		
-		var forserver = false;
-		if (this.props.complier_module.modules.indexOf("0") > -1) {
-			forserver = true;
-		}
+        
+        var forserver = false;
+        if (this.props.complier_module.modules.indexOf("0") > -1) {
+            forserver = true;
+        }
 
         var Option = "";
-		if (forserver) {
-			Option += " -n WeixunServer";
-		} else {
+        if (forserver) {
+            Option += " -n WeixunServer";
+        } else {
             Option += " -n WeixunClient";
-		}
+        }
         Option += " -v " + this.props.complier_option.version;
         Option += " -sv " + this.props.complier_option.svn_version;
         
@@ -185,7 +185,7 @@ export class WeixunClientMissionCheckContent  extends React.Component {
             Option += " -forserver";
         } else {
             Option += "  -noAd -defaultCT 1 -defaultPT 0 -titlebar";
-		}
+        }
         
         var env_set = "";
         if (this.props.complier_option.platform_node.server_address == "192.168.12.124") {
@@ -315,11 +315,11 @@ export class WeixunClientMissionCheckContent  extends React.Component {
 
     render() {
         const {complier_option, complier_module, oem_option} = this.props;
-		
-		var forserver = false;
-		if (complier_module.modules.indexOf("0") > -1) {
-			forserver = true;
-		}
+        
+        var forserver = false;
+        if (complier_module.modules.indexOf("0") > -1) {
+            forserver = true;
+        }
 
         return (
             <div>
