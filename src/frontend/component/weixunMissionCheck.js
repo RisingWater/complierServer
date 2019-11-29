@@ -192,6 +192,19 @@ export class WeixunClientMissionCheckContent  extends React.Component {
             env_set = ". ~/.bash_profile\r\n";
         }
 
+        if((this.props.complier_option.platform_node.param.indexOf("-C91") != -1) ||
+            (this.props.complier_option.platform_node.param.indexOf("-C10V3") != -1) )
+        {
+            return ("#! /bin/bash\r\n"
+               +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
+               + env_set
+               +"docker exec c91-armhf /bin/bash -c \"cd  " + this.props.complier_option.codepath
+               + " && ./onebuild.sh"
+               + Option
+               + "\"\r\n"
+               );
+        }
+
         return ("#! /bin/bash\r\n"
                +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
                + env_set
