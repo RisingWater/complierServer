@@ -94,9 +94,17 @@ export class WeixunClientForm extends React.Component {
     onComplierModuleSubmit(values) {
         console.log('Received values of complier module form: ', values);
 
+        var module_array = new Array();
+        if (!Array.isArray(values.modules)) {
+            var value = values.modules;
+            module_array.push(value);
+        } else {
+            module_array = values.modules;
+        }
+
         this.setState( { 
             mission_complier_module : {
-                modules : values.modules,
+                modules : module_array,
                 modules_enable : this.state.mission_complier_module.modules_enable,
                 readme : values.readme,
             }

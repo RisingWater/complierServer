@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Switch , Divider, Typography, Input, Form, Button, Upload, Icon, Checkbox  } from 'antd';
+import { Divider, Typography, Input, Form, Button, Radio, Checkbox  } from 'antd';
 
 export class WeixunClientComplierModuleFormTemplate extends React.Component {
     constructor(props) {
@@ -42,22 +42,54 @@ export class WeixunClientComplierModuleFormTemplate extends React.Component {
         return disabled;
     }
 
+    getModuleSelectComponent()
+    {
+        const { getFieldDecorator } = this.props.form;
+        var enable = false;
+        this.props.mission_complier_module.modules_enable.some((element) => {
+            enable = true;
+        })
+
+        if (enable)
+        {
+            return (
+                <Form.Item>
+                {getFieldDecorator('modules', {rules: [{ required: true, message: '请选择编译模块' }]}) (
+                    <Radio.Group>
+                    {
+                        this.state.modules.map((element) => {
+                            return (<Radio value={element.value} disabled={this.getModuleDisabled(element.value)}>{element.name}</Radio>)
+                        })
+                    }
+                    </Radio.Group>
+                    )}
+                </Form.Item>
+                );
+        }
+        else
+        {
+            return (
+                <Form.Item>
+                    {getFieldDecorator('modules', {rules: [{ required: true, message: '请选择编译模块' }]}) (
+                    <Checkbox.Group>
+                    {
+                        this.state.modules.map((element) => {
+                            return (<Checkbox value={element.value} disabled={this.getModuleDisabled(element.value)}>{element.name}</Checkbox>)
+                        })
+                    }
+                    </Checkbox.Group>
+                    )}
+                </Form.Item>
+                );
+        }
+    }
+
     render () {
         const { getFieldDecorator } = this.props.form;
         var component = (
             <Form layout="vertical" onSubmit={this.onSubmit.bind(this)}>
                 <Divider orientation="left"><Typography.Title level={4}>功能组件</Typography.Title></Divider>
-                <Form.Item>
-                    {getFieldDecorator('modules') (
-                        <Checkbox.Group>
-                            {
-                                this.state.modules.map((element) => {
-                                    return (<Checkbox value={element.value} disabled={this.getModuleDisabled(element.value)}>{element.name}</Checkbox>)
-                                })
-                            }
-                        </Checkbox.Group>
-                    )}
-                </Form.Item>
+                {this.getModuleSelectComponent()}
                 <Divider orientation="left"><Typography.Title level={4}>备注</Typography.Title></Divider>
                 <Form.Item>
                     {getFieldDecorator('readme') (
