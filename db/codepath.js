@@ -94,6 +94,44 @@
                             }
                         ]
                     },
+					{
+                        "name" : "x86_64",
+                        "description" : "x86 64位指令集",
+                        "children" : [
+                            {
+                                "name" : "ubuntu16.04",
+                                "description" : "Ubuntu 16.04(暂不可用)",
+                                "server_address" : "192.168.12.32",
+                                "username" : "centerm",
+                                "password" : "centerm",
+                                "codepath" : "/home/centerm/sep4/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch x86_64 -os ubuntu16.04",
+                                "protocol_config" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_config" : true,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                                "default_module" : ["0", "2", "6", "7", "8", "9"]
+                            },
+							{
+                                "name" : "nd7.0",
+                                "description" : "NeoKylin Desktop 7.0",
+                                "server_address" : "192.168.12.135",
+                                "username" : "centerm",
+                                "password" : "centerm",
+                                "codepath" : "/projects/sep4/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch x86_64 -os nd7.0",
+                                "protocol_config" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_config" : true,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                                "default_module" : ["0", "2", "6", "7", "8", "9"]
+                            }
+                        ]
+                    },
                     {
                         "name" : "aarch64",
                         "description" : "Arm 64位指令集",
@@ -237,7 +275,7 @@
                                 "server_address" : "192.168.12.135",
                                 "username" : "centerm",
                                 "password" : "centerm",
-                                "codepath" : "/project/Pikachu",
+                                "codepath" : "/projects/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch x86_64 -os nd7.0",
                                 "protocol_config" : false,

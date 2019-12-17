@@ -84,11 +84,13 @@ exports.del = function(req, res) {
 }
 
 function getMissionSeq(version, date) {
+	var Month = date.getMonth()+1;
+	var day = date.getDate();
     return version 
         + "_"
         + date.getFullYear()
-        + (date.getMonth() >= 10 ? date.getMonth() : ("0" + date.getMonth()))
-        + (date.getDay() >= 10 ? data.getDay() : ("0" + date.getDay()))
+        + (Month >= 10 ? Month : ("0" + Month))
+        + (day >= 10 ? day : ("0" + day))
         + "_"
         + date.getHours()
         + date.getMinutes()
