@@ -161,7 +161,7 @@ export class WeixunClientMissionCheckContent  extends React.Component {
         }
         
         var forserver = false;
-        if (this.props.complier_module.modules.indexOf("0") > -1) {
+        if (this.props.complier_module.packages.indexOf("0") > -1) {
             forserver = true;
         }
 
@@ -244,9 +244,9 @@ export class WeixunClientMissionCheckContent  extends React.Component {
         }
     }
 
-    getModuleTag(modules) {
+    getModuleTag(packages) {
         return (
-            modules.map((element) => {
+            packages.map((element) => {
                 console.log(element);
                 if (element == "0") {
                     return (<Tag color="blue">服务端</Tag>);
@@ -258,7 +258,12 @@ export class WeixunClientMissionCheckContent  extends React.Component {
     }
 
     add_mission() {
-        var path = "Pikachu@";
+        var forserver = false;
+        if (this.props.complier_module.packages.indexOf("0") > -1) {
+            forserver = true;
+        }
+        
+        var path = "";
         var server_addr = "";
         var username = "";
         var password = "";
@@ -268,8 +273,15 @@ export class WeixunClientMissionCheckContent  extends React.Component {
         console.log("add_mission");
 
         if (this.state.isWindows) {
+            path = "Weixun@"
             path += complier_option.platform_values[0];
         } else {
+            if (forserver) {
+                path += "WeixunServer@";
+            } else {
+                path += "WeixunClient@";
+            }
+
             path += (complier_option.platform_values[0] 
                 + "_" + complier_option.platform_values[1]
                 + "_" + complier_option.platform_values[2]);
@@ -317,7 +329,7 @@ export class WeixunClientMissionCheckContent  extends React.Component {
         const {complier_option, complier_module, oem_option} = this.props;
         
         var forserver = false;
-        if (complier_module.modules.indexOf("0") > -1) {
+        if (complier_module.packages.indexOf("0") > -1) {
             forserver = true;
         }
 
@@ -332,7 +344,7 @@ export class WeixunClientMissionCheckContent  extends React.Component {
                         <Descriptions.Item label="SVN版本号">{complier_option.svn_version}</Descriptions.Item>
                         <Descriptions.Item label="编译版本号" span={2}>{complier_option.version}</Descriptions.Item>
 
-                        <Descriptions.Item label="编译模块">{this.getModuleTag(complier_module.modules)}</Descriptions.Item>
+                        <Descriptions.Item label="安装包类型">{this.getModuleTag(complier_module.packages)}</Descriptions.Item>
                         <Descriptions.Item label="编译选项" span={2}>{<ComplierOptionTag option={this.state.complier_option}/>}</Descriptions.Item>
 
                         <Descriptions.Item label="是否位OEM版本">{oem_option.oem_enable ? <Tag color="red">是</Tag> : <Tag color="blue">否</Tag>}</Descriptions.Item>

@@ -18,7 +18,7 @@ export class SEPMissionCheckContent extends React.Component {
             modules : 0,
             mission_includes : "",
             mission_defines : "",
-            mission_script : ""
+            mission_script : "",
         };
     }
     
@@ -326,25 +326,35 @@ export class SEPMissionCheckContent extends React.Component {
             return "";
         }
 
+        var forserver = false;
+        if (this.props.complier_module.packages.indexOf("0") > -1) {
+            forserver = true;
+        }        
+
         var Option = "";
-        Option += " -n SEPClient";
+        if (forserver) {
+            Option += " -n SEPServer";
+        } else {
+            Option += " -n SEPClient";
+        }
         Option += " -v " + this.props.complier_option.version;
         Option += " -sv " + this.props.complier_option.svn_version;
-        Option += " -twain2";
-        Option += " -cl 80";
-        Option += " -usbproxy";
-        Option += " -NEWINTERFACE";
 
-        if (this.props.complier_module.license_option == 1)
-        {
-            Option += " -license";
+        if (forserver) {
+            Option += " -forserver";
+        } else {
+            Option += " -twain2 -cl 80 -usbproxy -NEWINTERFACE";
+            if (this.props.complier_module.license_option == 1)
+            {
+                Option += " -license";
+            }
+            else if (this.props.complier_module.license_option == 2)
+            {
+                Option += " -tmplicense";
+                Option += " -LicenseTime 2";
+            }
         }
-        else if (this.props.complier_module.license_option == 2)
-        {
-            Option += " -tmplicense";
-            Option += " -LicenseTime 2";
-        }
-        
+
         Option += (" " + this.props.complier_option.platform_node.param);
 
         if ((this.state.complier_option & 0x1) == 0)
@@ -352,7 +362,9 @@ export class SEPMissionCheckContent extends React.Component {
             Option += " -norebuild";
         }
 
-        Option += " -module " + this.state.modules;
+        if (!forserver) {
+            Option += " -module " + this.state.modules;
+        }
 
         var env_set = "";
         if (this.props.complier_option.platform_node.server_address == "192.168.12.124") {
@@ -427,19 +439,43 @@ export class SEPMissionCheckContent extends React.Component {
         }
     }
 
+    getModuleTag(packages) {
+        return (
+            packages.map((element) => {
+                console.log(element);
+                if (element == "0") {
+                    return (<Tag color="blue">服务端</Tag>);
+                } else if (element == "1") {
+                    return (<Tag color="green">客户端</Tag>);
+                }
+            })
+        )
+    }    
+
     add_mission() {
-        var path = "SEP4@";
+        var path = "";
         var server_addr = "";
         var username = "";
         var password = "";
+
+        var forserver = false;
+        if (this.props.complier_module.packages.indexOf("0") > -1) {
+            forserver = true;
+        }
 
         const {complier_option, complier_module} = this.props;
 
         console.log("add_mission");
 
         if (this.state.isWindows) {
+            path += "SEP@"
             path += complier_option.platform_values[0];
         } else {
+            if (forserver) {
+                path += "SEPServer@";
+            } else {
+                path += "SEPClient@";
+            }
             path += (complier_option.platform_values[0] 
                 + "_" + complier_option.platform_values[1]
                 + "_" + complier_option.platform_values[2]);
@@ -486,6 +522,11 @@ export class SEPMissionCheckContent extends React.Component {
     render() {
         const {complier_option, complier_module, oem_option} = this.props;
 
+        var forserver = false;
+        if (complier_module.packages.indexOf("0") > -1) {
+            forserver = true;
+        }
+
         return (
             <div>
                 <div className="mission_from">
@@ -497,8 +538,9 @@ export class SEPMissionCheckContent extends React.Component {
                         <Descriptions.Item label="SVN版本号">{complier_option.svn_version}</Descriptions.Item>
                         <Descriptions.Item label="编译版本号" span={2}>{complier_option.version}</Descriptions.Item>
                         
+                        <Descriptions.Item label="安装包类型">{this.getModuleTag(complier_module.packages)}</Descriptions.Item>
                         <Descriptions.Item label="授权选项">{this.getLicenseTag(complier_module.license_option)}</Descriptions.Item>
-                        <Descriptions.Item label="编译选项" span={2}>{<ComplierOptionTag option={this.state.complier_option}/>}</Descriptions.Item>
+                        <Descriptions.Item label="编译选项">{<ComplierOptionTag option={this.state.complier_option}/>}</Descriptions.Item>
 
                         <Descriptions.Item label="是否位OEM版本">{oem_option.oem_enable ? <Tag color="red">是</Tag> : <Tag color="blue">否</Tag>}</Descriptions.Item>
                         <Descriptions.Item label="OEM图标" span={2}><Avatar shape="square" size={32} src={oem_option.oem_enable ? oem_option.icon : "./image/sep.png"} /></Descriptions.Item>

@@ -41,6 +41,8 @@ export class SepForm extends React.Component {
                 protocols_enable : [],
                 modules : [],
                 modules_enable : [],
+                packages : [],
+                packages_enable : [],
                 license_option : 0,
                 readme : ""
             },
@@ -69,6 +71,8 @@ export class SepForm extends React.Component {
         var protocols_enable = [];
         var modules = this.state.mission_complier_module.modules;
         var modules_enable = [];
+        var packages = this.state.mission_complier_module.packages;
+        var packages_enable = [];
 
         if (node.protocol_config) {
             protocols = node.default_protocol;
@@ -80,16 +84,10 @@ export class SepForm extends React.Component {
             modules_enable = node.enable_module;
         }
 
-        var test = {
-            protocols : protocols,
-            protocols_enable : protocols_enable,
-            modules : modules,
-            modules_enable : modules_enable,
-            license_option : this.state.mission_complier_module.license_option,
-            readme :  this.state.mission_complier_module.readme,
+        if (node.packages_config) {
+            packages = node.default_packages;
+            packages_enable = node.enable_packages;
         }
-
-        console.log("new module: " + test);
 
         this.setState( { 
             mission_complier_option : {
@@ -106,6 +104,8 @@ export class SepForm extends React.Component {
                 protocols_enable : protocols_enable,
                 modules : modules,
                 modules_enable : modules_enable,
+                packages : packages,
+                packages_enable : packages_enable,
                 license_option : this.state.mission_complier_module.license_option,
                 readme :  this.state.mission_complier_module.readme,
             }
@@ -118,12 +118,22 @@ export class SepForm extends React.Component {
     onComplierModuleSubmit(values) {
         console.log('Received values of complier module form: ', values);
 
+        var package_array = new Array();
+        if (!Array.isArray(values.packages)) {
+            var value = values.packages;
+            package_array.push(value);
+        } else {
+            package_array = values.packages;
+        }
+
         this.setState( { 
             mission_complier_module : {
                 protocols : values.protocols,
                 protocols_enable : this.state.mission_complier_module.protocols_enable,
                 modules : values.modules,
                 modules_enable : this.state.mission_complier_module.modules_enable,
+                packages : package_array,
+                packages_enable : this.state.mission_complier_module.packages_enable,
                 license_option : values.license_option,
                 readme : values.readme,
             }
@@ -234,6 +244,9 @@ export class SepForm extends React.Component {
                     }),
                     modules: Form.createFormField({
                         value: props.mission_complier_module.modules,
+                    }),
+                    packages: Form.createFormField({
+                        value: props.mission_complier_module.packages,
                     }),
                     license_option: Form.createFormField({
                         value: props.mission_complier_module.license_option,

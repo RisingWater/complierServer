@@ -7,7 +7,7 @@ export class WeixunClientComplierModuleFormTemplate extends React.Component {
         super(props);
         this.state = { 
             oem_enable : false,
-            modules : [
+            packages : [
                 {
                     "value" : "0",
                     "name" : "Weixun协议服务端"
@@ -29,10 +29,10 @@ export class WeixunClientComplierModuleFormTemplate extends React.Component {
         });
     };
 
-    getModuleDisabled(value) {
+    getPackageDisabled(value) {
         var disabled = true;
         console.log(this.props.mission_complier_module);
-        this.props.mission_complier_module.modules_enable.some((element) => {
+        this.props.mission_complier_module.packages_enable.some((element) => {
             if (element == value) {
                 disabled = false;
                 return true;
@@ -42,11 +42,11 @@ export class WeixunClientComplierModuleFormTemplate extends React.Component {
         return disabled;
     }
 
-    getModuleSelectComponent()
+    getPackageSelectComponent()
     {
         const { getFieldDecorator } = this.props.form;
         var enable = false;
-        this.props.mission_complier_module.modules_enable.some((element) => {
+        this.props.mission_complier_module.packages_enable.some((element) => {
             enable = true;
         })
 
@@ -54,11 +54,11 @@ export class WeixunClientComplierModuleFormTemplate extends React.Component {
         {
             return (
                 <Form.Item>
-                {getFieldDecorator('modules', {rules: [{ required: true, message: '请选择编译模块' }]}) (
+                {getFieldDecorator('packages', {rules: [{ required: true, message: '请选择编译组件' }]}) (
                     <Radio.Group>
                     {
-                        this.state.modules.map((element) => {
-                            return (<Radio value={element.value} disabled={this.getModuleDisabled(element.value)}>{element.name}</Radio>)
+                        this.state.packages.map((element) => {
+                            return (<Radio value={element.value} disabled={this.getPackageDisabled(element.value)}>{element.name}</Radio>)
                         })
                     }
                     </Radio.Group>
@@ -70,11 +70,11 @@ export class WeixunClientComplierModuleFormTemplate extends React.Component {
         {
             return (
                 <Form.Item>
-                    {getFieldDecorator('modules', {rules: [{ required: true, message: '请选择编译模块' }]}) (
+                    {getFieldDecorator('packages', {rules: [{ required: true, message: '请选择编译组件' }]}) (
                     <Checkbox.Group>
                     {
-                        this.state.modules.map((element) => {
-                            return (<Checkbox value={element.value} disabled={this.getModuleDisabled(element.value)}>{element.name}</Checkbox>)
+                        this.state.packages.map((element) => {
+                            return (<Checkbox value={element.value} disabled={this.getPackageDisabled(element.value)}>{element.name}</Checkbox>)
                         })
                     }
                     </Checkbox.Group>
@@ -88,8 +88,8 @@ export class WeixunClientComplierModuleFormTemplate extends React.Component {
         const { getFieldDecorator } = this.props.form;
         var component = (
             <Form layout="vertical" onSubmit={this.onSubmit.bind(this)}>
-                <Divider orientation="left"><Typography.Title level={4}>功能组件</Typography.Title></Divider>
-                {this.getModuleSelectComponent()}
+                <Divider orientation="left"><Typography.Title level={4}>安装包类型</Typography.Title></Divider>
+                {this.getPackageSelectComponent()}
                 <Divider orientation="left"><Typography.Title level={4}>备注</Typography.Title></Divider>
                 <Form.Item>
                     {getFieldDecorator('readme') (

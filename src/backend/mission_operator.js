@@ -1,8 +1,8 @@
 const adodb = require('node-adodb');
 var fs=require('fs');
 
-const connection = adodb.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\web\\App_Data\\compliermission.mdb');
-//const connection = adodb.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\code\\complierServer\\db\\compliermission.mdb');
+//const connection = adodb.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\web\\App_Data\\compliermission.mdb');
+const connection = adodb.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\code\\complierServer\\db\\compliermission.mdb');
 
 const tmp_path = "F:\\output\\tmp\\";
 const log_path = "F:\\output\\log\\";

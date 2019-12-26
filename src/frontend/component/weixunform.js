@@ -37,8 +37,8 @@ export class WeixunClientForm extends React.Component {
             },
 
             mission_complier_module : {
-                modules : [],
-                modules_enable : [],
+                packages : [],
+                packages_enable : [],
                 readme : ""
             },
 
@@ -62,12 +62,12 @@ export class WeixunClientForm extends React.Component {
         console.log('Received values of complier option form: ', values);
         console.log('Received node of complier option form: ', node);
 
-        var modules = this.state.mission_complier_module.modules;
-        var modules_enable = [];
+        var packages = this.state.mission_complier_module.packages;
+        var packages_enable = [];
 
-        if (node.module_config) {
-            modules = node.default_module;
-            modules_enable = node.enable_module;
+        if (node.packages_config) {
+            packages = node.default_packages;
+            packages_enable = node.enable_packages;
         }
 
         this.setState( { 
@@ -81,8 +81,8 @@ export class WeixunClientForm extends React.Component {
             },
 
             mission_complier_module : {
-                modules : modules,
-                modules_enable : modules_enable,
+                packages : packages,
+                packages_enable : packages_enable,
                 readme :  this.state.mission_complier_module.readme,
             }
         })
@@ -92,20 +92,20 @@ export class WeixunClientForm extends React.Component {
     }
 
     onComplierModuleSubmit(values) {
-        console.log('Received values of complier module form: ', values);
+        console.log('Received values of complier package form: ', values);
 
-        var module_array = new Array();
-        if (!Array.isArray(values.modules)) {
-            var value = values.modules;
-            module_array.push(value);
+        var package_array = new Array();
+        if (!Array.isArray(values.packages)) {
+            var value = values.packages;
+            package_array.push(value);
         } else {
-            module_array = values.modules;
+            package_array = values.packages;
         }
 
         this.setState( { 
             mission_complier_module : {
-                modules : module_array,
-                modules_enable : this.state.mission_complier_module.modules_enable,
+                packages : package_array,
+                packages_enable : this.state.mission_complier_module.packages_enable,
                 readme : values.readme,
             }
         })
@@ -210,8 +210,8 @@ export class WeixunClientForm extends React.Component {
 
             mapPropsToFields: (props) => {
                 return {
-                    modules: Form.createFormField({
-                        value: props.mission_complier_module.modules,
+                    packages: Form.createFormField({
+                        value: props.mission_complier_module.packages,
                     }),
                     readme: Form.createFormField({
                         value: props.mission_complier_module.readme,

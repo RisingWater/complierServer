@@ -4,7 +4,7 @@
         "platform" : [
             {
                 "name" : "Windows",
-                "description" : "Windows平台",
+                "description" : "Windows操作系统",
                 "codepath" : "D:\\code\\SEP4\\",
                 "script" : "F:\\output\\tmp\\automake.bat",
                 "protocol_config" : true,
@@ -12,11 +12,14 @@
                 "default_protocol" : ["0", "1", "2", "3"],
                 "module_config" : true,
                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                "default_module" : ["0", "1", "2", "4", "6", "7", "8", "9"]
+                "default_module" : ["0", "1", "2", "4", "6", "7", "8", "9"],
+                "packages_config" : true,
+                "enable_packages" : [],
+                "default_packages" : ["0", "1"]
             },
             {
                 "name" : "Linux",
-                "description" : "Linux平台",
+                "description" : "Linux操作系统",
                 "children" : [
                     {
                         "name" : "x86",
@@ -36,7 +39,10 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7"],
-                                "default_module" : ["0", "1", "2", "4", "6", "7", "9"]
+                                "default_module" : ["0", "1", "2", "4", "6", "7", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             },
                             {
                                 "name" : "C72",
@@ -52,7 +58,10 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "6"],
-                                "default_module" : ["0", "6", "9"]
+                                "default_module" : ["0", "6", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             }
                         ]
                     },
@@ -74,11 +83,14 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "6"],
-                                "default_module" : ["0", "1", "6", "9"]
+                                "default_module" : ["0", "1", "6", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             },
                             {
                                 "name" : "C15",
-                                "description" : "C15代机型",
+                                "description" : "C15机型",
                                 "server_address" : "192.168.12.200",
                                 "username" : "lichangke",
                                 "password" : "centerm",
@@ -90,31 +102,18 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "6"],
-                                "default_module" : ["0", "1", "6", "7", "9"]
+                                "default_module" : ["0", "1", "6", "7", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             }
                         ]
                     },
-					{
+                    {
                         "name" : "x86_64",
                         "description" : "x86 64位指令集",
                         "children" : [
                             {
-                                "name" : "ubuntu16.04",
-                                "description" : "Ubuntu 16.04(暂不可用)",
-                                "server_address" : "192.168.12.32",
-                                "username" : "centerm",
-                                "password" : "centerm",
-                                "codepath" : "/home/centerm/sep4/mika",
-                                "script" : "F:\\output\\tmp\\automake_linux.bat",
-                                "param" : "-national -arch x86_64 -os ubuntu16.04",
-                                "protocol_config" : true,
-                                "enable_protocol" : [],
-                                "default_protocol" : ["0", "1", "2", "3", "4"],
-                                "module_config" : true,
-                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"]
-                            },
-							{
                                 "name" : "nd7.0",
                                 "description" : "NeoKylin Desktop 7.0",
                                 "server_address" : "192.168.12.135",
@@ -128,7 +127,10 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"]
+                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
                             }
                         ]
                     },
@@ -150,7 +152,29 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"]
+                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
+                            },
+                            {
+                                "name" : "nd7.0",
+                                "description" : "NeoKylin Desktop 7.0",
+                                "server_address" : "192.168.127.234",
+                                "username" : "centerm",
+                                "password" : "centerm",
+                                "codepath" : "/home/centerm/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch aarch64 -os nd7.0",
+                                "protocol_config" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_config" : true,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["0"]
                             }
                         ]
                     },
@@ -172,7 +196,10 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"]
+                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             }
                         ]
                     }
@@ -185,17 +212,17 @@
         "platform" : [
             {
                 "name" : "Windows",
-                "description" : "Windows平台",
+                "description" : "Windows操作系统",
                 "codepath" : "D:\\code\\Pikachu\\",
                 "script" : "F:\\output\\tmp\\automake_Ivy.bat",
                 "protocol_config" : false,
-                "module_config" : true,
-                "enable_module" : [],
-                "default_module" : ["0", "1"]
+                "packages_config" : true,
+                "enable_packages" : [],
+                "default_packages" : ["0", "1"]
             },
             {
                 "name" : "Linux",
-                "description" : "Linux平台",
+                "description" : "Linux操作系统",
                 "children" : [
                     {
                         "name" : "x86",
@@ -211,9 +238,9 @@
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "",
                                 "protocol_config" : false,
-                                "module_config" : true,
-                                "enable_module" : [],
-                                "default_module" : ["1"]
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             },
                             {
                                 "name" : "C72",
@@ -225,9 +252,9 @@
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-PKUNITY",
                                 "protocol_config" : false,
-                                "module_config" : true,
-                                "enable_module" : [],
-                                "default_module" : ["1"]
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             }
                         ]
                     },
@@ -237,7 +264,7 @@
                         "children" : [
                             {
                                 "name" : "C91",
-                                "description" : "C91 2代机型 COS操作系统",
+                                "description" : "C91 2代机型",
                                 "server_address" : "192.168.12.200",
                                 "username" : "lichangke",
                                 "password" : "centerm",
@@ -245,13 +272,13 @@
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-C91",
                                 "protocol_config" : false,
-                                "module_config" : true,
-                                "enable_module" : [],
-                                "default_module" : ["1"]
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             },
                             {
                                 "name" : "C15",
-                                "description" : "C15机型 COS操作系统",
+                                "description" : "C15机型",
                                 "server_address" : "192.168.12.200",
                                 "username" : "lichangke",
                                 "password" : "centerm",
@@ -259,9 +286,9 @@
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-C10V3",
                                 "protocol_config" : false,
-                                "module_config" : true,
-                                "enable_module" : [],
-                                "default_module" : ["1"]
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             }
                         ]
                     },
@@ -275,13 +302,13 @@
                                 "server_address" : "192.168.12.135",
                                 "username" : "centerm",
                                 "password" : "centerm",
-                                "codepath" : "/projects/Pikachu",
+                                "codepath" : "/project/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch x86_64 -os nd7.0",
                                 "protocol_config" : false,
-                                "module_config" : true,
-                                "enable_module" : ["0", "1"],
-                                "default_module" : []
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
                             }
                         ]
                     },
@@ -299,23 +326,9 @@
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch aarch64 -os ubuntu16.04",
                                 "protocol_config" : false,
-                                "module_config" : true,
-                                "enable_module" : [],
-                                "default_module" : ["1"]
-                            },
-                            {
-                                "name" : "ns7.0",
-                                "description" : "NeoKylin Server 7.0",
-                                "server_address" : "192.168.127.234",
-                                "username" : "centerm",
-                                "password" : "centerm",
-                                "codepath" : "/home/centerm/Pikachu",
-                                "script" : "F:\\output\\tmp\\automake_linux.bat",
-                                "param" : "-national -arch aarch64 -os ns7.0",
-                                "protocol_config" : false,
-                                "module_config" : true,
-                                "enable_module" : [],
-                                "default_module" : ["0"]
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
                             },
                             {
                                 "name" : "nd7.0",
@@ -327,9 +340,9 @@
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch aarch64 -os nd7.0",
                                 "protocol_config" : false,
-                                "module_config" : true,
-                                "enable_module" : [],
-                                "default_module" : ["0"]
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["0"]
                             }
                         ]
                     },
@@ -347,9 +360,9 @@
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch mips64el -os nd7.0",
                                 "protocol_config" : false,
-                                "module_config" : true,
-                                "enable_module" : [],
-                                "default_module" : ["1"]
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             }
                         ]
                     }
@@ -357,7 +370,7 @@
             },
             {
                 "name" : "Android",
-                "description" : "Android平台",
+                "description" : "Android操作系统",
                 "children" : [
                     {
                         "name" : "arm",
@@ -365,7 +378,7 @@
                         "children" : [
                             {
                                 "name" : "Android",
-                                "description" : "Android操作系统",
+                                "description" : "Android˛Ů×÷ĎľÍł",
                                 "server_address" : "192.168.12.124",
                                 "username" : "centerm",
                                 "password" : "centerm123!@#",
@@ -373,9 +386,9 @@
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-Android_ARM",
                                 "protocol_config" : false,
-                                "module_config" : true,
-                                "enable_module" : [],
-                                "default_module" : ["1"]
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             }
                         ]
                     }
@@ -388,7 +401,7 @@
         "platform" : [
             {
                 "name" : "Windows",
-                "description" : "Windows平台",
+                "description" : "Windows操作系统",
                 "codepath" : "",
                 "script" : "F:\\output\\tmp\\automake_IVY_SEP.bat",
                 "protocol_config" : true,
