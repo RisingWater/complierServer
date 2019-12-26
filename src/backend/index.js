@@ -40,7 +40,7 @@ app.post('/oem/del', oem_operator.del);
 
 app.get('/svn', function (req, res) {
     nodeCmd.get(
-        'svn info --username weilc --password weilc http://192.168.12.127:8129/thinclient/developing --xml',
+        'svn info --username weilc --password weilc http://192.168.12.200:8080/svn/developing --xml',
         function(err, data, stderr) {
             var result = { result : -1, version : 0 } 
             if (err != null) {
@@ -49,7 +49,7 @@ app.get('/svn', function (req, res) {
                 xmlreader.read(data, function(errors, response) {
                     if (errors == null) {
                         result.result = 0;
-                        result.version = response.info.entry.commit.attributes().revision;
+                        result.version = parseInt(response.info.entry.commit.attributes().revision) + 40000;
                         res.send(result);
                     } else {
                         res.send(result);
