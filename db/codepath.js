@@ -163,7 +163,7 @@
                                 "server_address" : "192.168.127.234",
                                 "username" : "centerm",
                                 "password" : "centerm",
-                                "codepath" : "/home/centerm/Pikachu",
+                                "codepath" : "/home/centerm/sep4/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch aarch64 -os nd7.0",
                                 "protocol_config" : true,
