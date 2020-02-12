@@ -200,6 +200,25 @@
                                 "packages_config" : true,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
+                            },
+							{
+                                "name" : "deepin",
+                                "description" : "深度操作系统",
+                                "server_address" : "192.168.4.121",
+                                "username" : "weilc",
+                                "password" : "centerm",
+                                "codepath" : "/home/weilc/project/SEP4/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch mips64el -os DEEPIN",
+                                "protocol_config" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_config" : true,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
                             }
                         ]
                     }
@@ -359,6 +378,20 @@
                                 "codepath" : "/home/centerm/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch mips64el -os nd7.0",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
+                            },
+							{
+                                "name" : "deepin",
+                                "description" : "深度操作系统",
+                                "server_address" : "192.168.4.121",
+                                "username" : "weilc",
+                                "password" : "centerm",
+                                "codepath" : "/home/weilc/project/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch mips64el -os DEEPIN",
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : [],

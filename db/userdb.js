@@ -48,5 +48,15 @@
             "sep": false,
             "weixunclient": true
         }
+    },
+    {
+        "userid": "faa068a0-2d33-11ea-ab5d-299d80aa0fa0",
+        "username": "zhangzhiqiang@centerm.com",
+        "password": "b38ovd",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
     }
 ]
