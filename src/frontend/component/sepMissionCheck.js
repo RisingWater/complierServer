@@ -370,7 +370,8 @@ export class SEPMissionCheckContent extends React.Component {
         if (this.props.complier_option.platform_node.server_address == "192.168.12.124") {
             env_set = ". ~/.bash_profile\r\n";
         }
-
+		
+		//C91 C15
         if((this.props.complier_option.platform_node.param.indexOf("-C91") != -1) ||
             (this.props.complier_option.platform_node.param.indexOf("-C15") != -1) )
         {
@@ -378,6 +379,30 @@ export class SEPMissionCheckContent extends React.Component {
                +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
                + env_set
                +"docker exec c91-armhf /bin/bash -c \"cd  " + this.props.complier_option.codepath
+               + " && ./onebuild.sh"
+               + Option
+               + "\"\r\n"
+               );
+        }
+		//COS 18.04 X86_64
+		if((this.props.complier_option.platform_node.param.indexOf("-X86_64 -arch x86_64 -os cos") != -1) )
+        {
+            return ("#! /bin/bash\r\n"
+               +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
+               + env_set
+               +"docker exec wangxu /bin/bash -c \"cd  " + this.props.complier_option.codepath
+               + " && ./onebuild.sh"
+               + Option
+               + "\"\r\n"
+               );
+        }
+		//Ubuntu 16.04 X86_64
+		if((this.props.complier_option.platform_node.param.indexOf("-national -arch x86_64 -os ubuntu16.04") != -1) )
+        {
+            return ("#! /bin/bash\r\n"
+               +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
+               + env_set
+               +"docker exec wangxu /bin/bash -c \"cd  " + this.props.complier_option.codepath
                + " && ./onebuild.sh"
                + Option
                + "\"\r\n"
