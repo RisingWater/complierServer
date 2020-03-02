@@ -134,7 +134,7 @@
                             },
 							{
                                 "name" : "ubuntu18.04",
-                                "description" : "ubuntu 18.04/UOS/深度",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
                                 "password" : "centerm",
@@ -153,7 +153,7 @@
                             },
                             {
                                 "name" : "nd7.0",
-                                "description" : "NeoKylin Desktop 7.0",
+                                "description" : "中标麒麟 7.x",
                                 "server_address" : "192.168.12.135",
                                 "username" : "centerm",
                                 "password" : "centerm",
@@ -178,13 +178,13 @@
                         "children" : [
                             {
                                 "name" : "ubuntu16.04",
-                                "description" : "Ubuntu 16.04",
+                                "description" : "Ubuntu 16.04/银河麒麟 4.x",
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
                                 "password" : "centerm",
-                                "codepath" : "/home/wangxu/workdir/chroot_aarch64/home/wangxu/sep4/mika",
+                                "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu16.04/home/wangxu/sep4/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
-                                "param" : "-national -arch aarch64 -os ubuntu16.04 -rootdir /home/wangxu/workdir/chroot_aarch64 -codedir /home/wangxu/sep4/mika",
+                                "param" : "-national -arch aarch64 -os ubuntu16.04 -rootdir /home/wangxu/workdir/chroot_aarch64_ubuntu16.04 -codedir /home/wangxu/sep4/mika",
                                 "protocol_config" : true,
                                 "enable_protocol" : [],
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
@@ -196,8 +196,27 @@
                                 "default_packages" : []
                             },
                             {
+                                "name" : "ubuntu18.04",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu18.04/home/wangxu/sep4/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch aarch64 -os ubuntu18.04 -rootdir /home/wangxu/workdir/chroot_aarch64_ubuntu18.04 -codedir /home/wangxu/sep4/mika",
+                                "protocol_config" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_config" : true,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
+                            },							
+                            {
                                 "name" : "nd7.0",
-                                "description" : "NeoKylin Desktop 7.0",
+                                "description" : "中标麒麟 7.x",
                                 "server_address" : "192.168.127.234",
                                 "username" : "centerm",
                                 "password" : "centerm",
@@ -222,7 +241,7 @@
                         "children" : [
                             {
                                 "name" : "nd7.0",
-                                "description" : "NeoKylin Desktop 7.0",
+                                "description" : "中标麒麟 7.x",
                                 "server_address" : "192.168.4.119",
                                 "username" : "centerm",
                                 "password" : "1",
@@ -368,14 +387,14 @@
                                 "default_packages" : []
                             },
 							{
-                                "name" : "ubuntu16.04",
-                                "description" : "Ubuntu 16.04(Ubuntu 18.04)",
+                                "name" : "ubuntu18.04",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
-                                "param" : "-national -arch x86_64 -os ubuntu16.04",
+                                "param" : "-national -arch x86_64 -os ubuntu18.04",
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
@@ -383,7 +402,7 @@
                             },
                             {
                                 "name" : "nd7.0",
-                                "description" : "NeoKylin Desktop 7.0",
+                                "description" : "中标麒麟 7.x",
                                 "server_address" : "192.168.12.135",
                                 "username" : "centerm",
                                 "password" : "centerm",
@@ -403,13 +422,27 @@
                         "children" : [
                             {
                                 "name" : "ubuntu16.04",
-                                "description" : "Ubuntu 16.04",
+                                "description" : "Ubuntu 16.04/银河麒麟 4.x",
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
                                 "password" : "centerm",
-                                "codepath" : "/home/wangxu/workdir/chroot_aarch64/home/wangxu/Pikachu",
+                                "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu16.04/home/wangxu/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
-                                "param" : "-national -arch aarch64 -os ubuntu16.04 -rootdir /home/wangxu/workdir/chroot_aarch64 -codedir /home/wangxu/Pikachu",
+                                "param" : "-national -arch aarch64 -os ubuntu16.04 -rootdir /home/wangxu/workdir/chroot_aarch64_ubuntu16.04 -codedir /home/wangxu/Pikachu",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
+                            },
+							{
+                                "name" : "ubuntu18.04",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu18.04/home/wangxu/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch aarch64 -os ubuntu18.04 -rootdir /home/wangxu/workdir/chroot_aarch64_ubuntu18.04 -codedir /home/wangxu/Pikachu",
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
@@ -417,7 +450,7 @@
                             },
                             {
                                 "name" : "nd7.0",
-                                "description" : "NeoKylin Desktop 7.0",
+                                "description" : "中标麒麟 7.x",
                                 "server_address" : "192.168.127.234",
                                 "username" : "centerm",
                                 "password" : "centerm",
@@ -437,7 +470,7 @@
                         "children" : [
                             {
                                 "name" : "nd7.0",
-                                "description" : "NeoKylin Desktop 7.0",
+                                "description" : "中标麒麟 7.x",
                                 "server_address" : "192.168.4.119",
                                 "username" : "centerm",
                                 "password" : "1",
@@ -451,7 +484,7 @@
                             },
 							{
                                 "name" : "deepin",
-                                "description" : "深度操作系统",
+                                "description" : "深度 15.x",
                                 "server_address" : "192.168.4.121",
                                 "username" : "weilc",
                                 "password" : "centerm",
