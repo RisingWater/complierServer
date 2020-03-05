@@ -406,7 +406,7 @@
                                 "server_address" : "192.168.12.135",
                                 "username" : "centerm",
                                 "password" : "centerm",
-                                "codepath" : "/project/Pikachu",
+                                "codepath" : "/projects/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch x86_64 -os nd7.0",
                                 "protocol_config" : false,
