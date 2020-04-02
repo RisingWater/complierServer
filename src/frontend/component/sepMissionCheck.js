@@ -432,6 +432,19 @@ export class SEPMissionCheckContent extends React.Component {
                + "\"\r\n"
                );
         }
+		
+		//Ubuntu 18.04 mips64el
+        if((this.props.complier_option.platform_node.param.indexOf("-national -arch mips64el -os ubuntu18.04") != -1) )
+        {
+            return ("#! /bin/bash\r\n"
+               +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
+               + env_set
+               +"docker exec wangxu /bin/bash -c \"cd  " + this.props.complier_option.codepath
+               + " && echo centerm | sudo -S ./chroot_build.sh"
+               + Option
+               + "\"\r\n"
+               );
+        }
 
         return ("#! /bin/bash\r\n"
                +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
