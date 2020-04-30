@@ -10,7 +10,7 @@
     "express": "^4.17.1",
     "iconv-lite": "^0.5.0",
     "iniparser": "^1.0.5",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "multer": "^1.4.2",
     "node-adodb": "^5.0.2",
     "node-cmd": "^3.0.0",
