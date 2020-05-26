@@ -16,7 +16,7 @@
         "isAdmin": true,
         "subscribe": {
             "sep": true,
-            "weixunclient": true
+            "weixunclient": false
         }
     },
     {
@@ -53,6 +53,26 @@
         "userid": "faa068a0-2d33-11ea-ab5d-299d80aa0fa0",
         "username": "zhangzhiqiang@centerm.com",
         "password": "b38ovd",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "cda6e820-8471-11ea-8ba5-2d3aedc99811",
+        "username": "yuhua@centerm.com",
+        "password": "1997",
+        "isAdmin": true,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "93c3a2f0-9e6c-11ea-95d7-79099a5aa86e",
+        "username": "chenlei.kf@centerm.com",
+        "password": "9yot61",
         "isAdmin": false,
         "subscribe": {
             "sep": false,

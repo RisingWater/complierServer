@@ -17,6 +17,11 @@
                 "url"  : "http://192.168.12.127:8080/output/public/stable/v6.5.0.33/",
                 "beta" : false
              },
+			 { 
+                "name" : "威讯云协议 7.0正式版",
+                "url" : "http://192.168.12.127:8080/output/public/stable/v7.0.0.8/",
+                "beta" : false
+            },
             { 
                 "name" : "威讯云协议 6.5正式版",
                 "url" : "http://192.168.12.127:8080/output/public/stable/v6.5.0.13/",

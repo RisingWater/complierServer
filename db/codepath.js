@@ -217,7 +217,7 @@
                             {
                                 "name" : "nd7.0",
                                 "description" : "中标麒麟 7.x",
-                                "server_address" : "192.168.127.234",
+                                "server_address" : "10.17.15.234",
                                 "username" : "centerm",
                                 "password" : "centerm",
                                 "codepath" : "/home/centerm/sep4/mika",
@@ -451,7 +451,7 @@
                             {
                                 "name" : "nd7.0",
                                 "description" : "中标麒麟 7.x",
-                                "server_address" : "192.168.127.234",
+                                "server_address" : "10.17.15.234",
                                 "username" : "centerm",
                                 "password" : "centerm",
                                 "codepath" : "/home/centerm/Pikachu",

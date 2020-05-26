@@ -1,4 +1,4 @@
-{
+﻿{
     "protocols" : [
         {
             "value" : "0",
@@ -6,11 +6,11 @@
         },
         {
             "value" : "1",
-            "name" : "ICA协议"
+            "name" : "PCoIP协议"
         },
         {
             "value" : "2",
-            "name" : "PCOIP协议"
+            "name" : "RDP协议"
         },
         {
             "value" : "3",
