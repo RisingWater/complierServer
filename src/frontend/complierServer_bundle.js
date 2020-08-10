@@ -8,6 +8,7 @@ import { PublishPage } from './component/publish.js'
 import { SepForm } from './component/sepform.js'
 import { WeixunClientForm } from './component/weixunform.js'
 import { SolutionForm} from "./component/solutionform.js"
+import { AKSuitForm} from "./component/aksuitform.js"
 import $ from 'jquery';
 
 function getCookie(name)
@@ -67,6 +68,13 @@ class RootContext extends React.Component {
                             children: [],
                         },
                         {
+                            name: "新建AK三件套任务",
+                            icon: "",
+                            key: "new_aksuit",
+                            needAdmin: true,
+                            children: [],
+                        },
+                        {
                             name: "新建整合包任务",
                             icon: "",
                             key: "new_solution",
@@ -104,6 +112,8 @@ class RootContext extends React.Component {
             return (<WeixunClientForm jumpToMissionList={this.jumpToMissionList.bind(this)} user={this.state.user}/>);
         } else if (this.state.menuSelectedkey == "new_solution") {  
             return (<SolutionForm jumpToMissionList={this.jumpToMissionList.bind(this)} user={this.state.user}/>);
+        } else if (this.state.menuSelectedkey == "new_aksuit") {
+            return (<AKSuitForm jumpToMissionList={this.jumpToMissionList.bind(this)} user={this.state.user}/>);
         } else {  
             return (<div></div>);
         }
