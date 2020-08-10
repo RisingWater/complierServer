@@ -103,7 +103,7 @@ export class AKSuitClientMissionCheckContent  extends React.Component {
         var env_set = "";
 
 		//Ubuntu 18.04 X86_64
-		if((this.props.complier_option.platform_node.param.indexOf("-national -arch x86_64 -os ubuntu18.04") != -1) )
+		if((this.props.complier_option.platform_node.param.indexOf("-national -arch x86_64 -os uos20") != -1) )
         {
             return ("#! /bin/bash\r\n"
                +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
@@ -115,7 +115,7 @@ export class AKSuitClientMissionCheckContent  extends React.Component {
                );
         }
 		//Ubuntu 16.04 aarch64
-		if((this.props.complier_option.platform_node.param.indexOf("-national -arch aarch64 -os ubuntu16.04") != -1) )
+		if((this.props.complier_option.platform_node.param.indexOf("-national -arch aarch64 -os kylin4.0") != -1) )
         {
             return ("#! /bin/bash\r\n"
                +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
@@ -127,7 +127,7 @@ export class AKSuitClientMissionCheckContent  extends React.Component {
                );
         }
 		//Ubuntu 18.04 aarch64
-		if((this.props.complier_option.platform_node.param.indexOf("-national -arch aarch64 -os ubuntu18.04") != -1) )
+		if((this.props.complier_option.platform_node.param.indexOf("-national -arch aarch64 -os uos20") != -1) )
         {
             return ("#! /bin/bash\r\n"
                +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
@@ -141,7 +141,7 @@ export class AKSuitClientMissionCheckContent  extends React.Component {
 
         		
 		//Ubuntu 18.04 mips64el
-		if((this.props.complier_option.platform_node.param.indexOf("-national -arch mips64el -os ubuntu18.04") != -1) )
+		if((this.props.complier_option.platform_node.param.indexOf("-national -arch mips64el -os uos20") != -1) )
         {
             return ("#! /bin/bash\r\n"
                +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
