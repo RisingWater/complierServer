@@ -209,8 +209,8 @@ export class AKSuitClientMissionCheckContent  extends React.Component {
             password : password,
             script : complier_option.platform_node.script,
             filedata_readme : "",
-            filedata_define : this.GetServerdefineString(),
-            filedata_include : this.GetIncludeDefineString(),
+            filedata_define : "",
+            filedata_include : "",
             filedata_linuxbuild : this.GetLinuxBuildString(),
         })
 
