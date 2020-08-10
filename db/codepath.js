@@ -217,7 +217,7 @@
                             {
                                 "name" : "nd7.0",
                                 "description" : "中标麒麟 7.x",
-                                "server_address" : "192.168.127.234",
+                                "server_address" : "10.17.15.234",
                                 "username" : "centerm",
                                 "password" : "centerm",
                                 "codepath" : "/home/centerm/sep4/mika",
@@ -259,20 +259,20 @@
                                 "default_packages" : ["1"]
                             },
 							{
-                                "name" : "deepin",
-                                "description" : "深度操作系统",
-                                "server_address" : "192.168.4.121",
-                                "username" : "weilc",
+                                "name" : "ubuntu18.04",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
                                 "password" : "centerm",
-                                "codepath" : "/home/weilc/project/SEP4/mika",
+                                "codepath" : "/home/wangxu/workdir/debian10_mips64el/home/wangxu/SEP/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
-                                "param" : "-national -arch mips64el -os DEEPIN",
+                                "param" : "-national -arch mips64el -os ubuntu18.04 -rootdir /home/wangxu/workdir/debian10_mips64el -codedir /home/wangxu/SEP/mika",
                                 "protocol_config" : true,
                                 "enable_protocol" : [],
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "default_module" : ["0", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
@@ -406,7 +406,7 @@
                                 "server_address" : "192.168.12.135",
                                 "username" : "centerm",
                                 "password" : "centerm",
-                                "codepath" : "/project/Pikachu",
+                                "codepath" : "/projects/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch x86_64 -os nd7.0",
                                 "protocol_config" : false,
@@ -451,7 +451,7 @@
                             {
                                 "name" : "nd7.0",
                                 "description" : "中标麒麟 7.x",
-                                "server_address" : "192.168.127.234",
+                                "server_address" : "10.17.15.234",
                                 "username" : "centerm",
                                 "password" : "centerm",
                                 "codepath" : "/home/centerm/Pikachu",
@@ -483,14 +483,14 @@
                                 "default_packages" : ["1"]
                             },
 							{
-                                "name" : "deepin",
-                                "description" : "深度 15.x",
-                                "server_address" : "192.168.4.121",
-                                "username" : "weilc",
+                                "name" : "ubuntu18.04",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
                                 "password" : "centerm",
-                                "codepath" : "/home/weilc/project/Pikachu",
+                                "codepath" : "/home/wangxu/workdir/debian10_mips64el/home/wangxu/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
-                                "param" : "-national -arch mips64el -os DEEPIN",
+                                "param" : "-national -arch mips64el -os ubuntu18.04 -rootdir /home/wangxu/workdir/debian10_mips64el -codedir /home/wangxu/Pikachu",
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : [],
@@ -542,6 +542,91 @@
                 "module_config" : true,
                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
                 "default_module" : ["0", "1", "2", "4", "6", "7", "8", "9"]
+            }
+        ]
+    },
+    {
+        "name" : "aksuit",
+        "platform" : [
+            {
+                "name" : "Linux",
+                "description" : "Linux操作系统",
+                "children" : [
+                    {
+                        "name" : "x86_64",
+                        "description" : "x86 64位指令集",
+                        "children" : [
+							{
+                                "name" : "ubuntu18.04",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/Sekiro",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch x86_64 -os ubuntu18.04",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
+                            }
+                        ]
+                    },
+                    {
+                        "name" : "aarch64",
+                        "description" : "Arm 64位指令集",
+                        "children" : [
+                            {
+                                "name" : "ubuntu16.04",
+                                "description" : "Ubuntu 16.04/银河麒麟 4.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu16.04/home/wangxu/Sekiro",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch aarch64 -os ubuntu16.04 -rootdir /home/wangxu/workdir/chroot_aarch64_ubuntu16.04 -codedir /home/wangxu/Sekiro",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
+                            },
+							{
+                                "name" : "ubuntu18.04",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu18.04/home/wangxu/Sekiro",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch aarch64 -os ubuntu18.04 -rootdir /home/wangxu/workdir/chroot_aarch64_ubuntu18.04 -codedir /home/wangxu/Sekiro",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
+                            }
+                        ]
+                    },
+                    {
+                        "name" : "mips64el",
+                        "description" : "MIPS 64位指令集",
+                        "children" : [
+                            {
+                                "name" : "ubuntu18.04",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/debian10_mips64el/home/wangxu/Sekiro",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch mips64el -os ubuntu18.04 -rootdir /home/wangxu/workdir/debian10_mips64el -codedir /home/wangxu/Sekiro",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
