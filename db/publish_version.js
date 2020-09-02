@@ -7,17 +7,17 @@
         "span_url" : "http://192.168.12.127:8080/output/public/stable/",
         "allow_subscribe" : true,
         "list" : [
+		    { 
+                "name" : "威讯云企业版 7.0 配套协议版本",
+                "url"  : "http://192.168.12.127:8080/output/public/stable/v7.0.0.34/",
+                "beta" : false
+            },
             { 
                 "name" : "威讯云企业版 6.5 配套协议版本",
                 "url"  : "http://192.168.12.127:8080/output/public/stable/v6.5.0.53/",
                 "beta" : false
             },
-            {
-                "name" : "威讯云企业版 6.1 配套协议版本",
-                "url"  : "http://192.168.12.127:8080/output/public/stable/v6.5.0.33/",
-                "beta" : false
-             },
-			 { 
+			{ 
                 "name" : "威讯云协议 7.0正式版",
                 "url" : "http://192.168.12.127:8080/output/public/stable/v7.0.0.8/",
                 "beta" : false
@@ -25,11 +25,6 @@
             { 
                 "name" : "威讯云协议 6.5正式版",
                 "url" : "http://192.168.12.127:8080/output/public/stable/v6.5.0.13/",
-                "beta" : false
-            },
-            { 
-                "name" : "威讯云协议 6.0正式版",
-                "url" : "http://192.168.12.127:8080/output/public/stable/v6.0.0.2/",
                 "beta" : false
             }
         ]
