@@ -186,6 +186,31 @@ export class WeixunClientMissionCheckContent  extends React.Component {
         } else {
             Option += "  -noAd -defaultCT 1 -defaultPT 0 -titlebar";
         }
+		
+		if(this.props.oem_option.oem_enable)
+		{
+			Option += " -oem";
+			if(this.props.oem_option.vendor_name != "")
+			{
+				Option += " -oem_vendor " + this.props.oem_option.vendor_name;
+			}
+			
+			if(this.props.oem_option.product_name != "")
+			{
+				Option += " -oem_product " + this.props.oem_option.product_name;
+			}
+			
+			if(this.props.oem_option.copyright != "")
+			{
+				Option += " -oem_copyright " + this.props.oem_option.copyright;
+			}
+			if(this.props.oem_option.icon != "")
+			{
+				Option += " -oem_logo http://192.168.12.127/" + this.props.oem_option.icon;
+			}
+			
+		}
+		
         
         var env_set = "";
         if (this.props.complier_option.platform_node.server_address == "192.168.12.124") {

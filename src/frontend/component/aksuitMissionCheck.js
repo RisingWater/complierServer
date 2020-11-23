@@ -152,6 +152,19 @@ export class AKSuitClientMissionCheckContent  extends React.Component {
                + "\"\r\n"
                );
         }
+		
+		//Ubuntu 16.04 mips64el
+		if((this.props.complier_option.platform_node.param.indexOf("-national -arch mips64el -os kylin4.0") != -1) )
+        {
+            return ("#! /bin/bash\r\n"
+               +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
+               + env_set
+               +"docker exec wangxu /bin/bash -c \"cd  " + this.props.complier_option.codepath
+               + " && echo centerm | sudo -S ./chroot_build.sh"
+               + Option
+               + "\"\r\n"
+               );
+        }		
 
         return ("#! /bin/bash\r\n"
                +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
