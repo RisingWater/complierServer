@@ -111,9 +111,9 @@ export class WeixunClientMissionCheckContent  extends React.Component {
             + "#if NEPTUNESERVER\r\n"
             + "; 版本号\r\n"
             + "; 编译出来的安装包名字\r\n"
-            + "#define MyAppName \"WeixunServer\"\r\n"
+            + "#define MyAppName \"ViServer\"\r\n"
             + "#define MyAppVersion \"" + this.props.complier_option.version + "\"\r\n"
-            + "#define MyAppExeName \"WeixunServer.exe\"\r\n"
+            + "#define MyAppExeName \"ViServer.exe\"\r\n"
             + "\r\n"
             + "#define UUID \"{5E3C4D90-5CED-4044-A1C6-7CCBBFBAC526}\"\r\n"
             + "#endif\r\n"
@@ -122,9 +122,9 @@ export class WeixunClientMissionCheckContent  extends React.Component {
             + "#if NEPTUNECLIENT\r\n"
             + "; 版本号\r\n"
             + "; 编译出来的安装包名字\r\n"
-            + "#define MyAppName \"WeixunClient\"\r\n"
+            + "#define MyAppName \"ViClient\"\r\n"
             + "#define MyAppVersion \"" + this.props.complier_option.version + "\"\r\n"
-            + "#define MyAppExeName \"WeixunClient.exe\"\r\n"
+            + "#define MyAppExeName \"ViClient.exe\"\r\n"
             + "\r\n"
             + "#define UUID \"{9FB17268-DBD5-4B7C-8EEF-DCA48D852755}\"\r\n"
             + "#endif\r\n"
@@ -167,9 +167,9 @@ export class WeixunClientMissionCheckContent  extends React.Component {
 
         var Option = "";
         if (forserver) {
-            Option += " -n WeixunServer";
+            Option += " -n ViServer";
         } else {
-            Option += " -n WeixunClient";
+            Option += " -n ViClient";
         }
         Option += " -v " + this.props.complier_option.version;
         Option += " -sv " + this.props.complier_option.svn_version;

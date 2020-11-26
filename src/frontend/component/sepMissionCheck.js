@@ -248,9 +248,9 @@ export class SEPMissionCheckContent extends React.Component {
                + "#if SEPSERVER\r\n"
                + "; 版本号\r\n"
                + "; 编译出来的安装包名字\r\n"
-               + "#define MyAppName \"SEPServer\"\r\n"
+               + "#define MyAppName \"ViSEPServer\"\r\n"
                + "#define MyAppVersion \"" + this.props.complier_option.version + "\"\r\n"
-               + "#define MyAppExeName \"SEPServer.exe\"\r\n"
+               + "#define MyAppExeName \"ViSEPServer.exe\"\r\n"
                + "\r\n"
                + "#define UUID \"{384E44C2-B87C-46FC-A7AC-8A2FBE89BD98}\"\r\n"
                + "#endif\r\n"
@@ -259,9 +259,9 @@ export class SEPMissionCheckContent extends React.Component {
                + "#if SEPCLIENT\r\n"
                + "; 版本号\r\n"
                + "; 编译出来的安装包名字\r\n"
-               + "#define MyAppName \"SEPClient\"\r\n"
+               + "#define MyAppName \"ViSEPClient\"\r\n"
                + "#define MyAppVersion \"" + this.props.complier_option.version + "\"\r\n"
-               + "#define MyAppExeName \"SEPClient.exe\"\r\n"
+               + "#define MyAppExeName \"ViSEPClient.exe\"\r\n"
                + "\r\n"
                + "#define UUID \"{00D3B543-9080-4EA9-BCA8-1A9E6346CCD2}\"\r\n"
                + "#endif\r\n"
@@ -333,9 +333,9 @@ export class SEPMissionCheckContent extends React.Component {
 
         var Option = "";
         if (forserver) {
-            Option += " -n SEPServer";
+            Option += " -n ViSEPServer";
         } else {
-            Option += " -n SEPClient";
+            Option += " -n ViSEPClient";
         }
         Option += " -v " + this.props.complier_option.version;
         Option += " -sv " + this.props.complier_option.svn_version;
