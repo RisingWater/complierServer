@@ -259,7 +259,7 @@
                                 "default_packages" : ["1"]
                             },
 							{
-                                "name" : "ubuntu18.04",
+                                "name" : "ubuntu16.04",
                                 "description" : "Debian 9/银河麒麟 4.x/银河麒麟 10.x",
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
@@ -502,7 +502,7 @@
                                 "default_packages" : ["1"]
                             },
 							{
-                                "name" : "ubuntu18.04",
+                                "name" : "ubuntu16.04",
                                 "description" : "Debian 9/银河麒麟 4.x/银河麒麟 10.x",
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
