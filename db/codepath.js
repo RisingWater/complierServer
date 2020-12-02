@@ -260,7 +260,26 @@
                             },
 							{
                                 "name" : "ubuntu18.04",
-                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "description" : "Debian 9/银河麒麟 4.x/银河麒麟 10.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/debian9_mips64el/home/wangxu/SEP/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch mips64el -os ubuntu16.04 -rootdir /home/wangxu/workdir/debian9_mips64el -codedir /home/wangxu/SEP/mika",
+                                "protocol_config" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_config" : true,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                                "default_module" : ["0", "6", "7", "8", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
+                            },
+							{
+                                "name" : "ubuntu18.04",
+                                "description" : "Debian 10/UOS 20/深度 15.x",
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
                                 "password" : "centerm",
@@ -422,7 +441,7 @@
                         "children" : [
                             {
                                 "name" : "ubuntu16.04",
-                                "description" : "Ubuntu 16.04/银河麒麟 4.x",
+                                "description" : "Ubuntu 16.04/银河麒麟 4.x/银河麒麟 10.x",
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
                                 "password" : "centerm",
@@ -484,7 +503,21 @@
                             },
 							{
                                 "name" : "ubuntu18.04",
-                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "description" : "Debian 9/银河麒麟 4.x/银河麒麟 10.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/debian9_mips64el/home/wangxu/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch mips64el -os ubuntu16.04 -rootdir /home/wangxu/workdir/debian9_mips64el -codedir /home/wangxu/Pikachu",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
+                            },
+							{
+                                "name" : "ubuntu18.04",
+                                "description" : "Debian 10/UOS 20/深度 15.x",
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
                                 "password" : "centerm",
@@ -578,7 +611,7 @@
                         "children" : [
                             {
                                 "name" : "kylin4.0",
-                                "description" : "银河麒麟 4.x",
+                                "description" : "银河麒麟 4.x/银河麒麟 10.x",
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
                                 "password" : "centerm",
@@ -611,6 +644,20 @@
                         "description" : "MIPS 64位指令集",
                         "children" : [
                             {
+                                "name" : "kylin4.0",
+                                "description" : "银河麒麟 4.x/银河麒麟 10.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/debian9_mips64el/home/wangxu/Sekiro",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch mips64el -os kylin4.0 -rootdir /home/wangxu/workdir/debian9_mips64el -codedir /home/wangxu/Sekiro",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
+                            },
+							{
                                 "name" : "uos20",
                                 "description" : "UOS 20",
                                 "server_address" : "192.168.12.200",

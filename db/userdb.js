@@ -78,5 +78,15 @@
             "sep": false,
             "weixunclient": false
         }
+    },
+    {
+        "userid": "bfbd9810-1753-11eb-9054-0d3c6075ca2f",
+        "username": "duanweiyu@centerm.com",
+        "password": "duanweiyu",
+        "isAdmin": true,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
     }
 ]

@@ -7,6 +7,16 @@
         "span_url" : "http://192.168.12.127:8080/output/public/stable/",
         "allow_subscribe" : true,
         "list" : [
+			{ 
+                "name" : "威讯云协议最新版本整合",
+                "url"  : "http://192.168.12.127:8080/output/public/stable/Latest Release/",
+                "beta" : false
+            },
+			{ 
+                "name" : "威讯云协议 7.5正式版",
+                "url"  : "http://192.168.12.127:8080/output/public/stable/v7.5.0.11/",
+                "beta" : false
+            },
 		    { 
                 "name" : "威讯云企业版 7.0 配套协议版本",
                 "url"  : "http://192.168.12.127:8080/output/public/stable/v7.0.0.34/",
