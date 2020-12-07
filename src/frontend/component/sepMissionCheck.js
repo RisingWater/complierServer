@@ -333,9 +333,9 @@ export class SEPMissionCheckContent extends React.Component {
 
         var Option = "";
         if (forserver) {
-            Option += " -n ViSEPServer";
+            Option += " -n SEPServer";
         } else {
-            Option += " -n ViSEPClient";
+            Option += " -n SEPClient";
         }
         Option += " -v " + this.props.complier_option.version;
         Option += " -sv " + this.props.complier_option.svn_version;
