@@ -151,6 +151,25 @@
                                 "enable_packages" : ["0", "1"],
                                 "default_packages" : []
                             },
+							{
+                                "name" : "ubuntu16.04",
+                                "description" : "ubuntu 16.04/银河麒麟 4.x/银河麒麟 10.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+								"codepath" : "/home/wangxu/workdir/chroot_x86_64_ubuntu16.04/home/wangxu/sep4/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+								"param" : "-national -arch x86_64 -os ubuntu16.04 -rootdir /home/wangxu/workdir/chroot_x86_64_ubuntu16.04 -codedir /home/wangxu/sep4/mika",
+                                "protocol_config" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_config" : true,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
+                            },
                             {
                                 "name" : "nd7.0",
                                 "description" : "中标麒麟 7.x",
@@ -178,7 +197,7 @@
                         "children" : [
                             {
                                 "name" : "ubuntu16.04",
-                                "description" : "Ubuntu 16.04/银河麒麟 4.x",
+                                "description" : "Ubuntu 16.04/银河麒麟 4.x/银河麒麟 10.x",
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
                                 "password" : "centerm",
@@ -414,6 +433,20 @@
                                 "codepath" : "/home/wangxu/workdir/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch x86_64 -os ubuntu18.04",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
+                            },
+                            {
+                                "name" : "ubuntu16.04",
+                                "description" : "Ubuntu 16.04/银河麒麟 4.x/银河麒麟 10.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/chroot_x86_64_ubuntu16.04/home/wangxu/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch x86_64 -os ubuntu16.04 -rootdir /home/wangxu/workdir/chroot_x86_64_ubuntu16.04 -codedir /home/wangxu/Pikachu",
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
