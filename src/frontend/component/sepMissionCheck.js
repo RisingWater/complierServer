@@ -362,9 +362,7 @@ export class SEPMissionCheckContent extends React.Component {
             Option += " -norebuild";
         }
 
-        if (!forserver) {
-            Option += " -module " + this.state.modules;
-        }
+		Option += " -module " + this.state.modules;
 
         var env_set = "";
         if (this.props.complier_option.platform_node.server_address == "192.168.12.124") {

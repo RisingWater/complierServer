@@ -283,9 +283,9 @@
                                 "server_address" : "192.168.12.200",
                                 "username" : "wangxu",
                                 "password" : "centerm",
-                                "codepath" : "/home/wangxu/workdir/debian9_mips64el/home/wangxu/SEP/mika",
+                                "codepath" : "/home/wangxu/workdir/debian9_mips64el/home/wangxu/sep4/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
-                                "param" : "-national -arch mips64el -os ubuntu16.04 -rootdir /home/wangxu/workdir/debian9_mips64el -codedir /home/wangxu/SEP/mika",
+                                "param" : "-national -arch mips64el -os ubuntu16.04 -rootdir /home/wangxu/workdir/debian9_mips64el -codedir /home/wangxu/sep4/mika",
                                 "protocol_config" : true,
                                 "enable_protocol" : [],
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
@@ -318,8 +318,66 @@
                         ]
                     }
                 ]
+            },
+			{
+                "name" : "Chinalife",
+                "description" : "中国人寿版本",
+                "children" : [
+                    {
+                        "name" : "x86_64",
+                        "description" : "x86 64位指令集",
+                        "children" : [
+							{
+                                "name" : "ubuntu18.04",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/sep_chinalife/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-Gstreamer1 -national -arch x86_64 -os ubuntu18.04",
+                                "protocol_config" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_config" : true,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                                "default_module" : ["9","10"],
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
+                            }
+                        ]
+                    },
+                    {
+                        "name" : "aarch64",
+                        "description" : "Arm 64位指令集(暂不可用)",
+                        "children" : [
+                            {
+                                "name" : "ubuntu18.04",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "server_address" : "192.168.12.200",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu18.04/home/wangxu/sep_chinalife/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch aarch64 -os ubuntu18.04 -rootdir /home/wangxu/workdir/chroot_aarch64_ubuntu18.04 -codedir /home/wangxu/sep4/mika",
+                                "protocol_config" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_config" : true,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                                "default_module" : ["9","10"],
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
+                            }
+                        ]
+                    }
+                    
+                ]
             }
-        ]
+        
+		]
     },
     {
         "name" : "weixunclient",
@@ -399,6 +457,20 @@
                                 "codepath" : "/home/lichangke/developing/Pikachu_C15/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-C10V3",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
+                            },
+							{
+                                "name" : "C16",
+                                "description" : "C16机型 3568芯片",
+                                "server_address" : "192.168.12.200",
+                                "username" : "lichangke",
+                                "password" : "centerm",
+                                "codepath" : "/home/lichangke/developing/Pikachu_3568/developing/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-C10V3 -C16",
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : [],
@@ -576,13 +648,39 @@
                         "children" : [
                             {
                                 "name" : "Android",
-                                "description" : "Android˛Ů×÷ĎľÍł",
+                                "description" : "Android操作系统",
                                 "server_address" : "192.168.12.124",
                                 "username" : "centerm",
                                 "password" : "centerm123!@#",
                                 "codepath" : "/home/centerm/project/lichangke/Pikachu/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-Android_ARM",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
+                            }
+                        ]
+                    }
+                ]
+            },
+			{
+                "name" : "MacOS",
+                "description" : "MacOS操作系统",
+				"children" : [
+                    {
+                        "name" : "x86_64",
+                        "description" : "x86 64位指令集",
+                        "children" : [
+                            {
+                                "name" : "MacOS",
+                                "description" : "MacOS操作系统",
+                                "server_address" : "192.168.45.45",
+                                "username" : "weiliangchen",
+                                "password" : "centerm",
+                                "codepath" : "/Users/weiliangchen/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_macos.bat",
+                                "param" : "-MACOS",
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : [],

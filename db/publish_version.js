@@ -13,6 +13,16 @@
                 "beta" : false
             },
 			{ 
+                "name" : "威讯云协议 8.0正式版",
+                "url"  : "http://192.168.12.127:8080/output/public/stable/v8.0.0.3/",
+                "beta" : false
+            },
+			{ 
+                "name" : "威讯云协议 7.6正式版",
+                "url"  : "http://192.168.12.127:8080/output/public/stable/v7.6.0.2/",
+                "beta" : false
+            },
+			{ 
                 "name" : "威讯云协议 7.5正式版",
                 "url"  : "http://192.168.12.127:8080/output/public/stable/v7.5.0.11/",
                 "beta" : false

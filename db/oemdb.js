@@ -19,5 +19,19 @@
         "product": "VwellClient",
         "copyright": "北京维网云数据科技有限公司",
         "icon": "./upload/0ddb94b0-4a77-11eb-9e0a-05edf13116e5.png"
+    },
+    {
+        "oemid": "c350c980-a343-11eb-9c87-3fef9c02d2d1",
+        "vendor": "Inspur",
+        "product": "InCloudClient",
+        "copyright": "浪潮软件集团有限公司",
+        "icon": "./upload/c21a9370-a343-11eb-9c87-3fef9c02d2d1.png"
+    },
+    {
+        "oemid": "dd3d61c0-ffd0-11eb-8d33-a585747cb117",
+        "vendor": "",
+        "product": "",
+        "copyright": "",
+        "icon": ""
     }
 ]
