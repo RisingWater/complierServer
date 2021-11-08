@@ -88,5 +88,95 @@
             "sep": false,
             "weixunclient": false
         }
+    },
+    {
+        "userid": "c44ef4a0-559c-11eb-9c87-3fef9c02d2d1",
+        "username": "zhaohailin@centerm.com",
+        "password": "Zhl137746@",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "65ddb260-7fdd-11eb-9c87-3fef9c02d2d1",
+        "username": "linmengchao@centerm.com",
+        "password": "520331",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "9427aaa0-9c01-11eb-9c87-3fef9c02d2d1",
+        "username": "zhanghuarong@centerm.com",
+        "password": "123456",
+        "isAdmin": true,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "ce8b80a0-a367-11eb-9c87-3fef9c02d2d1",
+        "username": "597356130@qq.com",
+        "password": "8167920",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "67a4ab60-c468-11eb-9c87-3fef9c02d2d1",
+        "username": "wuzheng@centerm.com",
+        "password": "ruag8pf8",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "7e5e3250-c8f4-11eb-9c87-3fef9c02d2d1",
+        "username": "yaozhenxing@centerm.com",
+        "password": "123456",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "5db25470-ddfb-11eb-9c87-3fef9c02d2d1",
+        "username": "sunjinhua@centerm.com",
+        "password": "Centerm123",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "fb59cec0-f367-11eb-9c87-3fef9c02d2d1",
+        "username": "179920108@qq.com",
+        "password": "Zjw0718$",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "14fe43e0-f9a5-11eb-bb61-f9a5f7f0c08a",
+        "username": "wangjunfeng@centerm.com",
+        "password": "qwe123456",
+        "isAdmin": true,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
     }
 ]

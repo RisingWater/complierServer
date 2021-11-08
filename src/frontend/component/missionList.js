@@ -5,8 +5,8 @@ import Highlighter from 'react-highlight-words';
 import { ComplierOptionTag } from './complierOptionTag.js'
 import $ from 'jquery';
 
-const outputDir = "http://192.168.12.127:8080/output/bin/"
-const logDir = "http://192.168.12.127:8080/output/log/"
+const outputDir = "http://10.17.17.16:8080/output/bin/"
+const logDir = "http://10.17.17.16:8080/output/log/"
 
 export class MissionList extends React.Component {
     constructor(props) {
