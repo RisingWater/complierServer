@@ -167,9 +167,9 @@ export class WeixunClientMissionCheckContent  extends React.Component {
 
         var Option = "";
         if (forserver) {
-            Option += " -n WeixunServer";
+            Option += " -n weixunserver";
         } else {
-            Option += " -n WeixunClient";
+            Option += " -n weixunclient";
         }
         Option += " -v " + this.props.complier_option.version;
         Option += " -sv " + this.props.complier_option.svn_version;
@@ -206,14 +206,14 @@ export class WeixunClientMissionCheckContent  extends React.Component {
 			}
 			if(this.props.oem_option.icon != "")
 			{
-				Option += " -oem_logo http://192.168.12.127/" + this.props.oem_option.icon;
+				Option += " -oem_logo http://10.17.17.16/" + this.props.oem_option.icon;
 			}
 			
 		}
 		
         
         var env_set = "";
-        if (this.props.complier_option.platform_node.server_address == "192.168.12.124") {
+        if (this.props.complier_option.platform_node.server_address == "10.17.17.17") {
             env_set = ". ~/.bash_profile\r\n";
         }
 
@@ -261,6 +261,18 @@ export class WeixunClientMissionCheckContent  extends React.Component {
                + env_set
                +"docker exec wangxu /bin/bash -c \"cd  " + this.props.complier_option.codepath
                + " && echo centerm | sudo -S ./chroot_build.sh"
+               + Option
+               + "\"\r\n"
+               );
+        }
+		//el8 X86_64
+		if((this.props.complier_option.platform_node.param.indexOf("-national -arch x86_64 -os el8") != -1) )
+        {
+            return ("#! /bin/bash\r\n"
+               +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
+               + env_set
+               +"docker exec wangxu /bin/bash -c \"cd  " + this.props.complier_option.codepath
+               + " && ./onebuild.sh"
                + Option
                + "\"\r\n"
                );

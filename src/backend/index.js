@@ -40,7 +40,7 @@ app.post('/oem/del', oem_operator.del);
 
 app.get('/svn', function (req, res) {
     nodeCmd.get(
-        'svn info --username weilc --password weilc http://192.168.12.200:8080/svn/developing --xml',
+        'svn info --username weilc --password weilc http://10.17.17.19:8080/svn/developing --xml',
         function(err, data, stderr) {
             var result = { result : -1, version : 0 } 
             if (err != null) {

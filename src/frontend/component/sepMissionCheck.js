@@ -365,7 +365,7 @@ export class SEPMissionCheckContent extends React.Component {
 		Option += " -module " + this.state.modules;
 
         var env_set = "";
-        if (this.props.complier_option.platform_node.server_address == "192.168.12.124") {
+        if (this.props.complier_option.platform_node.server_address == "10.17.17.17") {
             env_set = ". ~/.bash_profile\r\n";
         }
 		
@@ -396,6 +396,18 @@ export class SEPMissionCheckContent extends React.Component {
         }
 		//Ubuntu 18.04 X86_64
 		if((this.props.complier_option.platform_node.param.indexOf("-national -arch x86_64 -os ubuntu18.04") != -1) )
+        {
+            return ("#! /bin/bash\r\n"
+               +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
+               + env_set
+               +"docker exec wangxu /bin/bash -c \"cd  " + this.props.complier_option.codepath
+               + " && ./onebuild.sh"
+               + Option
+               + "\"\r\n"
+               );
+        }
+		//Ubuntu 18.04 X86_64
+		if((this.props.complier_option.platform_node.param.indexOf("-national -arch x86_64 -os el8") != -1) )
         {
             return ("#! /bin/bash\r\n"
                +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
@@ -468,7 +480,7 @@ export class SEPMissionCheckContent extends React.Component {
                + "\"\r\n"
                );
         }
-
+		
         return ("#! /bin/bash\r\n"
                +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
                + env_set

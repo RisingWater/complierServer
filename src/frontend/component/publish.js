@@ -33,6 +33,15 @@ class PublishList extends React.Component {
             subscribe : false,
         };
     }
+	
+	GetUrl(url)
+	{
+		var hostname = window.location.hostname;
+		console.log(hostname);
+		var newurl = url.replace("10.17.17.16", hostname);
+		console.log(newurl);
+		return newurl;
+	}
 
     componentDidMount() {
         $.ajax({
@@ -113,7 +122,7 @@ class PublishList extends React.Component {
                 dataIndex: 'url',
                 align: "right",
                 render: (text, record) => (
-                    <Button type="primary" icon="download" href={record.url} target="_blank">点击下载</Button>
+                    <Button type="primary" icon="download" href={this.GetUrl(record.url)} target="_blank">点击下载</Button>
                 )
             },
         ]
@@ -138,7 +147,7 @@ class PublishList extends React.Component {
                         showHeader = { false }
                         />
                     <br/>
-                    { this.state.span_url == "" ? <div/> : <PublishListFooter url={this.state.span_url}/> }
+                    { this.state.span_url == "" ? <div/> : <PublishListFooter url={this.GetUrl(this.state.span_url)}/> }
                 </Card>
             </div>
         )

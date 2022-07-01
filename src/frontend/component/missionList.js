@@ -5,9 +5,6 @@ import Highlighter from 'react-highlight-words';
 import { ComplierOptionTag } from './complierOptionTag.js'
 import $ from 'jquery';
 
-const outputDir = "http://10.17.17.16:8080/output/bin/"
-const logDir = "http://10.17.17.16:8080/output/log/"
-
 export class MissionList extends React.Component {
     constructor(props) {
         super(props);
@@ -15,6 +12,20 @@ export class MissionList extends React.Component {
             dataSource: [] , searchText: '',
             loading : true};
     }
+	
+	GetOutputDir()
+	{
+		var hostname = window.location.hostname;
+		var protocol = window.location.protocol;
+		return protocol + "//" + hostname + ":8080/output/bin/";
+	}
+	
+	GetLogDir()
+	{
+		var hostname = window.location.hostname;
+		var protocol = window.location.protocol;
+		return protocol + "//" + hostname + ":8080/output/log/";
+	}
 
 getColumnSearchProps = dataIndex => ({
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
@@ -125,14 +136,14 @@ getColumnSearchProps = dataIndex => ({
                     title: '输出目录',
                     key: '输出目录',
                     render: (text, record) => (
-                        <Button type="primary" icon="download" href={outputDir + record.输出目录} target="_blank" size="small">下载</Button>
+                        <Button type="primary" icon="download" href={this.GetOutputDir() + record.输出目录} target="_blank" size="small">下载</Button>
                     ),
                 },
                 {
                     title: '日志目录',
                     key: '日志目录',
                     render: (text, record) => (
-                        <Button type="primary" icon="search" href={logDir + record.输出目录} target="_blank" size="small">查看</Button>
+                        <Button type="primary" icon="search" href={this.GetLogDir() + record.输出目录} target="_blank" size="small">查看</Button>
                     ),
                 },
                 {

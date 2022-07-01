@@ -131,11 +131,18 @@ function addmission(req, res, solution) {
     if (solution) {
         fs.writeFileSync(tmp_path + mission_req + "\\" + define_sep_filename, req.body.filedata_define_sep);
         fs.writeFileSync(tmp_path + mission_req + "\\" + define_ivy_filename, req.body.filedata_define_ivy);
+		if (req.body.filedata_linuxbuild != "no_oem")
+		{
+			fs.writeFileSync(tmp_path + mission_req + "\\oem.info", req.body.filedata_linuxbuild);
+		}
     } else {
         fs.writeFileSync(tmp_path + mission_req + "\\" + define_filename, req.body.filedata_define);
     }
     fs.writeFileSync(tmp_path + mission_req + "\\" + include_filename, req.body.filedata_include);
-    fs.writeFileSync(tmp_path + linuxbuild_filename, req.body.filedata_linuxbuild);
+	
+	if (!solution) {
+		fs.writeFileSync(tmp_path + linuxbuild_filename, req.body.filedata_linuxbuild);
+	}
     
     console.log(sql);
 

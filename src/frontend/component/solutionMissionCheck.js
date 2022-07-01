@@ -243,7 +243,9 @@ export class SolutionMissionCheckContent extends React.Component {
             return "";
         }
 
-        return ("#define SVN_VERSION\t\t\t" + this.props.complier_option.svn_version + "\r\n"
+		if (!this.props.oem_option.oem_enable)
+		{
+            return ("#define SVN_VERSION\t\t\t" + this.props.complier_option.svn_version + "\r\n"
                + "; 服务器\r\n"
                + "#if SEPSERVER\r\n"
                + "; 版本号\r\n"
@@ -293,7 +295,64 @@ export class SolutionMissionCheckContent extends React.Component {
                + "#define DRVAUTOINSTALL\t\t\t\t0\r\n"
                + "\r\n"
                + "#define SEPUI3\t\t\t\t0\r\n"
-               + "#define SEPUI4\t\t\t\t1\r\n");
+               + "#define SEPUI4\t\t\t\t1\r\n"
+			   + "#define SHORTCUT_NAME      \"ViSEP\"\r\n");
+		}
+		else
+		{
+			return ("#define SVN_VERSION\t\t\t" + this.props.complier_option.svn_version + "\r\n"
+               + "; 服务器\r\n"
+               + "#if SEPSERVER\r\n"
+               + "; 版本号\r\n"
+               + "; 编译出来的安装包名字\r\n"
+               + "#define MyAppName \"" + this.props.oem_option.product_name + "SEPServer\"\r\n"
+               + "#define MyAppVersion \"" + this.props.complier_option.sep_version + "\"\r\n"
+               + "#define MyAppExeName \"" + this.props.oem_option.product_name + "SEPServer.exe\"\r\n"
+               + "\r\n"
+               + "#define UUID \"{384E44C2-B87C-46FC-A7AC-8A2FBE89BD98}\"\r\n"
+               + "#endif\r\n"
+               + "\r\n"
+               + "; 客户端\r\n"
+               + "#if SEPCLIENT\r\n"
+               + "; 版本号\r\n"
+               + "; 编译出来的安装包名字\r\n"
+               + "#define MyAppName \"" + this.props.oem_option.product_name + "SEPClient\"\r\n"
+               + "#define MyAppVersion \"" + this.props.complier_option.sep_version + "\"\r\n"
+               + "#define MyAppExeName \"" + this.props.oem_option.product_name + "SEPClient.exe\"\r\n"
+               + "\r\n"
+               + "#define UUID \"{00D3B543-9080-4EA9-BCA8-1A9E6346CCD2}\"\r\n"
+               + "#endif\r\n"
+               + "\r\n"
+               + "#define MyAppPublisher \"" + this.props.oem_option.copyright +" \"\r\n"
+               + "#define MyAppURL \" \"\r\n"
+               + "\r\n"
+               + "; 是否打包成CTSS版本的SEP\r\n"
+               + "#define ASCTSS\t\t\t\t0\r\n"
+               +"\r\n"
+               + this.GetFunctionStr(this.state.modules)
+               + "\r\n"
+               + this.GetProtocolStr(this.state.protocols)
+               + "\r\n"
+               + "; 扩展功能\r\n"
+               + "#define TWAIN2\t\t\t\t1\r\n"
+               + "#define TWAIN2COMPRESSLEVEL\t\t\t\t80\r\n"
+               + "\r\n"
+               + "#define HIDISOLATE\t\t\t\t1\r\n"
+               + "#define PRTINTERISOLATE\t\t\t\t1\r\n"
+               + "#define SCISOLATE\t\t\t\t1\r\n"
+               + "#define UDISKISOLATE\t\t\t\t1\r\n"
+               + "#define USBISOLATE2008\t\t\t\t1\r\n"
+               + ";通道代理\r\n"
+               + "#define USB_CHANNELPROXY\t\t\t1\r\n"
+               + ";磁盘加速\r\n"
+               + "#define UDISK_ACCELERATE\t\t\t1\r\n"
+               + ";自动安装驱动\r\n"
+               + "#define DRVAUTOINSTALL\t\t\t\t0\r\n"
+               + "\r\n"
+               + "#define SEPUI3\t\t\t\t0\r\n"
+               + "#define SEPUI4\t\t\t\t1\r\n"
+			   + "#define SHORTCUT_NAME      \"" + this.props.oem_option.product_name + "SEP\"\r\n");
+		}
     }
 
     GetWeixunServerdefineString()
@@ -302,7 +361,9 @@ export class SolutionMissionCheckContent extends React.Component {
             return "";
         }
 
-        return ("#define SVN_VERSION\t\t\t" + this.props.complier_option.svn_version + "\r\n"
+		if (!this.props.oem_option.oem_enable)
+		{
+			return ("#define SVN_VERSION\t\t\t" + this.props.complier_option.svn_version + "\r\n"
             + "; 服务器\r\n"
             + "#if NEPTUNESERVER\r\n"
             + "; 版本号\r\n"
@@ -334,7 +395,54 @@ export class SolutionMissionCheckContent extends React.Component {
             + "\r\n"
             + "#define AD_OPTION\t\t\t\t0\r\n"
             + "#define WATERMARK_OPTION\t\t\t\t0\r\n" 
-            + "\r\n");
+            + "\r\n"
+			+ "#define SHORTCUT_NAME_CN      \"威讯云桌面\"\r\n"
+            + "#define APP_SHORTCUT_NAME_CN  \"威讯云应用\"\r\n"
+            + "#define SHORTCUT_NAME_EN      \"ViClient\"\r\n"
+            + "#define APP_SHORTCUT_NAME_EN  \"ViClientApp\"\r\n"
+			+ "\r\n");
+		}
+		else
+		{
+			return ("#define SVN_VERSION\t\t\t" + this.props.complier_option.svn_version + "\r\n"
+            + "; 服务器\r\n"
+            + "#if NEPTUNESERVER\r\n"
+            + "; 版本号\r\n"
+            + "; 编译出来的安装包名字\r\n"
+            + "#define MyAppName \"" + this.props.oem_option.product_name + "Server\"\r\n"
+            + "#define MyAppVersion \"" + this.props.complier_option.weixun_version + "\"\r\n"
+            + "#define MyAppExeName \"" + this.props.oem_option.product_name +"Server.exe\"\r\n"
+            + "\r\n"
+            + "#define UUID \"{5E3C4D90-5CED-4044-A1C6-7CCBBFBAC526}\"\r\n"
+            + "#endif\r\n"
+            + "\r\n"
+            + "; 客户端\r\n"
+            + "#if NEPTUNECLIENT\r\n"
+            + "; 版本号\r\n"
+            + "; 编译出来的安装包名字\r\n"
+            + "#define MyAppName \"" + this.props.oem_option.product_name + "Client\"\r\n"
+            + "#define MyAppVersion \"" + this.props.complier_option.weixun_version + "\"\r\n"
+            + "#define MyAppExeName \"" + this.props.oem_option.product_name + "Client.exe\"\r\n"
+            + "\r\n"
+            + "#define UUID \"{9FB17268-DBD5-4B7C-8EEF-DCA48D852755}\"\r\n"
+            + "#endif\r\n"
+            + "\r\n"
+			+ "#define MyAppPublisher \"" + this.props.oem_option.copyright +" \"\r\n"
+            + "#define MyAppURL \" \"\r\n"
+            + "\r\n"
+            + "#define SBC_MODE\t\t\t\t1\r\n"
+            + "#define VDI_MODE\t\t\t\t1\r\n"
+            + "#define CREDENTIALS_PROVIDER\t\t\t\t1\r\n"
+            + "\r\n"
+            + "#define AD_OPTION\t\t\t\t0\r\n"
+            + "#define WATERMARK_OPTION\t\t\t\t0\r\n" 
+            + "\r\n"
+			+ "#define SHORTCUT_NAME_CN      \"" + this.props.oem_option.product_name + "Client\"\r\n"
+            + "#define APP_SHORTCUT_NAME_CN  \"" + this.props.oem_option.product_name + "App\"\r\n"
+            + "#define SHORTCUT_NAME_EN      \"" + this.props.oem_option.product_name + "Client\"\r\n"
+            + "#define APP_SHORTCUT_NAME_EN  \"" + this.props.oem_option.product_name + "App\"\r\n"
+			+ "\r\n")		
+		}
     }
 
     GetIncludeDefineString()
@@ -363,45 +471,20 @@ export class SolutionMissionCheckContent extends React.Component {
 
     GetLinuxBuildString()
     {
-        if (this.state.isWindows) {
-            return "";
-        }
-
-        var Option = "";
-        Option += " -n SEPClient";
-        Option += " -v " + this.props.complier_option.version;
-        Option += " -sv " + this.props.complier_option.svn_version;
-        Option += " -twain2";
-        Option += " -cl 80";
-        Option += " -usbproxy";
-        Option += " -NEWINTERFACE";
-
-        if (this.props.complier_module.license_option == 1)
+        if (this.state.isWindows)
         {
-            Option += " -license";
+		    if (!this.props.oem_option.oem_enable)
+		    {
+				return "no_oem";
+			}
+			else
+			{
+				console.log(this.props.oem_option.icon);
+				var str = this.props.oem_option.product_name + "\r\n" + this.props.oem_option.icon.replaceAll("/", "\\"); + "\r\n"
+				console.log(str);
+				return str;
+			}
         }
-        else if (this.props.complier_module.license_option == 2)
-        {
-            Option += " -tmplicense";
-            Option += " -LicenseTime 2";
-        }
-        
-        Option += (" " + this.props.complier_option.platform_node.param);
-
-        if ((this.state.complier_option & 0x1) != 0)
-        {
-            Option += " -norebuild";
-        }
-
-        Option += " -module " + this.state.modules;
-
-        return ("#! /bin/bash\r\n"
-               +"export LC_CTYPE=\"zh_CN.UTF-8\"\r\n"
-               +"cd  " + this.props.complier_option.codepath + "\r\n"
-               + "./onebuild.sh"
-               + Option
-               + "\r\n"
-               );
     }
 
     getCollapse() {
