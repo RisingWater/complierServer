@@ -106,6 +106,11 @@ export class SolutionMissionCheckContent extends React.Component {
 
         return option;
     }
+	
+	ReplaceAll(str , replaceKey , replaceVal) {
+        var reg = new RegExp(replaceKey , 'g');
+        return str.replace(reg , replaceVal || '');
+    }
 
     CheckMapIdx(map, idx) {
         return (map & (0x1 << idx)) != 0;
@@ -479,8 +484,10 @@ export class SolutionMissionCheckContent extends React.Component {
 			}
 			else
 			{
+				var iconpath = this.ReplaceAll(this.props.oem_option.icon, "/", "\\")
 				console.log(this.props.oem_option.icon);
-				var str = this.props.oem_option.product_name + "\r\n" + this.props.oem_option.icon.replaceAll("/", "\\"); + "\r\n"
+				console.log(iconpath);
+				var str = this.props.oem_option.product_name + "\r\n" + iconpath + "\r\n"
 				console.log(str);
 				return str;
 			}
