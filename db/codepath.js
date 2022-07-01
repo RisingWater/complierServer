@@ -72,7 +72,7 @@
                             {
                                 "name" : "C91",
                                 "description" : "C91 2代机型",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "lichangke",
                                 "password" : "centerm",
                                 "codepath" : "/home/lichangke/developing/sep4/sep4/mika",
@@ -91,17 +91,17 @@
                             {
                                 "name" : "C15",
                                 "description" : "C15机型",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "lichangke",
                                 "password" : "centerm",
                                 "codepath" : "/home/lichangke/developing/sep4_C15/sep4/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
-                                "param" : "-C15",
+                                "param" : "-C15 -Gstreamer1",
                                 "protocol_config" : true,
                                 "enable_protocol" : [],
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
-                                "enable_module" : ["0", "6"],
+                                "enable_module" : ["0","1", "6","7"],
                                 "default_module" : ["0", "1", "6", "7", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : [],
@@ -116,7 +116,7 @@
 							{
                                 "name" : "cos",
                                 "description" : "COS操作系统(ubuntu 18.04)",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/sep4/mika",
@@ -127,7 +127,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "9"],
+                                "default_module" : ["0", "1", "2", "4", "6", "7", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
                                 "default_packages" : []
@@ -135,7 +135,7 @@
 							{
                                 "name" : "ubuntu18.04",
                                 "description" : "ubuntu 18.04/UOS 20/深度 15.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/sep4/mika",
@@ -154,7 +154,7 @@
 							{
                                 "name" : "ubuntu16.04",
                                 "description" : "ubuntu 16.04/银河麒麟 4.x/银河麒麟 10.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
 								"codepath" : "/home/wangxu/workdir/chroot_x86_64_ubuntu16.04/home/wangxu/sep4/mika",
@@ -170,10 +170,29 @@
                                 "enable_packages" : ["0", "1"],
                                 "default_packages" : []
                             },
+							{
+                                "name" : "el8",
+                                "description" : "Centos8/新支点操作系统",
+                                "server_address" : "10.17.17.19",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/sep4/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-Gstreamer1 -national -arch x86_64 -os el8",
+                                "protocol_config" : false,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_config" : false,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : ["0"],
+                                "default_packages" : []
+                            },
                             {
                                 "name" : "nd7.0",
                                 "description" : "中标麒麟 7.x",
-                                "server_address" : "192.168.12.135",
+                                "server_address" : "10.17.17.18",
                                 "username" : "centerm",
                                 "password" : "Pikachucentos1qaz@WSX",
                                 "codepath" : "/projects/sep4/mika",
@@ -198,7 +217,7 @@
                             {
                                 "name" : "ubuntu16.04",
                                 "description" : "Ubuntu 16.04/银河麒麟 4.x/银河麒麟 10.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu16.04/home/wangxu/sep4/mika",
@@ -217,7 +236,7 @@
                             {
                                 "name" : "ubuntu18.04",
                                 "description" : "ubuntu 18.04/UOS 20/深度 15.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu18.04/home/wangxu/sep4/mika",
@@ -280,7 +299,7 @@
 							{
                                 "name" : "ubuntu16.04",
                                 "description" : "Debian 9/银河麒麟 4.x/银河麒麟 10.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/debian9_mips64el/home/wangxu/sep4/mika",
@@ -299,12 +318,37 @@
 							{
                                 "name" : "ubuntu18.04",
                                 "description" : "Debian 10/UOS 20/深度 15.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/debian10_mips64el/home/wangxu/SEP/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch mips64el -os ubuntu18.04 -rootdir /home/wangxu/workdir/debian10_mips64el -codedir /home/wangxu/SEP/mika",
+                                "protocol_config" : true,
+                                "enable_protocol" : [],
+                                "default_protocol" : ["0", "1", "2", "3", "4"],
+                                "module_config" : true,
+                                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                                "default_module" : ["0", "6", "7", "8", "9"],
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
+                            }
+                        ]
+                    },
+                    {
+                        "name" : "loongarch64",
+                        "description" : "loongarch64指令集",
+                        "children" : [
+							{
+                                "name" : "ubuntu18.04",
+                                "description" : "Debian 10/UOS 20/KylinV10SP1",
+                                "server_address" : "192.168.45.69",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/user/Project/SEP/sep4/mika",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch loongarch64 -os ubuntu18.04",
                                 "protocol_config" : true,
                                 "enable_protocol" : [],
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
@@ -330,7 +374,7 @@
 							{
                                 "name" : "ubuntu18.04",
                                 "description" : "ubuntu 18.04/UOS 20/深度 15.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/sep_chinalife/mika",
@@ -350,15 +394,15 @@
                     },
                     {
                         "name" : "aarch64",
-                        "description" : "Arm 64位指令集(暂不可用)",
+                        "description" : "Arm 64位指令集",
                         "children" : [
                             {
                                 "name" : "ubuntu18.04",
                                 "description" : "ubuntu 18.04/UOS 20/深度 15.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
-                                "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu18.04/home/wangxu/sep_chinalife/mika",
+                                "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu18.04/home/wangxu/sep4/mika",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch aarch64 -os ubuntu18.04 -rootdir /home/wangxu/workdir/chroot_aarch64_ubuntu18.04 -codedir /home/wangxu/sep4/mika",
                                 "protocol_config" : true,
@@ -417,7 +461,7 @@
                             {
                                 "name" : "C72",
                                 "description" : "C72机型",
-                                "server_address" : "192.168.12.124",
+                                "server_address" : "10.17.17.17",
                                 "username" : "centerm",
                                 "password" : "Pikachulinux1qaz@WSX",
                                 "codepath" : "/home/centerm/project/lichangke/Pikachu/Pikachu",
@@ -437,7 +481,7 @@
                             {
                                 "name" : "C91",
                                 "description" : "C91 2代机型",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "lichangke",
                                 "password" : "centerm",
                                 "codepath" : "/home/lichangke/developing/Pikachu/Pikachu",
@@ -451,7 +495,7 @@
                             {
                                 "name" : "C15",
                                 "description" : "C15机型",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "lichangke",
                                 "password" : "centerm",
                                 "codepath" : "/home/lichangke/developing/Pikachu_C15/Pikachu",
@@ -465,7 +509,7 @@
 							{
                                 "name" : "C16",
                                 "description" : "C16机型 3568芯片",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "lichangke",
                                 "password" : "centerm",
                                 "codepath" : "/home/lichangke/developing/Pikachu_3568/developing/Pikachu",
@@ -485,7 +529,7 @@
 							{
                                 "name" : "cos",
                                 "description" : "COS操作系统(Ubuntu 18.04)",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/Pikachu",
@@ -499,7 +543,7 @@
 							{
                                 "name" : "ubuntu18.04",
                                 "description" : "ubuntu 18.04/UOS 20/深度 15.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/Pikachu",
@@ -510,10 +554,24 @@
                                 "enable_packages" : ["0", "1"],
                                 "default_packages" : []
                             },
+							{
+                                "name" : "el8",
+                                "description" : "Centos8/新支点操作系统",
+                                "server_address" : "10.17.17.19",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch x86_64 -os el8",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : ["0"],
+                                "default_packages" : []
+                            },
                             {
                                 "name" : "ubuntu16.04",
                                 "description" : "Ubuntu 16.04/银河麒麟 4.x/银河麒麟 10.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/chroot_x86_64_ubuntu16.04/home/wangxu/Pikachu",
@@ -527,7 +585,7 @@
                             {
                                 "name" : "nd7.0",
                                 "description" : "中标麒麟 7.x",
-                                "server_address" : "192.168.12.135",
+                                "server_address" : "10.17.17.18",
                                 "username" : "centerm",
                                 "password" : "Pikachucentos1qaz@WSX",
                                 "codepath" : "/projects/Pikachu",
@@ -547,7 +605,7 @@
                             {
                                 "name" : "ubuntu16.04",
                                 "description" : "Ubuntu 16.04/银河麒麟 4.x/银河麒麟 10.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu16.04/home/wangxu/Pikachu",
@@ -561,7 +619,7 @@
 							{
                                 "name" : "ubuntu18.04",
                                 "description" : "ubuntu 18.04/UOS 20/深度 15.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu18.04/home/wangxu/Pikachu",
@@ -609,7 +667,7 @@
 							{
                                 "name" : "ubuntu16.04",
                                 "description" : "Debian 9/银河麒麟 4.x/银河麒麟 10.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/debian9_mips64el/home/wangxu/Pikachu",
@@ -623,12 +681,32 @@
 							{
                                 "name" : "ubuntu18.04",
                                 "description" : "Debian 10/UOS 20/深度 15.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/debian10_mips64el/home/wangxu/Pikachu",
                                 "script" : "F:\\output\\tmp\\automake_linux.bat",
                                 "param" : "-national -arch mips64el -os ubuntu18.04 -rootdir /home/wangxu/workdir/debian10_mips64el -codedir /home/wangxu/Pikachu",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : [],
+                                "default_packages" : ["1"]
+                            }
+                        ]
+                    },
+                    {
+                        "name" : "loongarch64",
+                        "description" : "loongarch64指令集",
+                        "children" : [
+							{
+                                "name" : "ubuntu18.04",
+                                "description" : "Debian 10/UOS 20/KylinV10SP1/深度 15.x",
+                                "server_address" : "192.168.45.69",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/user/Project/Pikachu/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch loongarch64 -os ubuntu18.04",
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : [],
@@ -702,7 +780,7 @@
                 "script" : "F:\\output\\tmp\\automake_IVY_SEP.bat",
                 "protocol_config" : true,
                 "enable_protocol" : [],
-                "default_protocol" : ["2", "3"],
+                "default_protocol" : ["2", "3", "4"],
                 "module_config" : true,
                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
                 "default_module" : ["0", "1", "2", "4", "6", "7", "8", "9"]
@@ -723,7 +801,7 @@
 							{
                                 "name" : "uos20",
                                 "description" : "UOS 20",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/Sekiro",
@@ -743,7 +821,7 @@
                             {
                                 "name" : "kylin4.0",
                                 "description" : "银河麒麟 4.x/银河麒麟 10.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu16.04/home/wangxu/Sekiro",
@@ -757,7 +835,7 @@
 							{
                                 "name" : "uos20",
                                 "description" : "UOS 20",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu18.04/home/wangxu/Sekiro",
@@ -777,7 +855,7 @@
                             {
                                 "name" : "kylin4.0",
                                 "description" : "银河麒麟 4.x/银河麒麟 10.x",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/debian9_mips64el/home/wangxu/Sekiro",
@@ -791,7 +869,7 @@
 							{
                                 "name" : "uos20",
                                 "description" : "UOS 20",
-                                "server_address" : "192.168.12.200",
+                                "server_address" : "10.17.17.19",
                                 "username" : "wangxu",
                                 "password" : "centerm",
                                 "codepath" : "/home/wangxu/workdir/debian10_mips64el/home/wangxu/Sekiro",

@@ -13,6 +13,21 @@
                 "beta" : false
             },
 			{ 
+                "name" : "威讯云协议 8.5修复版(8.5.0.3)",
+                "url"  : "http://10.17.17.16:8080/output/public/stable/v8.5.0.3/",
+                "beta" : false
+            },
+			{ 
+                "name" : "威讯云协议 8.5正式版(8.5.0.2)",
+                "url"  : "http://10.17.17.16:8080/output/public/stable/v8.5.0.2/",
+                "beta" : false
+            },
+			{ 
+                "name" : "威讯云协议 8.1正式版",
+                "url"  : "http://10.17.17.16:8080/output/public/stable/v8.1.0.3/",
+                "beta" : false
+            },
+			{ 
                 "name" : "威讯云协议 8.0正式版",
                 "url"  : "http://10.17.17.16:8080/output/public/stable/v8.0.0.3/",
                 "beta" : false
@@ -35,16 +50,6 @@
             { 
                 "name" : "威讯云企业版 6.5 配套协议版本",
                 "url"  : "http://10.17.17.16:8080/output/public/stable/v6.5.0.53/",
-                "beta" : false
-            },
-			{ 
-                "name" : "威讯云协议 7.0正式版",
-                "url" : "http://10.17.17.16:8080/output/public/stable/v7.0.0.8/",
-                "beta" : false
-            },
-            { 
-                "name" : "威讯云协议 6.5正式版",
-                "url" : "http://10.17.17.16:8080/output/public/stable/v6.5.0.13/",
                 "beta" : false
             }
         ]

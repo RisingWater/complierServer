@@ -178,5 +178,35 @@
             "sep": false,
             "weixunclient": false
         }
+    },
+    {
+        "userid": "5a466170-9e10-11ec-9dd9-8f4073a96ff2",
+        "username": "xuzhaojue@centerm.com",
+        "password": "As1212021",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "b6d082f0-cd0d-11ec-a94b-3f23bcfc4665",
+        "username": "xueguangwei@centerm.com",
+        "password": "123456",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "9644e240-dcb9-11ec-a94b-3f23bcfc4665",
+        "username": "zhuoqihua@centerm.com",
+        "password": "Zqh619304288",
+        "isAdmin": true,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
     }
 ]

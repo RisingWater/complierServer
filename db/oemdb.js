@@ -33,5 +33,19 @@
         "product": "",
         "copyright": "",
         "icon": ""
+    },
+    {
+        "oemid": "0a34e870-7ce4-11ec-9dd9-8f4073a96ff2",
+        "vendor": "qianxin",
+        "product": "CloudClient",
+        "copyright": "",
+        "icon": "./upload/072844b0-7ce4-11ec-9dd9-8f4073a96ff2.png"
+    },
+    {
+        "oemid": "eadf4b90-f84f-11ec-a94b-3f23bcfc4665",
+        "vendor": "JD",
+        "product": "JDCloudPC",
+        "copyright": "",
+        "icon": "./upload/e9d4b960-f84f-11ec-a94b-3f23bcfc4665.png"
     }
 ]
