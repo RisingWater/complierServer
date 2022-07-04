@@ -1,5 +1,6 @@
 const adodb = require('node-adodb');
 var fs=require('fs');
+var iconv=require('iconv-lite')
 
 const connection = adodb.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\web\\App_Data\\compliermission.mdb');
 //const connection = adodb.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\code\\complierServer\\db\\compliermission.mdb');
@@ -129,14 +130,17 @@ function addmission(req, res, solution) {
     fs.writeFileSync(tmp_path + mission_req + "\\" + readme_filename, req.body.filedata_readme);
 
     if (solution) {
-        fs.writeFileSync(tmp_path + mission_req + "\\" + define_sep_filename, req.body.filedata_define_sep);
-        fs.writeFileSync(tmp_path + mission_req + "\\" + define_ivy_filename, req.body.filedata_define_ivy);
+		var define_sep = iconv.encode(req.body.filedata_define_sep, "gb2312");
+        fs.writeFileSync(tmp_path + mission_req + "\\" + define_sep_filename, define_sep);
+		var define_ivy =iconv.encode(req.body.filedata_define_ivy, "gb2312");
+        fs.writeFileSync(tmp_path + mission_req + "\\" + define_ivy_filename, define_ivy);
 		if (req.body.filedata_linuxbuild != "no_oem")
 		{
 			fs.writeFileSync(tmp_path + mission_req + "\\oem.info", req.body.filedata_linuxbuild);
 		}
     } else {
-        fs.writeFileSync(tmp_path + mission_req + "\\" + define_filename, req.body.filedata_define);
+		var define = iconv.decode(req.body.filedata_define, "gb2312");
+        fs.writeFileSync(tmp_path + mission_req + "\\" + define_filename, define);
     }
     fs.writeFileSync(tmp_path + mission_req + "\\" + include_filename, req.body.filedata_include);
 	
