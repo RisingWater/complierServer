@@ -2,6 +2,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Descriptions, Collapse, Button, Input, Tag, Avatar } from 'antd';
 import { ComplierOptionTag } from './complierOptionTag.js'
+import { ComponentsTag } from './componentsTag.js'
 import $ from 'jquery';
 
 export class SolutionMissionCheckContent extends React.Component {
@@ -16,9 +17,13 @@ export class SolutionMissionCheckContent extends React.Component {
             complier_option : 0,
             protocols : 0,
             modules : 0,
+            components : 0,
             mission_includes : "",
             mission_defines : "",
-            mission_script : ""
+            mission_script : "",
+            include_define : "",
+            sep_define : "",
+            weixun_define : ""
         };
     }
     
@@ -38,7 +43,7 @@ export class SolutionMissionCheckContent extends React.Component {
     }
 
     InitWithplatform(dataSource) {
-        if (this.props.complier_option.platform_values[0] != 'Windows') {
+        if ( (this.props.complier_option.platform_values[0] != 'Windows') && (this.props.complier_option.platform_values[0] != 'FiberhomeWindows') ) {
             var node = dataSource;
 
             node.some(item => {
@@ -85,16 +90,31 @@ export class SolutionMissionCheckContent extends React.Component {
         var complier_option = this.BitmapArrayToInt(this.props.complier_option.complier_option);
         var protocols = this.BitmapArrayToInt(this.props.complier_module.protocols);
         var modules = this.BitmapArrayToInt(this.props.complier_module.modules);
+        var components = this.BitmapArrayToInt(this.props.complier_module.components);
+
+        if ((components & 16) == 0) {
+            complier_option |= 16;
+        }
 
         console.log("complier_option: " + complier_option);
         console.log("protocols: " + protocols);
         console.log("modules: " + modules);
+        console.log("components: " + components);
 
         this.setState({
             complier_option : complier_option,
             protocols : protocols,
             modules : modules,
+            components : components,
+        }, () => {
+			this.setState({
+			    include_define : this.GetIncludeDefineString(),
+			    sep_define : this.GetSEPServerdefineString(),
+			    weixun_define : this.GetWeixunServerdefineString()
         })
+		})
+
+
     }
 
     BitmapArrayToInt(array) {
@@ -360,6 +380,15 @@ export class SolutionMissionCheckContent extends React.Component {
 		}
     }
 
+    GetCCMPack()
+    {
+        if ((this.state.components & 16) != 0) {
+            return "1";
+        } else {
+            return "0";
+        }
+    }
+
     GetWeixunServerdefineString()
     {
         if (!this.state.isWindows) {
@@ -405,6 +434,7 @@ export class SolutionMissionCheckContent extends React.Component {
             + "#define APP_SHORTCUT_NAME_CN  \"威讯云应用\"\r\n"
             + "#define SHORTCUT_NAME_EN      \"ViClient\"\r\n"
             + "#define APP_SHORTCUT_NAME_EN  \"ViClientApp\"\r\n"
+            + "#define PACK_CCM " + this.GetCCMPack() + "\r\n"
 			+ "\r\n");
 		}
 		else
@@ -446,6 +476,7 @@ export class SolutionMissionCheckContent extends React.Component {
             + "#define APP_SHORTCUT_NAME_CN  \"" + this.props.oem_option.product_name + "App\"\r\n"
             + "#define SHORTCUT_NAME_EN      \"" + this.props.oem_option.product_name + "Client\"\r\n"
             + "#define APP_SHORTCUT_NAME_EN  \"" + this.props.oem_option.product_name + "App\"\r\n"
+            + "#define PACK_CCM " + this.GetCCMPack() + "\r\n"
 			+ "\r\n")		
 		}
     }
@@ -493,23 +524,40 @@ export class SolutionMissionCheckContent extends React.Component {
 			}
         }
     }
+    
+ onSEPDefineChange(e) {
+        this.setState({
+            sep_define : e.target.value
+        });
+    }
 
+    onIncludeChange(e) {
+        this.setState({
+            include_define : e.target.value
+        });
+    }
+
+    onWeixunDefineChange(e) {
+        this.setState({
+            weixun_define : e.target.value
+        });
+    }
     getCollapse() {
         return (
             <Collapse>
                 <Collapse.Panel header="生成的SEP头文件" key="1">
-                    <Input.TextArea readonly="true" style={{height: 200}}>
-                        {this.GetIncludeDefineString()}
+                    <Input.TextArea style={{height: 200}} onChange={this.onIncludeChange.bind(this)}>
+                        {this.state.include_define}
                     </Input.TextArea>
                 </Collapse.Panel>
                 <Collapse.Panel header="生成的SEP定义文件" key="2">
-                    <Input.TextArea readonly="true" style={{height: 300}}>
-                        {this.GetSEPServerdefineString()}
+                    <Input.TextArea style={{height: 300}} onChange={this.onSEPDefineChange.bind(this)}>
+                        {this.state.sep_define}
                     </Input.TextArea>
                 </Collapse.Panel>
                 <Collapse.Panel header="生成的Weixun定义文件" key="3">
-                    <Input.TextArea readonly="true" style={{height: 300}}>
-                        {this.GetWeixunServerdefineString()}
+                    <Input.TextArea style={{height: 300}} onChange={this.onWeixunDefineChange.bind(this)}>
+                        {this.state.weixun_define}
                     </Input.TextArea>
                 </Collapse.Panel>
             </Collapse>
@@ -541,9 +589,9 @@ export class SolutionMissionCheckContent extends React.Component {
             password : password,
             script : complier_option.platform_node.script,
             filedata_readme : "",
-            filedata_define_sep : this.GetSEPServerdefineString(),
-            filedata_define_ivy : this.GetWeixunServerdefineString(),
-            filedata_include : this.GetIncludeDefineString(),
+            filedata_define_sep : this.state.sep_define,
+            filedata_define_ivy : this.state.weixun_define,
+            filedata_include : this.state.include_define,
             filedata_linuxbuild : this.GetLinuxBuildString(),
         })
 
@@ -577,6 +625,7 @@ export class SolutionMissionCheckContent extends React.Component {
                         <Descriptions.Item label="SVN版本号">{complier_option.svn_version}</Descriptions.Item>
 
                         <Descriptions.Item label="编译选项" span={3}>{<ComplierOptionTag option={this.state.complier_option}/>}</Descriptions.Item>
+                        <Descriptions.Item label="组件选项" span={3}>{<ComponentsTag option={this.state.components}/>}</Descriptions.Item>
                         
                         <Descriptions.Item label="是否位OEM版本">{oem_option.oem_enable ? <Tag color="red">是</Tag> : <Tag color="blue">否</Tag>}</Descriptions.Item>
                         <Descriptions.Item label="OEM图标" span={2}><Avatar shape="square" size={32} src={oem_option.oem_enable ? oem_option.icon : "./image/weixunclient.png"} /></Descriptions.Item>

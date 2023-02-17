@@ -66,7 +66,7 @@ export class SolutionComplierOptionFormTemplate extends React.Component {
 
         this.setState({platform_node : node});
 
-        if (node.name == "Windows") {
+        if (node.name == "Windows" || node.name == "FiberhomeWindows") {
             this.setState({ isWindows : true})
             this.props.form.setFieldsValue({
                 complier_option : ["0", "1", "2", "3"]
@@ -92,7 +92,7 @@ export class SolutionComplierOptionFormTemplate extends React.Component {
         this.RefreshSvn(false);
         this.setState({ platform_node : this.props.mission_complier_option.platform_node });
         if (this.props.mission_complier_option.platform_values.length > 0) {
-            this.setState({ isWindows : this.props.mission_complier_option.platform_values[0] == 'Windows' });
+            this.setState({ isWindows : this.props.mission_complier_option.platform_values[0] == 'Windows'  || this.props.mission_complier_option.platform_values[0] == 'FiberhomeWindows' });
         }
     }
 

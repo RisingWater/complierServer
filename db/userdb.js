@@ -163,7 +163,7 @@
         "userid": "fb59cec0-f367-11eb-9c87-3fef9c02d2d1",
         "username": "179920108@qq.com",
         "password": "Zjw0718$",
-        "isAdmin": false,
+        "isAdmin": true,
         "subscribe": {
             "sep": false,
             "weixunclient": false
@@ -204,6 +204,16 @@
         "username": "zhuoqihua@centerm.com",
         "password": "Zqh619304288",
         "isAdmin": true,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
+    },
+    {
+        "userid": "ba5254f0-21f7-11ed-b001-598994bbfe1f",
+        "username": "chenhaolin.daas@centerm.com",
+        "password": "Memeda463",
+        "isAdmin": false,
         "subscribe": {
             "sep": false,
             "weixunclient": false

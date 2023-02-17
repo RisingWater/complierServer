@@ -48,6 +48,19 @@ export class SEPComplierModuleFormTemplate extends React.Component {
             }
         });
     };
+	
+	onLicenseOptionChange(value) {
+        console.log(value);
+		if(value == 2)
+		{
+			this.setState({ license_time_enable :true })
+		}
+		else
+		{
+			this.setState({ license_time_enable :false })
+		}
+       
+    }
 
     componentDidMount() {
         this.RefreshDataSource();
@@ -189,12 +202,25 @@ export class SEPComplierModuleFormTemplate extends React.Component {
                 <Divider orientation="left"><Typography.Title level={4}>授权选项</Typography.Title></Divider>
                 <Form.Item>
                     {getFieldDecorator('license_option') (
-                        <Radio.Group buttonStyle="solid" defaultValue={0}>  
+                        <Radio.Group buttonStyle="solid" defaultValue={0} onChange={this.onLicenseOptionChange.bind(this)}>  
                             <Radio.Button value={0} disabled={this.state.disable_all_module}>无授权</Radio.Button>
                             <Radio.Button value={1} disabled={this.state.disable_all_module}>永久授权</Radio.Button>
-                            <Radio.Button value={2} disabled={this.state.disable_all_module}>48小时缓存授权</Radio.Button>
+                            <Radio.Button value={2} disabled={this.state.disable_all_module}>缓存授权</Radio.Button>
                         </Radio.Group>
+						
                     )}
+				</Form.Item>
+				<Form.Item>	
+					{getFieldDecorator(
+                        'license_time',
+                        {rules: [{ required: false, message: '请输入缓存天数' }]})
+                        (<Input 
+							disabled={!this.state.license_time_enable}
+                            addonBefore="缓存时间" 
+                            style={{width: 250}}
+                            placeholder="请输入缓存天数"/>)
+                    }
+					
                 </Form.Item>
                 <Divider orientation="left"><Typography.Title level={4}>备注</Typography.Title></Divider>
                 <Form.Item>

@@ -135,6 +135,7 @@ export class SepForm extends React.Component {
                 packages : package_array,
                 packages_enable : this.state.mission_complier_module.packages_enable,
                 license_option : values.license_option,
+				license_time : values.license_time,
                 readme : values.readme,
             }
         })
@@ -250,6 +251,9 @@ export class SepForm extends React.Component {
                     }),
                     license_option: Form.createFormField({
                         value: props.mission_complier_module.license_option,
+                    }),
+					license_time: Form.createFormField({
+                        value: props.mission_complier_module.license_time,
                     }),
                     readme: Form.createFormField({
                         value: props.mission_complier_module.readme,

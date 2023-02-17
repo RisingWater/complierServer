@@ -146,7 +146,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "default_module" : ["0", "2", "4", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
                                 "default_packages" : []
@@ -165,7 +165,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "default_module" : ["0", "2", "4", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
                                 "default_packages" : []
@@ -184,7 +184,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : false,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "default_module" : ["0", "2", "4", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : ["0"],
                                 "default_packages" : []
@@ -203,7 +203,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "default_module" : ["0", "2", "4", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
                                 "default_packages" : []
@@ -228,7 +228,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "default_module" : ["0", "2", "4", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
                                 "default_packages" : []
@@ -247,7 +247,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "default_module" : ["0", "2", "4", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
                                 "default_packages" : []
@@ -266,7 +266,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "default_module" : ["0", "2", "4", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : [],
                                 "default_packages" : ["0"]
@@ -291,7 +291,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "2", "6", "7", "8", "9"],
+                                "default_module" : ["0", "2", "4", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
@@ -310,7 +310,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "6", "7", "8", "9"],
+                                "default_module" : ["0", "4", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
@@ -329,7 +329,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "6", "7", "8", "9"],
+                                "default_module" : ["0", "4", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
@@ -354,7 +354,7 @@
                                 "default_protocol" : ["0", "1", "2", "3", "4"],
                                 "module_config" : true,
                                 "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
-                                "default_module" : ["0", "6", "7", "8", "9"],
+                                "default_module" : ["0", "4", "6", "7", "8", "9"],
                                 "packages_config" : true,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
@@ -713,6 +713,26 @@
                                 "default_packages" : ["1"]
                             }
                         ]
+                    },
+					{
+                        "name" : "kyrin990",
+                        "description" : "Arm 64指令集(麒麟990)",
+                        "children" : [
+							{
+                                "name" : "ubuntu18.04",
+                                "description" : "ubuntu 18.04/UOS 20/深度 15.x",
+                                "server_address" : "10.17.17.19",
+                                "username" : "wangxu",
+                                "password" : "centerm",
+                                "codepath" : "/home/wangxu/workdir/chroot_aarch64_ubuntu18.04/home/wangxu/Pikachu",
+                                "script" : "F:\\output\\tmp\\automake_linux.bat",
+                                "param" : "-national -arch aarch64 -os ubuntu18.04 -cpu kirin990 -rootdir /home/wangxu/workdir/chroot_aarch64_ubuntu18.04 -codedir /home/wangxu/Pikachu",
+                                "protocol_config" : false,
+                                "packages_config" : true,
+                                "enable_packages" : ["0", "1"],
+                                "default_packages" : []
+                            }
+                        ]
                     }
                 ]
             },
@@ -778,6 +798,18 @@
                 "description" : "Windows操作系统",
                 "codepath" : "",
                 "script" : "F:\\output\\tmp\\automake_IVY_SEP.bat",
+                "protocol_config" : true,
+                "enable_protocol" : [],
+                "default_protocol" : ["2", "3", "4"],
+                "module_config" : true,
+                "enable_module" : ["0", "1", "2", "4", "6", "7", "8"],
+                "default_module" : ["0", "1", "2", "4", "6", "7", "8", "9"]
+            },
+			{
+                "name" : "FiberhomeWindows",
+                "description" : "烽火版本Windows",
+                "codepath" : "",
+                "script" : "F:\\output\\tmp\\automake_IVY_SEP_fiberhome.bat",
                 "protocol_config" : true,
                 "enable_protocol" : [],
                 "default_protocol" : ["2", "3", "4"],

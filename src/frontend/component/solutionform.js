@@ -41,6 +41,7 @@ export class SolutionForm extends React.Component {
                 protocols_enable : [],
                 modules : [],
                 modules_enable : [],
+                components : [],
                 readme : ""
             },
             
@@ -51,7 +52,9 @@ export class SolutionForm extends React.Component {
                 product_name : "",
                 copyright : "",
                 icon : "",
-            }
+            },
+
+            mission_default_components : [ "0", "1", "2", "3", "4" ]
         };
     }
     
@@ -68,6 +71,7 @@ export class SolutionForm extends React.Component {
         var protocols_enable = [];
         var modules = this.state.mission_complier_module.modules;
         var modules_enable = [];
+        var components = this.state.mission_complier_module.components;
 
         if (node.protocol_config) {
             protocols = node.default_protocol;
@@ -84,6 +88,7 @@ export class SolutionForm extends React.Component {
             protocols_enable : protocols_enable,
             modules : modules,
             modules_enable : modules_enable,
+            components : this.state.mission_default_components,
             readme :  this.state.mission_complier_module.readme,
         }
 
@@ -104,6 +109,7 @@ export class SolutionForm extends React.Component {
                 protocols_enable : protocols_enable,
                 modules : modules,
                 modules_enable : modules_enable,
+                components : this.state.mission_default_components,
                 readme :  this.state.mission_complier_module.readme,
             }
         })
@@ -121,6 +127,7 @@ export class SolutionForm extends React.Component {
                 protocols_enable : this.state.mission_complier_module.protocols_enable,
                 modules : values.modules,
                 modules_enable : this.state.mission_complier_module.modules_enable,
+                components : values.components,
                 readme : values.readme,
             }
         })
@@ -230,6 +237,9 @@ export class SolutionForm extends React.Component {
                     }),
                     modules: Form.createFormField({
                         value: props.mission_complier_module.modules,
+                    }),
+                    components: Form.createFormField({
+                        value: props.mission_complier_module.components,
                     }),
                     readme: Form.createFormField({
                         value: props.mission_complier_module.readme,

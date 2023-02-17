@@ -13,6 +13,16 @@
                 "beta" : false
             },
 			{ 
+                "name" : "威讯云协议 9.0 (9.0.0.2)",
+                "url"  : "http://10.17.17.16:8080/output/public/stable/v9.0.0.2/",
+                "beta" : false
+            },
+			{ 
+                "name" : "威讯云协议 8.5 7月版本(8.5.0.30)",
+                "url"  : "http://10.17.17.16:8080/output/public/stable/v8.5.0.30/",
+                "beta" : false
+            },
+			{ 
                 "name" : "威讯云协议 8.5修复版(8.5.0.3)",
                 "url"  : "http://10.17.17.16:8080/output/public/stable/v8.5.0.3/",
                 "beta" : false

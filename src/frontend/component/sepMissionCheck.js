@@ -303,10 +303,12 @@ export class SEPMissionCheckContent extends React.Component {
         }
 
         var licenseOptionStr = "";
+		var licenseOptionTempTimeStr = "";
         if (this.props.complier_module.license_option == 1) {
             licenseOptionStr = "#define CLIENT_LICENSE\r\n";
         } else if (this.props.complier_module.license_option == 2) {
             licenseOptionStr = "#define TEMP_LICENSE\r\n"
+			licenseOptionTempTimeStr = "#define TEMP_LICENSE_TIME " + this.props.complier_module.license_time + "ULL\r\n"
         }
        
         var usbproxyString = "#define USBPROXY\r\n";
@@ -315,6 +317,7 @@ export class SEPMissionCheckContent extends React.Component {
              + "#ifndef __COMPILER_DEFINE_H__\r\n"
              + "#define __COMPILER_DEFINE_H__\r\n\r\n"
              + licenseOptionStr
+			 + licenseOptionTempTimeStr
              + usbproxyString
              + "\r\n"
              + "#endif\r\n\r\n";

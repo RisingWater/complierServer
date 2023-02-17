@@ -9,6 +9,7 @@ export class SolutionComplierModuleFormTemplate extends React.Component {
         this.state = {
             protocols : [],
             modules : [],
+            components : [],
         };
     }
 
@@ -19,7 +20,7 @@ export class SolutionComplierModuleFormTemplate extends React.Component {
             contentType: "application/json",
             success: (data, status) => {
                 if (status == "success") {
-                    this.setState({ protocols : data.protocols, modules : data.modules });
+                    this.setState({ protocols : data.protocols, modules : data.modules, components : data.components });
                 }
             }
         });
@@ -63,6 +64,16 @@ export class SolutionComplierModuleFormTemplate extends React.Component {
         return disabled;
     }
 
+    getComponentDisabled(value) {
+        var disable = false;
+        if (value == "0" || value == "1" || value == "2" || value == "3")
+        {
+            disable = true;
+        }
+
+        return disable;
+    }
+
     render () {
         const { getFieldDecorator } = this.props.form;
         var component = (
@@ -86,6 +97,18 @@ export class SolutionComplierModuleFormTemplate extends React.Component {
                             {
                                 this.state.modules.map((element) => {
                                     return (<Checkbox value={element.value} disabled={this.getModuleDisabled(element.value)}>{element.name}</Checkbox>)
+                                })
+                            }
+                        </Checkbox.Group>
+                    )}
+                </Form.Item>
+                <Divider orientation="left"><Typography.Title level={4}>安装组件</Typography.Title></Divider>
+                <Form.Item>
+                    {getFieldDecorator('components') (
+                        <Checkbox.Group>
+                            {
+                                this.state.components.map((element) => {
+                                    return (<Checkbox value={element.value} disabled={this.getComponentDisabled(element.value)}>{element.name}</Checkbox>)
                                 })
                             }
                         </Checkbox.Group>

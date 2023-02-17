@@ -63,8 +63,8 @@ app.get('/svn', function (req, res) {
 app.get('/', function (req, res) {
     res.redirect("complierServer.html");
 })
- 
-var server = app.listen(80, function () {
+
+var server = app.listen(8009, function () {
     var port = server.address().port;
     console.log("Complier Server start listening at %s", port);
 });

@@ -11,6 +11,7 @@ const bin_path = "F:\\output\\bin\\";
 
 const readme_filename = "Readme.txt";
 const define_filename = "serverdefine.iss";
+const define_filename1 = "serverdefine1.iss";
 const include_filename = "ComplierDefine.h";
 const linuxbuild_filename = "linux_build.sh";
 const define_sep_filename = "serverdefine_SEP.iss"
@@ -139,7 +140,7 @@ function addmission(req, res, solution) {
 			fs.writeFileSync(tmp_path + mission_req + "\\oem.info", req.body.filedata_linuxbuild);
 		}
     } else {
-		var define = iconv.decode(req.body.filedata_define, "gb2312");
+		var define = iconv.encode(req.body.filedata_define, "gb2312");
         fs.writeFileSync(tmp_path + mission_req + "\\" + define_filename, define);
     }
     fs.writeFileSync(tmp_path + mission_req + "\\" + include_filename, req.body.filedata_include);
