@@ -7,7 +7,7 @@ export class ComplierOptionTag extends React.Component {
         if ((option & 1) != 0) {
             return (<Tag color="volcano">清理工程</Tag>);
         } else {
-            return (<div></div>);
+            return;
         }
     }
 
@@ -15,7 +15,7 @@ export class ComplierOptionTag extends React.Component {
         if ((option & 2) != 0) {
             return (<Tag color="blue">编译程序</Tag>);
         } else {
-            return (<div></div>);
+            return;
         }
     }
     
@@ -23,7 +23,7 @@ export class ComplierOptionTag extends React.Component {
         if ((option & 4) != 0) {
             return (<Tag color="cyan">编译驱动</Tag>);
         } else {
-            return (<div></div>);
+            return;
         }
     }
 
@@ -31,7 +31,7 @@ export class ComplierOptionTag extends React.Component {
         if ((option & 8) != 0) {
             return (<Tag color="purple">打包</Tag>);
         } else {
-            return (<div></div>);
+            return;
         }
     }
 
@@ -39,7 +39,7 @@ export class ComplierOptionTag extends React.Component {
         if ((option & 16) != 0) {
             return (<Tag color="magenta">无CCM</Tag>);
         } else {
-            return (<div></div>);
+            return;
         }
     }
 

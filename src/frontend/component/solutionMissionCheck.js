@@ -472,8 +472,8 @@ export class SolutionMissionCheckContent extends React.Component {
             + "#define AD_OPTION\t\t\t\t0\r\n"
             + "#define WATERMARK_OPTION\t\t\t\t0\r\n" 
             + "\r\n"
-			+ "#define SHORTCUT_NAME_CN      \"" + this.props.oem_option.product_name + "Client\"\r\n"
-            + "#define APP_SHORTCUT_NAME_CN  \"" + this.props.oem_option.product_name + "App\"\r\n"
+			+ "#define SHORTCUT_NAME_CN      \"" + this.props.oem_option.desktop_name + "\"\r\n"
+            + "#define APP_SHORTCUT_NAME_CN  \"" + this.props.oem_option.app_name + "\"\r\n"
             + "#define SHORTCUT_NAME_EN      \"" + this.props.oem_option.product_name + "Client\"\r\n"
             + "#define APP_SHORTCUT_NAME_EN  \"" + this.props.oem_option.product_name + "App\"\r\n"
             + "#define PACK_CCM " + this.GetCCMPack() + "\r\n"
@@ -608,6 +608,25 @@ export class SolutionMissionCheckContent extends React.Component {
             }
         });
     }
+	
+	getBgImage(oem_option)
+	{
+		if (oem_option.oem_enable == true && oem_option.bgimage != "")
+		{
+			return (
+				<div>
+					<img width="320px" height="180px" src={oem_option.bgimage} />
+				</div>
+			)
+		}
+		else
+		{
+			return
+			(
+				<div>无</div>
+			)
+		}
+	}
 
     render() {
         const {complier_option, complier_module, oem_option} = this.props;
@@ -633,6 +652,12 @@ export class SolutionMissionCheckContent extends React.Component {
                         <Descriptions.Item label="OEM厂家名称">{oem_option.oem_enable ? oem_option.vendor_name : "Centerm"}</Descriptions.Item>
                         <Descriptions.Item label="OEM产品名称">{oem_option.oem_enable ? oem_option.product_name : "WeixunClient"}</Descriptions.Item>
                         <Descriptions.Item label="OEM版权信息">{oem_option.oem_enable ? oem_option.copyright : "Fujian Centerm Information Co., Ltd."}</Descriptions.Item>
+						
+						<Descriptions.Item label="OEM云桌面名称">{oem_option.oem_enable ? oem_option.desktop_name : "威讯云桌面"}</Descriptions.Item>
+                        <Descriptions.Item label="OEM云应用名称">{oem_option.oem_enable ? oem_option.app_name : "威讯云应用"}</Descriptions.Item>
+                        <Descriptions.Item label="OEM融易云信息">{oem_option.oem_enable ? oem_option.ryypc_name : "融易云PC版"}</Descriptions.Item>
+						
+						<Descriptions.Item label="OEM应用背景图片" span={3}>{this.getBgImage(oem_option)}</Descriptions.Item>
 
                         <Descriptions.Item label="编译脚本" span={3}>{complier_option.platform_node.script}</Descriptions.Item>
                         <Descriptions.Item label="备注" span={3}>{complier_module.readme}</Descriptions.Item>

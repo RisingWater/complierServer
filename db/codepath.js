@@ -433,6 +433,7 @@
                 "script" : "F:\\output\\tmp\\automake_Ivy.bat",
                 "protocol_config" : false,
                 "packages_config" : true,
+				"module_config" : false,
                 "enable_packages" : [],
                 "default_packages" : ["0", "1"]
             },
@@ -455,6 +456,7 @@
                                 "param" : "",
                                 "protocol_config" : false,
                                 "packages_config" : true,
+								"module_config" : false,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
                             },
@@ -469,6 +471,7 @@
                                 "param" : "-PKUNITY",
                                 "protocol_config" : false,
                                 "packages_config" : true,
+								"module_config" : false,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
                             }
@@ -489,6 +492,7 @@
                                 "param" : "-C91",
                                 "protocol_config" : false,
                                 "packages_config" : true,
+								"module_config" : false,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
                             },
@@ -503,6 +507,7 @@
                                 "param" : "-C10V3",
                                 "protocol_config" : false,
                                 "packages_config" : true,
+								"module_config" : false,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
                             },
@@ -517,6 +522,7 @@
                                 "param" : "-C10V3 -C16",
                                 "protocol_config" : false,
                                 "packages_config" : true,
+								"module_config" : false,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
                             }
@@ -538,7 +544,8 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
-                                "default_packages" : []
+                                "default_packages" : [],
+								"module_config" : false
                             },
 							{
                                 "name" : "ubuntu18.04",
@@ -552,7 +559,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
-                                "default_packages" : []
+                                "default_packages" : [],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []
                             },
 							{
                                 "name" : "el8",
@@ -566,7 +576,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : ["0"],
-                                "default_packages" : []
+                                "default_packages" : [],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []
                             },
                             {
                                 "name" : "ubuntu16.04",
@@ -580,7 +593,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
-                                "default_packages" : []
+                                "default_packages" : [],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []
                             },
                             {
                                 "name" : "nd7.0",
@@ -594,7 +610,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
-                                "default_packages" : []
+                                "default_packages" : [],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []
                             }
                         ]
                     },
@@ -614,7 +633,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
-                                "default_packages" : []
+                                "default_packages" : [],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []								
                             },
 							{
                                 "name" : "ubuntu18.04",
@@ -628,7 +650,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
-                                "default_packages" : []
+                                "default_packages" : [],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []								
                             },
                             {
                                 "name" : "nd7.0",
@@ -642,7 +667,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : [],
-                                "default_packages" : ["0"]
+                                "default_packages" : ["0"],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []
                             }
                         ]
                     },
@@ -662,7 +690,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : [],
-                                "default_packages" : ["1"]
+                                "default_packages" : ["1"],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []
                             },
 							{
                                 "name" : "ubuntu16.04",
@@ -676,7 +707,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : [],
-                                "default_packages" : ["1"]
+                                "default_packages" : ["1"],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []
                             },
 							{
                                 "name" : "ubuntu18.04",
@@ -690,7 +724,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : [],
-                                "default_packages" : ["1"]
+                                "default_packages" : ["1"],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []
                             }
                         ]
                     },
@@ -710,7 +747,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : [],
-                                "default_packages" : ["1"]
+                                "default_packages" : ["1"],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []
                             }
                         ]
                     },
@@ -730,7 +770,10 @@
                                 "protocol_config" : false,
                                 "packages_config" : true,
                                 "enable_packages" : ["0", "1"],
-                                "default_packages" : []
+                                "default_packages" : [],
+								"module_config" : true,
+								"enable_module" : ["0", "1"],
+								"default_module" : []
                             }
                         ]
                     }
@@ -755,6 +798,7 @@
                                 "param" : "-Android_ARM",
                                 "protocol_config" : false,
                                 "packages_config" : true,
+								"module_config" : false,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
                             }
@@ -781,6 +825,7 @@
                                 "param" : "-MACOS",
                                 "protocol_config" : false,
                                 "packages_config" : true,
+								"module_config" : false,
                                 "enable_packages" : [],
                                 "default_packages" : ["1"]
                             }

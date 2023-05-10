@@ -185,28 +185,57 @@ export class WeixunClientMissionCheckContent  extends React.Component {
             Option += " -forserver";
         } else {
             Option += "  -noAd -defaultCT 1 -defaultPT 0 -titlebar";
+			
+		    if (this.props.complier_module.modules.indexOf("0") > -1) {
+				Option += " -hide_desktop";
+			}
+			
+			if (this.props.complier_module.modules.indexOf("1") > -1) {
+				Option += " -hide_app";
+			}
         }
 		
 		if(this.props.oem_option.oem_enable)
 		{
 			Option += " -oem";
-			if(this.props.oem_option.vendor_name != "")
+			if (this.props.oem_option.vendor_name != "")
 			{
 				Option += " -oem_vendor " + this.props.oem_option.vendor_name;
 			}
 			
-			if(this.props.oem_option.product_name != "")
+			if (this.props.oem_option.product_name != "")
 			{
 				Option += " -oem_product " + this.props.oem_option.product_name;
 			}
 			
-			if(this.props.oem_option.copyright != "")
+			if (this.props.oem_option.desktop_name != "")
+			{
+				Option += " -oem_desktop_name " + this.props.oem_option.desktop_name;
+			}
+			
+			if (this.props.oem_option.app_name != "")
+			{
+				Option += " -oem_app_name " + this.props.oem_option.app_name;
+			}
+			
+			if (this.props.oem_option.ryypc_name != "")
+			{
+				Option += " -oem_ryypc_name " + this.props.oem_option.ryypc_name;
+			}
+			
+			if (this.props.oem_option.copyright != "")
 			{
 				Option += " -oem_copyright " + this.props.oem_option.copyright;
 			}
-			if(this.props.oem_option.icon != "")
+			
+			if (this.props.oem_option.icon != "")
 			{
 				Option += " -oem_logo http://10.17.17.16/" + this.props.oem_option.icon;
+			}
+						
+			if (this.props.oem_option.bgimage != "")
+			{
+				Option += " -oem_bgimage http://10.17.17.16/" + this.props.oem_option.bgimage;
 			}
 			
 		}
@@ -367,7 +396,7 @@ export class WeixunClientMissionCheckContent  extends React.Component {
         }
     }
 
-    getModuleTag(packages) {
+    getPackageTag(packages) {
         return (
             packages.map((element) => {
                 console.log(element);
@@ -375,6 +404,20 @@ export class WeixunClientMissionCheckContent  extends React.Component {
                     return (<Tag color="blue">服务端</Tag>);
                 } else if (element == "1") {
                     return (<Tag color="green">客户端</Tag>);
+                }
+            })
+        )
+    }
+	
+	getModuleTag(modules) {
+		console.log(modules);
+        return (
+            modules.map((element) => {
+                console.log(element);
+                if (element == "0") {
+                    return (<Tag color="blue">隐藏云桌面图标</Tag>);
+                } else if (element == "1") {
+                    return (<Tag color="green">隐藏云应用图标</Tag>);
                 }
             })
         )
@@ -447,6 +490,25 @@ export class WeixunClientMissionCheckContent  extends React.Component {
             }
         });
     }
+	
+	getBgImage(oem_option)
+	{
+		if (oem_option.oem_enable == true && oem_option.bgimage != "")
+		{
+			return (
+				<div>
+					<img width="320px" height="180px" src={oem_option.bgimage} />
+				</div>
+			)
+		}
+		else
+		{
+			return
+			(
+				<div>无</div>
+			)
+		}
+	}
 
     render() {
         const {complier_option, complier_module, oem_option} = this.props;
@@ -455,7 +517,7 @@ export class WeixunClientMissionCheckContent  extends React.Component {
         if (complier_module.packages.indexOf("0") > -1) {
             forserver = true;
         }
-
+		
         return (
             <div>
                 <div className="mission_from">
@@ -467,8 +529,9 @@ export class WeixunClientMissionCheckContent  extends React.Component {
                         <Descriptions.Item label="SVN版本号">{complier_option.svn_version}</Descriptions.Item>
                         <Descriptions.Item label="编译版本号" span={2}>{complier_option.version}</Descriptions.Item>
 
-                        <Descriptions.Item label="安装包类型">{this.getModuleTag(complier_module.packages)}</Descriptions.Item>
-                        <Descriptions.Item label="编译选项" span={2}>{<ComplierOptionTag option={this.state.complier_option}/>}</Descriptions.Item>
+                        <Descriptions.Item label="安装包类型">{this.getPackageTag(complier_module.packages)}</Descriptions.Item>
+                        <Descriptions.Item label="编译选项">{<ComplierOptionTag option={this.state.complier_option}/>}</Descriptions.Item>
+						<Descriptions.Item label="安装包选项">{this.getModuleTag(complier_module.modules)}</Descriptions.Item>
 
                         <Descriptions.Item label="是否位OEM版本">{oem_option.oem_enable ? <Tag color="red">是</Tag> : <Tag color="blue">否</Tag>}</Descriptions.Item>
                         <Descriptions.Item label="OEM图标" span={2}><Avatar shape="square" size={32} src={oem_option.oem_enable ? oem_option.icon : "./image/weixunclient.png"} /></Descriptions.Item>
@@ -476,6 +539,12 @@ export class WeixunClientMissionCheckContent  extends React.Component {
                         <Descriptions.Item label="OEM厂家名称">{oem_option.oem_enable ? oem_option.vendor_name : "Centerm"}</Descriptions.Item>
                         <Descriptions.Item label="OEM产品名称">{oem_option.oem_enable ? oem_option.product_name : forserver ? "WeixunServer" : "WeixunClient"}</Descriptions.Item>
                         <Descriptions.Item label="OEM版权信息">{oem_option.oem_enable ? oem_option.copyright : "Fujian Centerm Information Co., Ltd."}</Descriptions.Item>
+						
+						<Descriptions.Item label="OEM云桌面名称">{oem_option.oem_enable ? oem_option.desktop_name : "威讯云桌面"}</Descriptions.Item>
+                        <Descriptions.Item label="OEM云应用名称">{oem_option.oem_enable ? oem_option.app_name : "威讯云应用"}</Descriptions.Item>
+                        <Descriptions.Item label="OEM融易云信息">{oem_option.oem_enable ? oem_option.ryypc_name : "融易云PC版"}</Descriptions.Item>
+						
+						<Descriptions.Item label="OEM应用背景图片" span={3}>{this.getBgImage(oem_option)}</Descriptions.Item>
 
                         <Descriptions.Item label="远程编译服务器">{ this.state.isWindows ? "无" : complier_option.platform_node.server_address}</Descriptions.Item>
                         <Descriptions.Item label="编译脚本">{complier_option.platform_node.script}</Descriptions.Item>

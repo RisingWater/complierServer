@@ -16,8 +16,12 @@ exports.add = function(req, res) {
         "oemid" : uuid.v1(),
         "vendor" : req.body.vendor,
         "product" : req.body.product,
+		"desktop_name" : req.body.desktop_name,
+		"app_name" : req.body.app_name,
+		"ryypc_name" : req.body.ryypc_name,
         "copyright" : req.body.copyright,
         "icon" : req.body.icon,
+		"bgimage" : req.body.bgimage,
     }
 
     db_controller.add_oem(new_oem);
@@ -38,8 +42,12 @@ exports.update = function(req, res) {
         "oemid" : req.body.oemid,
         "vendor" : req.body.vendor,
         "product" : req.body.product,
+		"desktop_name" : req.body.desktop_name,
+		"app_name" : req.body.app_name,
+		"ryypc_name" : req.body.ryypc_name,
         "copyright" : req.body.copyright,
         "icon" : req.body.icon,
+		"bgimage" : req.body.bgimage,
     }
 
     db_controller.update_oem(new_oem);

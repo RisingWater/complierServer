@@ -39,6 +39,9 @@ export class WeixunClientForm extends React.Component {
             mission_complier_module : {
                 packages : [],
                 packages_enable : [],
+				module_config : false,
+				modules : [],
+				modules_enable : [],
                 readme : ""
             },
 
@@ -47,8 +50,12 @@ export class WeixunClientForm extends React.Component {
                 oemid : "",
                 vendor_name : "",
                 product_name : "",
+				desktop_name : "",
+				app_name : "",
+				ryypc_name : "",
                 copyright : "",
                 icon : "",
+				bgimage : ""
             }
         };
     }
@@ -64,10 +71,21 @@ export class WeixunClientForm extends React.Component {
 
         var packages = this.state.mission_complier_module.packages;
         var packages_enable = [];
+		
+		var module_config = false;
+		var modules = this.state.mission_complier_module.modules;
+		var modules_enable = [];
 
         if (node.packages_config) {
             packages = node.default_packages;
             packages_enable = node.enable_packages;
+
+			module_config = node.module_config;
+			if (module_config)
+			{
+				modules = node.default_module;
+				modules_enable = node.enable_packages;
+			}
         }
 
         this.setState( { 
@@ -83,6 +101,9 @@ export class WeixunClientForm extends React.Component {
             mission_complier_module : {
                 packages : packages,
                 packages_enable : packages_enable,
+				module_config : module_config,
+				modules : modules,
+				modules_enable : modules_enable,
                 readme :  this.state.mission_complier_module.readme,
             }
         })
@@ -101,11 +122,21 @@ export class WeixunClientForm extends React.Component {
         } else {
             package_array = values.packages;
         }
+		
+        var modules_array = new Array();
+        if (!Array.isArray(values.modules)) {
+            var value = values.modules;
+            modules_array.push(value);
+        } else {
+            modules_array = values.modules;
+        }
 
         this.setState( { 
             mission_complier_module : {
                 packages : package_array,
                 packages_enable : this.state.mission_complier_module.packages_enable,
+				modules : modules_array,
+				modules_enable : this.state.mission_complier_module.modules_enable,
                 readme : values.readme,
             }
         })
@@ -114,7 +145,7 @@ export class WeixunClientForm extends React.Component {
         this.setState({ currentStep : current });
     }
 
-    onOEMOptionSubmit(values, oemid, icon) {
+    onOEMOptionSubmit(values, oemid, icon, bgimage) {
         console.log('Received values of oem option form: ', values);
 
         this.setState( { 
@@ -123,8 +154,12 @@ export class WeixunClientForm extends React.Component {
                 oemid : oemid,
                 vendor_name : values.vendor_name,
                 product_name : values.product_name,
+				desktop_name : values.desktop_name,
+				app_name : values.app_name,
+				ryypc_name : values.ryypc_name,
                 copyright : values.copyright,
                 icon : icon,
+				bgimage : bgimage,
             }
         })
 
@@ -213,6 +248,9 @@ export class WeixunClientForm extends React.Component {
                     packages: Form.createFormField({
                         value: props.mission_complier_module.packages,
                     }),
+					modules: Form.createFormField({
+                        value: props.mission_complier_module.modules,
+                    }),
                     readme: Form.createFormField({
                         value: props.mission_complier_module.readme,
                     }),
@@ -250,6 +288,15 @@ export class WeixunClientForm extends React.Component {
                     }),
                     product_name: Form.createFormField({
                         value: props.mission_oem_option.product_name,
+                    }),
+					desktop_name: Form.createFormField({
+                        value: props.mission_oem_option.desktop_name,
+                    }),
+					app_name: Form.createFormField({
+                        value: props.mission_oem_option.app_name,
+                    }),
+					ryypc_name: Form.createFormField({
+                        value: props.mission_oem_option.ryypc_name,
                     }),
                     copyright: Form.createFormField({
                         value: props.mission_oem_option.copyright,

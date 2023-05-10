@@ -11,6 +11,7 @@ export class OEMOptionFormTemplate extends React.Component {
             dataSource : [],
             oemid : "new_oem",
             oem_imageUrl : "",
+			oem_bgimage : "",
         };
     }
 
@@ -48,8 +49,12 @@ export class OEMOptionFormTemplate extends React.Component {
                         "oemid" : this.state.oemid,
                         "vendor" : values.vendor_name,
                         "product" : values.product_name,
+						"desktop_name" : values.desktop_name,
+						"app_name" : values.app_name,
+						"ryypc_name" : values.ryypc_name,
                         "copyright" : values.copyright,
-                        "icon" : this.state.oem_imageUrl
+                        "icon" : this.state.oem_imageUrl,
+						"bgimage" : this.state.oem_bgimage,
                     };
                     var oemid = this.state.oemid;
 
@@ -88,7 +93,7 @@ export class OEMOptionFormTemplate extends React.Component {
                     }
                 }
 
-                this.props.onSubmit(values, oemid, this.state.oem_imageUrl);
+                this.props.onSubmit(values, oemid, this.state.oem_imageUrl, this.state.oem_bgimage);
             }
         });
     };
@@ -99,6 +104,7 @@ export class OEMOptionFormTemplate extends React.Component {
         if (!value) {
             this.setState({
                 oem_imageUrl : "",
+				oem_bgimage : "",
             });
         }
     }
@@ -115,25 +121,50 @@ export class OEMOptionFormTemplate extends React.Component {
             }
         })
         this.setState({oemid: value});
+		
+		if (oem.desktop_name == undefined) {
+			oem.desktop_name = oem.product;
+		}
+		
+		if (oem.app_name == undefined) {
+			oem.app_name = oem.product;
+		}
+		
+		if (oem.ryypc_name == undefined) {
+			oem.ryypc_name = oem.product;
+		}
+		
+		if (oem.bgimage == undefined) {
+			oem.bgimage = "";
+		}
+		
         if (oem) {
             form.setFieldsValue({
                 vendor_name : oem.vendor,
                 product_name : oem.product,
+				desktop_name : oem.desktop_name,
+				app_name : oem.app_name,
+				ryypc_name : oem.ryypc_name,
                 copyright : oem.copyright
             });
 
             this.setState({
                 oem_imageUrl : oem.icon,
+				oem_bgimage : oem.bgimage,
             });
         } else {
             form.setFieldsValue({
                 vendor_name : "",
                 product_name : "",
+				desktop_name : "",
+				app_name : "",
+				ryypc_name : "",
                 copyright : ""
             });
 
             this.setState({
                 oem_imageUrl : "",
+				oem_bgimage : "",
             });
         }
     }
@@ -147,6 +178,21 @@ export class OEMOptionFormTemplate extends React.Component {
         if (e.file.status == 'done') {
             this.setState({
                 oem_imageUrl : e.file.response.url,
+            });
+        } 
+
+        return e && e.fileList;
+    };
+	
+	normFile2(e) {
+        console.log(e);
+        if (Array.isArray(e)) {
+            return e;
+        }
+
+        if (e.file.status == 'done') {
+            this.setState({
+                oem_bgimage : e.file.response.url,
             });
         } 
 
@@ -206,6 +252,15 @@ export class OEMOptionFormTemplate extends React.Component {
         })
         return menuNode;
     }
+	
+	getAddonBefore(string)
+	{
+		return (
+			<div style={{width : 150}}>
+				{string}
+			</div>
+		)
+	}
 
     render () {
         const { getFieldDecorator } = this.props.form;
@@ -231,17 +286,32 @@ export class OEMOptionFormTemplate extends React.Component {
                 </Form.Item>
                 <Form.Item>
                     {getFieldDecorator('vendor_name') (
-                        <Input addonBefore="厂家名称" style={{width: 700}} placeholder="请输入厂家名称" disabled={!this.state.oem_enable} /> 
+                        <Input addonBefore={this.getAddonBefore("厂家名称")} style={{width: 700}} placeholder="请输入厂家名称，只能为英文字符" disabled={!this.state.oem_enable} /> 
                     )}
                 </Form.Item>
                 <Form.Item>
                     {getFieldDecorator('product_name') (
-                        <Input addonBefore="产品名称" style={{width: 700}} placeholder="请输入产品名称" disabled={!this.state.oem_enable} /> 
+                        <Input addonBefore={this.getAddonBefore("产品名称")} style={{width: 700}} placeholder="请输入产品名称，只能为英文字符" disabled={!this.state.oem_enable} /> 
                     )}
                 </Form.Item>
+				<Form.Item>
+                    {getFieldDecorator('desktop_name') (
+                        <Input addonBefore={this.getAddonBefore("云桌面产品名称")} style={{width: 700}} placeholder="请输入云桌面产品名称，可以是中文" disabled={!this.state.oem_enable} /> 
+                    )}
+                </Form.Item>
+				<Form.Item>
+                    {getFieldDecorator('app_name') (
+                        <Input addonBefore={this.getAddonBefore("云应用产品名称")} style={{width: 700}} placeholder="请输入云应用产品名称，可以是中文" disabled={!this.state.oem_enable} /> 
+                    )}
+                </Form.Item>
+				<Form.Item>
+                    {getFieldDecorator('ryypc_name') (
+                        <Input addonBefore={this.getAddonBefore("融易云PC版产品名称")} style={{width: 700}} placeholder="请输入融易云PC版产品名称，可以是中文" disabled={!this.state.oem_enable} /> 
+                    )}
+                </Form.Item>  	  				
                 <Form.Item>
                     {getFieldDecorator('copyright') (
-                        <Input addonBefore="版权信息" style={{width: 700}} placeholder="请输入产品名称" disabled={!this.state.oem_enable} /> 
+                        <Input addonBefore={this.getAddonBefore("版权信息")} style={{width: 700}} placeholder="请输入版权信息，可以使中文" disabled={!this.state.oem_enable} /> 
                     )}
                 </Form.Item>   
                 <Form.Item label="上传OEM版本的Logo">
@@ -258,6 +328,23 @@ export class OEMOptionFormTemplate extends React.Component {
                             {this.state.oem_imageUrl == "" ? 
                                 <div><Icon type='plus'/><div>点击上传</div></div> :
                                 <img src={this.state.oem_imageUrl} alt="Logo" style={{ width: '100%' }}/>}
+                        </Upload>
+                    )}
+                </Form.Item>
+				<Form.Item label="上传OEM版本的背景图片">
+                    {getFieldDecorator('bgimage', {
+                        valuePropName: 'fileList',
+                        getValueFromEvent: this.normFile2.bind(this)})(
+                        <Upload
+                            name="icon"
+                            action="/upload"
+                            listType="picture-card"
+                            showUploadList={false}
+                            disabled={!this.state.oem_enable}
+                            style={{width: 128, height: 96}}>
+                            {this.state.oem_bgimage == "" ? 
+                                <div><Icon type='plus'/><div>点击上传</div></div> :
+                                <img src={this.state.oem_bgimage} alt="Logo" style={{ width: '100%' }}/>}
                         </Upload>
                     )}
                 </Form.Item>

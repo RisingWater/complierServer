@@ -50,8 +50,12 @@ export class SolutionForm extends React.Component {
                 oemid : "",
                 vendor_name : "",
                 product_name : "",
+				desktop_name : "",
+				app_name : "",
+				ryypc_name : "",
                 copyright : "",
                 icon : "",
+				bgimage : ""
             },
 
             mission_default_components : [ "0", "1", "2", "3", "4" ]
@@ -136,7 +140,7 @@ export class SolutionForm extends React.Component {
         this.setState({ currentStep : current });
     }
 
-    onOEMOptionSubmit(values, oemid, icon) {
+    onOEMOptionSubmit(values, oemid, icon, bgimage) {
         console.log('Received values of oem option form: ', values);
 
         this.setState( { 
@@ -145,8 +149,12 @@ export class SolutionForm extends React.Component {
                 oemid : oemid,
                 vendor_name : values.vendor_name,
                 product_name : values.product_name,
+				desktop_name : values.desktop_name,
+				app_name : values.app_name,
+				ryypc_name : values.ryypc_name,
                 copyright : values.copyright,
                 icon : icon,
+				bgimage : bgimage,
             }
         })
 
@@ -278,6 +286,15 @@ export class SolutionForm extends React.Component {
                     }),
                     product_name: Form.createFormField({
                         value: props.mission_oem_option.product_name,
+                    }),
+					desktop_name: Form.createFormField({
+                        value: props.mission_oem_option.desktop_name,
+                    }),
+					app_name: Form.createFormField({
+                        value: props.mission_oem_option.app_name,
+                    }),
+					ryypc_name: Form.createFormField({
+                        value: props.mission_oem_option.ryypc_name,
                     }),
                     copyright: Form.createFormField({
                         value: props.mission_oem_option.copyright,

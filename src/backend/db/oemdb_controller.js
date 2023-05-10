@@ -16,8 +16,12 @@ exports.update_oem = function (oem) {
         if (element.oemid == oem.oemid) {
             element.vendor = oem.vendor;
             element.product = oem.product;
+			element.desktop_name = oem.desktop_name;
+			element.app_name = oem.app_name;
+			element.ryypc_name = oem.ryypc_name;
             element.copyright = oem.copyright;
             element.icon = oem.icon;
+			element.bgimage = oem.bgimage;
             return true;
         }
     });

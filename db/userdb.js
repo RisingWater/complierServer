@@ -218,5 +218,15 @@
             "sep": false,
             "weixunclient": false
         }
+    },
+    {
+        "userid": "26b8b200-c23f-11ed-ae8f-fd69229742ed",
+        "username": "wushaowei@centerm.com",
+        "password": "408825675",
+        "isAdmin": false,
+        "subscribe": {
+            "sep": false,
+            "weixunclient": false
+        }
     }
 ]

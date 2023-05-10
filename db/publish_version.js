@@ -23,16 +23,6 @@
                 "beta" : false
             },
 			{ 
-                "name" : "威讯云协议 8.5修复版(8.5.0.3)",
-                "url"  : "http://10.17.17.16:8080/output/public/stable/v8.5.0.3/",
-                "beta" : false
-            },
-			{ 
-                "name" : "威讯云协议 8.5正式版(8.5.0.2)",
-                "url"  : "http://10.17.17.16:8080/output/public/stable/v8.5.0.2/",
-                "beta" : false
-            },
-			{ 
                 "name" : "威讯云协议 8.1正式版",
                 "url"  : "http://10.17.17.16:8080/output/public/stable/v8.1.0.3/",
                 "beta" : false
@@ -93,14 +83,14 @@
         "allow_subscribe" : false,
         "list" : [
             { 
-                "name" : "威讯云电脑移动端",
-                "url" : "https://risingwater-studio.com/ipainstall/",
+                "name" : "威讯云移动端",
+                "url" : "https://app.centerm.com/weixunApp.html",
                 "beta" : true
             },
             { 
-                "name" : "其他国产化软件版本",
-                "url" : "http://10.17.17.16:8080/output/public/other/nationalization/",
-                "beta" : false
+                "name" : "9.0白牌",
+                "url" : "http://10.17.17.16:8080/output/public/beta/XRED 9.0.1.12-20230301",
+                "beta" : true
             }
         ]
     }
